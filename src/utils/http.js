@@ -24,7 +24,7 @@ class Http {
           toast.error(message);
         }
         return Promise.reject(error);
-      }
+      },
     );
   }
 }
