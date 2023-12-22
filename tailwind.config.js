@@ -18,6 +18,7 @@ module.exports = {
         error: "#E76F51",
         success: "#57CC99",
         warning: "#FF9800",
+        mosh: "#0A4F45",
       },
     },
   },
