@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "jsx": "react",
+    "checkJs": true,
+    "target": "ES5",
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+   "exclude": ["node_modules", "build"]
 }
