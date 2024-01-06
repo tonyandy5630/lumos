@@ -24,6 +24,6 @@ const NavItems = [
     { title: 'Profile', icon: <ProfileIcon {...options} /> },
     { title: 'Help', icon: <HelpIcon {...options} /> },
 ]
-export const drawerWidth = 240
+export const drawerWidth = 286
 
 export default NavItems
