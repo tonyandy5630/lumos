@@ -14,7 +14,7 @@ import Badge from '@mui/material/Badge'
 import { styled } from '@mui/material/styles'
 import { drawerWidth } from '@/utils/layout/drawer.const'
 
-export default function Header({ children }) {
+export default function Header() {
     const [searchTxt, setSearchTxt] = React.useState('')
 
     const handleSearchChange = (e) => {
@@ -30,7 +30,7 @@ export default function Header({ children }) {
     }))
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <>
             <CssBaseline />
             <AppBar
                 component="header"
@@ -84,22 +84,6 @@ export default function Header({ children }) {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Navbar />
-            <Box
-                component="main"
-                sx={{
-                    minHeight: '96vh',
-                    maxWidth: '83.4vw',
-                    minWidth: '83.4vw',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    py: 3,
-                    px: 4,
-                }}
-            >
-                <Toolbar />
-                {children}
-            </Box>
-        </Box>
+        </>
     )
 }
