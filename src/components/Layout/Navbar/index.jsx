@@ -16,7 +16,6 @@ import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
     const pathname = usePathname()
-    console.log(pathname)
     return (
         <Drawer
             component="aside"
@@ -44,9 +43,10 @@ export default function Navbar() {
             <Divider />
             {NavItems.map(({ icon, title }) => {
                 let isCurPath = false
+                const curPath = pathname.split('/')[1]
                 if (
                     pathname &&
-                    pathname.toLowerCase().includes(title.toLowerCase())
+                    curPath.toLowerCase().includes(title.toLowerCase())
                 ) {
                     isCurPath = true
                 }
