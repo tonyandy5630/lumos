@@ -89,8 +89,12 @@ export default function Header({ children }) {
                 component="main"
                 sx={{
                     minHeight: '96vh',
-                    maxWidth: '100vw',
-                    p: 2,
+                    maxWidth: '83.4vw',
+                    minWidth: '83.4vw',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    py: 3,
+                    px: 4,
                 }}
             >
                 <Toolbar />
