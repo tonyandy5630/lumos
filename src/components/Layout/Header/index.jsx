@@ -10,7 +10,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import Avatar from '@mui/material/Avatar'
 import Stack from '@mui/material/Stack'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { Badge } from '@mui/material'
+import Badge from '@mui/material/Badge'
 import { styled } from '@mui/material/styles'
 import { drawerWidth } from '@/utils/layout/drawer.const'
 

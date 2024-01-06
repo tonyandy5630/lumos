@@ -1,17 +1,16 @@
 'use client'
 import React from 'react'
-import {
-    Drawer,
-    Divider,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-    Toolbar,
-} from '@mui/material'
+import Drawer from '@mui/material/Drawer'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import Toolbar from '@mui/material/Toolbar'
 import NavItems, { drawerWidth } from '@/utils/layout/drawer.const'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+
 //* using Drawer MUI
 
 export default function Navbar() {

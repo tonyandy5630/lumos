@@ -1,34 +1,32 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import {
-    FormControl,
-    FormHelperText,
-    IconButton,
-    InputAdornment,
-    InputLabel,
-    OutlinedInput,
-    Stack,
-    useMediaQuery,
-} from '@mui/material'
+import FormControl from '@mui/material/FormControl'
+import FormHelperText from '@mui/material/FormHelperText'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import InputLabel from '@mui/material/InputLabel'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import Stack from '@mui/material/Stack'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import React, { useEffect, useState } from 'react'
-import { styled } from '@mui/material/styles'
 
-export default function FormInput({
-    label,
-    helperText,
-    placeholder,
-    inputType = 'standard',
-    id,
-    name,
-    autocomplete,
-    helperTextIsError,
-    isRequired = false,
-    inputProps,
-    register,
-    registerOptions,
-    className,
-    sx,
-    children,
-}) {
+export default function FormInput(props) {
+    const {
+        label,
+        helperText,
+        placeholder,
+        inputType = 'standard',
+        id,
+        name,
+        autocomplete,
+        helperTextIsError,
+        isRequired = false,
+        inputProps,
+        register,
+        registerOptions,
+        className,
+        sx,
+        children,
+    } = props
     const [showPwd, setShowPwd] = useState(false)
     const [isError, setIsError] = useState(helperTextIsError)
     const isMd = useMediaQuery('(min-width:784px)')
