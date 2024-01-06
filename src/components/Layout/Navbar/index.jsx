@@ -62,7 +62,7 @@ export default function Navbar() {
                                 primary={title}
                                 primaryTypographyProps={{
                                     sx: {
-                                        fontWeight: '500',
+                                        fontWeight: '600',
                                         color: '#0A4F45',
                                     },
                                 }}
