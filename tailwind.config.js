@@ -22,6 +22,7 @@ module.exports = {
                 footer: '#0A4F458A',
                 'dark-primary': '#B5F2EB',
                 purple: '#B28CFF',
+                'yellow-ish': '#FFF3F2',
             },
         },
     },
