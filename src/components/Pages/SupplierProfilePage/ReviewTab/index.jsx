@@ -8,7 +8,7 @@ import Rating from '@mui/material/Rating'
 const avatarWidth = 60
 export default function ReviewTab(props) {
     return (
-        <Grid xs={6} className="grid p-4 rounded-xl min-h-56">
+        <Grid xs={6} className="grid p-4 rounded-3xl min-h-56">
             <Paper elevation={10} className="grid h-full">
                 <Stack
                     direction="row"
