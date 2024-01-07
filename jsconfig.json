@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "preserve",
     "checkJs": true,
     "target": "ES5",
     "paths": {

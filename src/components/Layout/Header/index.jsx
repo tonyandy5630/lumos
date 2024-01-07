@@ -10,11 +10,11 @@ import SearchIcon from '@mui/icons-material/Search'
 import Avatar from '@mui/material/Avatar'
 import Stack from '@mui/material/Stack'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { Badge } from '@mui/material'
+import Badge from '@mui/material/Badge'
 import { styled } from '@mui/material/styles'
 import { drawerWidth } from '@/utils/layout/drawer.const'
 
-export default function Header({ children }) {
+export default function Header() {
     const [searchTxt, setSearchTxt] = React.useState('')
 
     const handleSearchChange = (e) => {
@@ -30,7 +30,7 @@ export default function Header({ children }) {
     }))
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <>
             <CssBaseline />
             <AppBar
                 component="header"
@@ -84,18 +84,6 @@ export default function Header({ children }) {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Navbar />
-            <Box
-                component="main"
-                sx={{
-                    minHeight: '96vh',
-                    maxWidth: '100vw',
-                    p: 2,
-                }}
-            >
-                <Toolbar />
-                {children}
-            </Box>
-        </Box>
+        </>
     )
 }

@@ -1,22 +1,20 @@
 'use client'
 import React from 'react'
-import {
-    Drawer,
-    Divider,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-    Toolbar,
-} from '@mui/material'
+import Drawer from '@mui/material/Drawer'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import Toolbar from '@mui/material/Toolbar'
 import NavItems, { drawerWidth } from '@/utils/layout/drawer.const'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+
 //* using Drawer MUI
 
 export default function Navbar() {
     const pathname = usePathname()
-    console.log(pathname)
     return (
         <Drawer
             component="aside"
@@ -39,14 +37,16 @@ export default function Navbar() {
                     alt="lumos's logo"
                     width={drawerWidth - 30}
                     height={drawerWidth - 30}
+                    priority={true}
                 />
             </Toolbar>
             <Divider />
             {NavItems.map(({ icon, title }) => {
                 let isCurPath = false
+                const curPath = pathname.split('/')[1]
                 if (
                     pathname &&
-                    pathname.toLowerCase().includes(title.toLowerCase())
+                    curPath.toLowerCase().includes(title.toLowerCase())
                 ) {
                     isCurPath = true
                 }
@@ -62,7 +62,7 @@ export default function Navbar() {
                                 primary={title}
                                 primaryTypographyProps={{
                                     sx: {
-                                        fontWeight: '500',
+                                        fontWeight: '600',
                                         color: '#0A4F45',
                                     },
                                 }}

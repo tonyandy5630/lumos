@@ -20,6 +20,8 @@ module.exports = {
                 warning: '#FF9800',
                 mosh: '#0A4F45',
                 footer: '#0A4F458A',
+                'dark-primary': '#B5F2EB',
+                purple: '#B28CFF',
             },
         },
     },

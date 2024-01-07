@@ -2,7 +2,8 @@
 import MyButton from '@/components/Button'
 import FormInput from '@/components/FormInput'
 import ProtectedRoute from '@/components/ProtectedRoutes'
-import { Stack, Typography, Box } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -148,7 +149,6 @@ export default function LoginPage() {
                         alt="Doctor Images"
                         width={701}
                         height={610}
-                        file={true}
                         priority={true}
                         quality={100}
                         src="/doctor.png"
