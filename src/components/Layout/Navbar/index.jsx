@@ -10,8 +10,7 @@ import Toolbar from '@mui/material/Toolbar'
 import NavItems, { drawerWidth } from '@/utils/layout/drawer.const'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-
-//* using Drawer MUI
+import Link from 'next/link'
 
 export default function Navbar() {
     const pathname = usePathname()
@@ -41,7 +40,7 @@ export default function Navbar() {
                 />
             </Toolbar>
             <Divider />
-            {NavItems.map(({ icon, title }) => {
+            {NavItems.map(({ icon, title, href }) => {
                 let isCurPath = false
                 const curPath = pathname.split('/')[1]
                 if (
@@ -51,7 +50,12 @@ export default function Navbar() {
                     isCurPath = true
                 }
                 return (
-                    <ListItem key={title} disablePadding>
+                    <ListItem
+                        key={title}
+                        disablePadding
+                        component={Link}
+                        href={href}
+                    >
                         <ListItemButton
                             sx={{
                                 bgcolor: `${isCurPath ? '#FFE5E5' : ''}`,
