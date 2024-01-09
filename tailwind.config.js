@@ -23,6 +23,8 @@ module.exports = {
                 'dark-primary': '#B5F2EB',
                 purple: '#B28CFF',
                 'yellow-ish': '#FFF3F2',
+                green: '#6DDDCD',
+                white: '#F8F8F3',
             },
         },
     },
