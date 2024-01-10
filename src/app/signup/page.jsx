@@ -35,7 +35,7 @@ export default function SignupPage() {
                     <Stack
                         justifyContent="center"
                         alignItems="center"
-                        className="w-7/12 py-3 bg-white/65 min-h-[26rem] rounded-3xl"
+                        className="w-10/12 py-3 bg-white/65 min-h-[26rem] rounded-3xl"
                     >
                         <Stack
                             justifyContent="center"
@@ -43,14 +43,14 @@ export default function SignupPage() {
                             className="mt-3"
                         >
                             <Typography
-                                variant="h4"
+                                variant="h5"
                                 className="font-bold text-mosh"
                                 sx={{
                                     fontFamily: 'Poppins',
                                     color: '#107B6C',
                                 }}
                             >
-                                Log in
+                                Sign up with email address
                             </Typography>
                             <Typography
                                 variant="subtitle1"
@@ -59,12 +59,12 @@ export default function SignupPage() {
                                     color: '#107B6C',
                                 }}
                             >
-                                New to Lumos?{' '}
+                                Already has an account?{' '}
                                 <Link
-                                    href="/register"
+                                    href="/login"
                                     className="underline text-mosh"
                                 >
-                                    Sign up for free
+                                    Login
                                 </Link>
                             </Typography>
                         </Stack>

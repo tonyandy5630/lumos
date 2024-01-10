@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={popins.className}>
-                <ThemeProvider theme={theme}>
-                    <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
-                </ThemeProvider>
+                <AppRouterCacheProvider>
+                    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                </AppRouterCacheProvider>
             </body>
         </html>
     )
