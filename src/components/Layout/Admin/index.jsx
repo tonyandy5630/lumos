@@ -23,7 +23,6 @@ export default function Layout({ children }) {
                         px: 4,
                     }}
                 >
-                    <Toolbar />
                     {children}
                 </Box>
             </Box>
