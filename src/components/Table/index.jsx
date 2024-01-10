@@ -20,7 +20,13 @@ export default function Table(props) {
         enableStickyHeader: true,
         enableFullScreenToggle: false,
         enableDensityToggle: false,
-        muiTableContainerProps: { sx: { maxHeight: '400px', width: '100%' } },
+        muiTableContainerProps: {
+            sx: {
+                maxHeight: '400px',
+                width: '100%',
+                minHeight: `${props.minHeight}px`,
+            },
+        },
         enableHiding: false,
         muiTableHeadCellProps: {
             sx: {
@@ -30,6 +36,9 @@ export default function Table(props) {
                 },
             },
         },
+        enableRowActions: props.hasActionRow ?? false,
+        positionActionsColumn: 'last',
+        renderRowActionMenuItems: props.renderRowActionMenuItems,
     })
 
     return (
