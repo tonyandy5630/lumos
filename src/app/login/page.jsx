@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import GoogleIcon from '@mui/icons-material/Google'
 
 export default function LoginPage() {
     const {
@@ -135,10 +136,12 @@ export default function LoginPage() {
                                         Log in
                                     </MyButton>
                                     <MyButton
+                                        variant="outlined"
                                         type="submit"
-                                        className="!bg-white border border-black border-solid"
+                                        className="!bg-white"
                                         handleClick={() => console.log()}
                                     >
+                                        <GoogleIcon sx={{ color: '#4285F4' }} />
                                         Continue with google
                                     </MyButton>
                                 </Stack>

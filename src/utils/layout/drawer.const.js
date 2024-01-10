@@ -16,13 +16,26 @@ const NavItems = [
     {
         title: 'Homepage',
         icon: <HomeOutlinedIcon {...options} />,
+        href: '/homepage',
     },
-    { title: 'Suppliers', icon: <SupplierIcon {...options} /> },
-    { title: 'Members', icon: <MemberIcon {...options} /> },
-    { title: 'Bookings', icon: <BookingIcon {...options} /> },
-    { title: 'Customer Service', icon: <CustomerServiceIcon {...options} /> },
-    { title: 'Profile', icon: <ProfileIcon {...options} /> },
-    { title: 'Help', icon: <HelpIcon {...options} /> },
+    {
+        title: 'Suppliers',
+        icon: <SupplierIcon {...options} />,
+        href: '/suppliers',
+    },
+    { title: 'Members', icon: <MemberIcon {...options} />, href: '/members' },
+    {
+        title: 'Bookings',
+        icon: <BookingIcon {...options} />,
+        href: '/bookings',
+    },
+    {
+        title: 'Customer Service',
+        icon: <CustomerServiceIcon {...options} />,
+        href: '/customer-service',
+    },
+    { title: 'Profile', icon: <ProfileIcon {...options} />, href: '/profile' },
+    { title: 'Help', icon: <HelpIcon {...options} />, href: '/help' },
 ]
 export const drawerWidth = 286
 

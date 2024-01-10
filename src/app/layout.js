@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import theme from '@/utils/themes'
 import { ThemeProvider } from '@emotion/react'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 
 const popins = Poppins({
     subsets: ['latin'],
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={popins.className}>
-                <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                <ThemeProvider theme={theme}>
+                    <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+                </ThemeProvider>
             </body>
         </html>
     )
