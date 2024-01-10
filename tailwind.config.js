@@ -25,6 +25,7 @@ module.exports = {
                 'yellow-ish': '#FFF3F2',
                 green: '#6DDDCD',
                 white: '#F8F8F3',
+                'secondary-dark': '#E86363',
             },
         },
     },
