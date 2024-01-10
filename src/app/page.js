@@ -16,7 +16,7 @@ export default function ButtonAppBar() {
     return (
         <LandingPageLayout>
             <div className="relative min-w-full min-h-[28rem] bg-primary flex pl-40 items-center">
-                <div className="absolute  bottom-0 right-14 bg-green rounded-t-full w-[600px] h-[300px]" />
+                <div className="absolute  bottom-0 right-16 bg-green rounded-t-full w-[600px] h-[300px]" />
                 <div className="flex flex-col justify-around space-y-3 h-2/3 ">
                     <Typography
                         variant="h3"
