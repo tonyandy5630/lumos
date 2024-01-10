@@ -15,7 +15,8 @@ const IBM = IBM_Plex_Sans({
 export default function ButtonAppBar() {
     return (
         <LandingPageLayout>
-            <div className="min-w-full min-h-[28rem] bg-primary flex pl-40 items-center">
+            <div className="relative min-w-full min-h-[28rem] bg-primary flex pl-40 items-center">
+                <div className="absolute  bottom-0 right-14 bg-green rounded-t-full w-[600px] h-[300px]" />
                 <div className="flex flex-col justify-around space-y-3 h-2/3 ">
                     <Typography
                         variant="h3"
@@ -60,12 +61,20 @@ export default function ButtonAppBar() {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-start h-24 min-w-full px-32 py-3 bg-[#216C61] align-center">
+            <div className="relative z-20 flex justify-start h-24 min-w-full px-32 py-3 bg-[#216C61] align-center">
                 <div className="flex justify-between w-5/12 space-x-3 px-7">
                     <InfoBox title="Online Support">24/7</InfoBox>
                     <InfoBox title="Suppliers">100+</InfoBox>
                     <InfoBox title="Active Patients">1M+</InfoBox>
                 </div>
+                <Image
+                    src="/black-nurse.png"
+                    alt="nurse smiling"
+                    width={701}
+                    height={850}
+                    priority={true}
+                    className="absolute bottom-0 z-10 right-20"
+                />
             </div>
         </LandingPageLayout>
     )
