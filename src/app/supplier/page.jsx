@@ -1,10 +1,7 @@
 import Head from 'next/head'
-import Nav from '@/components/landingpage/nav'
-import Hero from '@/components/landingpage/Hero'
-// import Features from '@/components/landingpage/features'
-import About from '@/components/landingpage/about'
-
-
+import Header from "@/components/Layout/Header";
+import Navbar from "@/components/Layout/Navbar";
+import Footer from "@/components/Layout/Footer";
 
 export default function Landing() {
     return (
@@ -15,10 +12,9 @@ export default function Landing() {
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link rel="icon" href="favicon.ico"/>
         </Head>
-        <Nav />
-        <Hero/>
-        {/* <Features/> */}
-        <About/>
+        <Header/>
+        <Navbar/>
+        <Footer/>
         </>
     )
 }
