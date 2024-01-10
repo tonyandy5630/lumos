@@ -5,6 +5,7 @@ import { IBM_Plex_Sans } from 'next/font/google'
 import Image from 'next/image'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import SearchIcon from '@mui/icons-material/Search'
+import InfoBox from '@/components/Pages/LandingPage/InfoBox'
 
 const IBM = IBM_Plex_Sans({
     subsets: ['latin'],
@@ -57,6 +58,13 @@ export default function ButtonAppBar() {
                             }}
                         />
                     </div>
+                </div>
+            </div>
+            <div className="flex justify-start h-24 min-w-full px-32 py-3 bg-[#216C61] align-center">
+                <div className="flex justify-between w-5/12 space-x-3 px-7">
+                    <InfoBox title="Online Support">24/7</InfoBox>
+                    <InfoBox title="Suppliers">100+</InfoBox>
+                    <InfoBox title="Active Patients">1M+</InfoBox>
                 </div>
             </div>
         </LandingPageLayout>
