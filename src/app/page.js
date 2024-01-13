@@ -13,6 +13,7 @@ import MyAvatarGroup from '@/components/Pages/LandingPage/AvatarGroup'
 import Paper from '@mui/material/Paper'
 import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
+import SendIcon from '@mui/icons-material/ArrowCircleRightOutlined'
 
 const IBM = IBM_Plex_Sans({
     subsets: ['latin'],
@@ -215,6 +216,71 @@ export default function ButtonAppBar() {
                             {LandingPageText.memberSayingAboutUs.member.content}
                         </Typography>
                     </Paper>
+                </div>
+            </div>
+            <div className="min-w-full justify-stretch min-h-[25rem] flex px-40 my-10">
+                <div className="min-w-full flex justify-between items-center">
+                    <div className="flex flex-col justify-center items-start min-h-full max-w-xl space-y-5">
+                        <div className="max-w-fit">
+                            <Typography variant="h4">
+                                The
+                                <span className="mx-2 text-green font-bold">
+                                    key value
+                                </span>
+                                of <span className="font-bold">Lumos</span>:
+                            </Typography>
+                            <div className="min-w-full text-center text-gray-600 text-xl">
+                                {LandingPageText.keyValue.subtitle}
+                            </div>
+                        </div>
+                        <div className="flex flex-col space-y-2">
+                            {LandingPageText.keyValue.content.map((item) => {
+                                const splittedItem = item.split(':')
+                                const title = splittedItem[0]
+                                const content = splittedItem[1]
+
+                                return (
+                                    <Typography fontSize="13px">
+                                        <span className="font-bold mr-2">
+                                            {title} :
+                                        </span>
+                                        {content}
+                                    </Typography>
+                                )
+                            })}
+                        </div>
+                        <Typography
+                            component="a"
+                            fontWeight="bold"
+                            className="underline underline-offset-4 text-mosh mt-3"
+                            href="https://www.google.com/"
+                        >
+                            Learn more
+                            <ArrowIcon />
+                        </Typography>
+                    </div>
+                    <Image
+                        src="/key-value.png"
+                        width={500}
+                        height={200}
+                        alt="nurse"
+                    />
+                </div>
+            </div>
+            <div className="flex justify-center items-center px-40 min-h-80">
+                <div className="flex flex-col space-y-6 w-full h-3/4 bg-green rounded-xl justify-center items-center">
+                    <Typography
+                        variant="h4"
+                        className="text-white"
+                        fontWeight="bold"
+                    >
+                        {LandingPageText.subscribe.title}
+                    </Typography>
+                    <OutlinedInput
+                        placeholder="Enter your email"
+                        className="min-w-96 bg-slate-50 !rounded-3xl"
+                        endAdornment={<SendIcon />}
+                    />
                 </div>
             </div>
         </LandingPageLayout>
