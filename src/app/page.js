@@ -6,6 +6,9 @@ import Image from 'next/image'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import SearchIcon from '@mui/icons-material/Search'
 import InfoBox from '@/components/Pages/LandingPage/InfoBox'
+import TickIcon from '@mui/icons-material/Done'
+import LandingPageText from '@/constants/landingpage.const'
+import ArrowIcon from '@mui/icons-material/ArrowForward'
 
 const IBM = IBM_Plex_Sans({
     subsets: ['latin'],
@@ -99,6 +102,46 @@ export default function ButtonAppBar() {
                         priority={true}
                         alt="download on playstore"
                     />
+                </div>
+            </div>
+            <div className="min-w-full flex justify-start  min-h-96  py-10 pl-36">
+                <div className="flex justify-start w-10/12 space-x-24">
+                    <Image
+                        src="/why-choose.png"
+                        alt="nurse taking care"
+                        width={520}
+                        height={320}
+                    />
+                    <div className="w-fit flex flex-col justify-between items-start space-y-3">
+                        <Typography
+                            variant="h4"
+                            fontWeight="bold"
+                            className="text-mosh"
+                            gutterBottom
+                        >
+                            Why should you choose us ?
+                        </Typography>
+                        {LandingPageText.whyChooseUs.map((item) => (
+                            <Typography
+                                className="text-mosh w-fit"
+                                gutterBottom
+                            >
+                                <span className="mr-1 ">
+                                    <TickIcon />
+                                </span>
+                                {item}
+                            </Typography>
+                        ))}
+                        <Typography
+                            component="a"
+                            fontWeight="bold"
+                            className="underline underline-offset-4 text-mosh mt-3"
+                            href="https://www.google.com/"
+                        >
+                            Learn more
+                            <ArrowIcon />
+                        </Typography>
+                    </div>
                 </div>
             </div>
         </LandingPageLayout>
