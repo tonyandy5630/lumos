@@ -7,7 +7,7 @@ import OutlinedInput from '@mui/material/OutlinedInput'
 import SearchIcon from '@mui/icons-material/Search'
 import InfoBox from '@/components/Pages/LandingPage/InfoBox'
 import TickIcon from '@mui/icons-material/Done'
-import LandingPageText from '@/constants/landingpage.const'
+import LandingPageText from '@/constants/Text/landingpage.const'
 import ArrowIcon from '@mui/icons-material/ArrowForward'
 
 const IBM = IBM_Plex_Sans({
@@ -104,7 +104,7 @@ export default function ButtonAppBar() {
                     />
                 </div>
             </div>
-            <div className="min-w-full flex justify-start  min-h-96  py-10 pl-36">
+            <div className="min-w-full flex justify-start my-3 min-h-96 py-10 pl-36">
                 <div className="flex justify-start w-10/12 space-x-24">
                     <Image
                         src="/why-choose.png"
@@ -119,9 +119,9 @@ export default function ButtonAppBar() {
                             className="text-mosh"
                             gutterBottom
                         >
-                            Why should you choose us ?
+                            {LandingPageText.whyChooseUs.title}
                         </Typography>
-                        {LandingPageText.whyChooseUs.map((item) => (
+                        {LandingPageText.whyChooseUs.content.map((item) => (
                             <Typography
                                 className="text-mosh w-fit"
                                 gutterBottom
@@ -144,6 +144,7 @@ export default function ButtonAppBar() {
                     </div>
                 </div>
             </div>
+            <div className="min-w-full flex justify-start my-12 min-h-[30rem] py-10 pl-36 bg-primary"></div>
         </LandingPageLayout>
     )
 }
