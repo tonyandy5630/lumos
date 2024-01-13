@@ -31,6 +31,10 @@ export default function LandingPageHeader() {
                                     color: 'success.dark',
                                     borderColor: 'success.dark',
                                     borderRadius: '15px',
+                                    '&:hover': {
+                                        color: 'secondary.main',
+                                        borderColor: 'secondary.main',
+                                    },
                                 }}
                             >
                                 Login
@@ -41,6 +45,9 @@ export default function LandingPageHeader() {
                                     color: 'white',
                                     borderRadius: '15px',
                                     bgcolor: 'success.dark',
+                                    '&:hover': {
+                                        bgcolor: 'secondary.main',
+                                    },
                                 }}
                             >
                                 Sign up
