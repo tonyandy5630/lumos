@@ -9,11 +9,17 @@ import InfoBox from '@/components/Pages/LandingPage/InfoBox'
 import TickIcon from '@mui/icons-material/Done'
 import LandingPageText from '@/constants/Text/landingpage.const'
 import ArrowIcon from '@mui/icons-material/ArrowForward'
+import MyAvatarGroup from '@/components/Pages/LandingPage/AvatarGroup'
+import Paper from '@mui/material/Paper'
+import Avatar from '@mui/material/Avatar'
+import Rating from '@mui/material/Rating'
 
 const IBM = IBM_Plex_Sans({
     subsets: ['latin'],
     weight: ['300', '400', '500', '600'],
 })
+
+const avatarWidth = 45
 
 export default function ButtonAppBar() {
     return (
@@ -64,7 +70,7 @@ export default function ButtonAppBar() {
                     </div>
                 </div>
             </div>
-            <div className="relative z-20 flex justify-start h-24 min-w-full px-32 py-3 bg-[#216C61] align-center">
+            <div className="relative z-20 flex justify-start h-24 min-w-full px-40 py-3 bg-[#216C61] align-center">
                 <div className="flex justify-between w-5/12 space-x-3 px-7">
                     <InfoBox title="Online Support">24/7</InfoBox>
                     <InfoBox title="Suppliers">100+</InfoBox>
@@ -104,7 +110,7 @@ export default function ButtonAppBar() {
                     />
                 </div>
             </div>
-            <div className="min-w-full flex justify-start my-3 min-h-96 py-10 pl-36">
+            <div className="min-w-full flex justify-start my-3 min-h-96 py-10 pl-40">
                 <div className="flex justify-start w-10/12 space-x-24">
                     <Image
                         src="/why-choose.png"
@@ -144,7 +150,73 @@ export default function ButtonAppBar() {
                     </div>
                 </div>
             </div>
-            <div className="min-w-full flex justify-start my-12 min-h-[30rem] py-10 pl-36 bg-primary"></div>
+            <div className="min-w-full flex items-center my-12 min-h-[26rem] py-10 px-40 bg-[#CAF4EE]">
+                <div className="w-full flex justify-between items-center">
+                    <div className="flex flex-col justify-between items-start max-w-lg space-y-5 ">
+                        <Typography variant="h4" fontWeight="bold">
+                            <div>
+                                What
+                                <span className="mx-2 text-[#1EB39E]">
+                                    Our Member
+                                </span>
+                            </div>
+                            Saying About Us
+                        </Typography>
+                        <Typography>
+                            {LandingPageText.memberSayingAboutUs.content}
+                        </Typography>
+                        <div className="flex justify-center items-center space-x-5">
+                            <MyAvatarGroup />
+                            <Typography variant="subtitle1" fontWeight="bold">
+                                500K+ Feedbacks
+                            </Typography>
+                        </div>
+                    </div>
+                    <Paper className="flex flex-col justify-between items-center p-10 w-6/12 space-y-8 !rounded-lg">
+                        <div className="flex justify-between items-center min-w-full">
+                            <div className="flex justify-between items-center space-x-5">
+                                <Avatar
+                                    src="/broken-image.jpg"
+                                    alt="someone avatar"
+                                    sx={{
+                                        width: `${avatarWidth}px`,
+                                        height: `${avatarWidth}px`,
+                                    }}
+                                />
+                                <div className="flex flex-col justify-center items-start min-h-full">
+                                    <Typography
+                                        fontSize="15px"
+                                        fontWeight="bold"
+                                    >
+                                        {
+                                            LandingPageText.memberSayingAboutUs
+                                                .member.name
+                                        }
+                                    </Typography>
+                                    <Typography
+                                        variant="subtitle2"
+                                        fontSize="13px"
+                                    >
+                                        {
+                                            LandingPageText.memberSayingAboutUs
+                                                .member.date
+                                        }
+                                    </Typography>
+                                </div>
+                            </div>
+                            <Rating
+                                name="read-only"
+                                value={5}
+                                size="large"
+                                readOnly
+                            />
+                        </div>
+                        <Typography paragraph fontSize="14px">
+                            {LandingPageText.memberSayingAboutUs.member.content}
+                        </Typography>
+                    </Paper>
+                </div>
+            </div>
         </LandingPageLayout>
     )
 }

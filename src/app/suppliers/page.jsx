@@ -1,4 +1,3 @@
-import Layout from '@/components/Layout'
 import React from 'react'
 
 export const metadata = {
@@ -7,5 +6,5 @@ export const metadata = {
 }
 
 export default function SupplierPage() {
-    return <Layout>SupplierPage</Layout>
+    return <>SupplierPage</>
 }
