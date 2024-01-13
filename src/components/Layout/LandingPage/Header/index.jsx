@@ -11,10 +11,7 @@ import HideOnScroll from '../../HideOnScroll'
 export default function LandingPageHeader() {
     return (
         <HideOnScroll>
-            <AppBar
-                position="static"
-                className="!shadow-none h-28  flex justify-center items-center"
-            >
+            <AppBar className="!shadow-none h-28  flex justify-center items-center">
                 <Toolbar className="flex items-center justify-between w-11/12 py-4 px-9">
                     <Link href="/" aria-label="menu">
                         <Image

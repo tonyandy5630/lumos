@@ -70,11 +70,36 @@ export default function ButtonAppBar() {
                 <Image
                     src="/black-nurse.png"
                     alt="nurse smiling"
-                    width={701}
-                    height={850}
+                    width={650}
+                    height={710}
                     priority={true}
-                    className="absolute bottom-0 z-10 right-20"
+                    className="absolute bottom-0 right-20"
                 />
+            </div>
+            <div className="my-20 px-24 py-3 flex flex-col min-h-40 w-9/12 justify-center items-start bg-mosh">
+                <Typography
+                    variant="h4"
+                    fontWeight="bold"
+                    className="text-white"
+                >
+                    Download now
+                </Typography>
+                <div className="flex ml-5 justify-start items-center">
+                    <Image
+                        src="/google-play-badge.png"
+                        width="200"
+                        height="77"
+                        priority={true}
+                        alt="download on playstore"
+                    />
+                    <Image
+                        src="/IOS-badge.svg"
+                        width="170"
+                        height="50"
+                        priority={true}
+                        alt="download on playstore"
+                    />
+                </div>
             </div>
         </LandingPageLayout>
     )

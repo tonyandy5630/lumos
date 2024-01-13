@@ -2,11 +2,13 @@ import React from 'react'
 import Header from './Header'
 import Box from '@mui/material/Box'
 import Footer from './Footer'
+import Toolbar from '@mui/material/Toolbar'
 
 export default function LandingPageLayout({ children }) {
     return (
         <div className="flex flex-col min-h-[95vh] min-w-screen">
             <Header />
+            <Toolbar className=" py-4 px-9" />
             <Box sx={{ display: 'flex' }}>
                 <Box
                     component="main"
