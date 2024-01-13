@@ -49,7 +49,7 @@ export default function LandingPageFooter() {
                     </Typography>
                     <div>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6099418911494!2d106.8050120786865!3d10.8411328304609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752731176b07b1%3A0xb752b24b379bae5e!2sFPT%20University%20HCMC!5e0!3m2!1sen!2sin!4v1705175496404!5m2!1sen!2sin"
+                            src={LayoutLandingFooter.address.address}
                             width="400"
                             height="170"
                             style={{ border: 0 }}
