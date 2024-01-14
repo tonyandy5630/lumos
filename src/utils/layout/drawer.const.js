@@ -16,18 +16,18 @@ const NavItems = [
     {
         title: 'Homepage',
         icon: <HomeOutlinedIcon {...options} />,
-        href: '/homepage',
+        href: '/admin/homepage',
     },
     {
         title: 'Suppliers',
         icon: <SupplierIcon {...options} />,
-        href: '/suppliers',
+        href: '/admin/suppliers',
     },
     { title: 'Members', icon: <MemberIcon {...options} />, href: '/members' },
     {
         title: 'Bookings',
         icon: <BookingIcon {...options} />,
-        href: '/bookings',
+        href: '/admin/bookings',
     },
     {
         title: 'Customer Service',

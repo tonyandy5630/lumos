@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout'
+import AdminLayout from '@/components/Layout/Admin'
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import Table from '@/components/Table'
@@ -59,14 +59,14 @@ const rows = [
 
 export default function MemberPage() {
     return (
-        <Layout>
+        <AdminLayout>
             <div className="flex items-center justify-start min-w-full ">
                 <Typography variant="h5" fontWeight="bold" gutterBottom>
                     Member list
                 </Typography>
             </div>
-            <div className="flex justify-between items-center min-w-full h-72">
-                <div className="flex flex-col p-4 space-y-6 justify-center items-start w-2/5 min-h-full">
+            <div className="flex items-center justify-between min-w-full h-72">
+                <div className="flex flex-col items-start justify-center w-2/5 min-h-full p-4 space-y-6">
                     <StatTab
                         title="Total Members"
                         icon={
@@ -93,6 +93,6 @@ export default function MemberPage() {
                 </div>
             </div>
             <Table rows={rows} columns={memberTableCols} height={500} />
-        </Layout>
+        </AdminLayout>
     )
 }

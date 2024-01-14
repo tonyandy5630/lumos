@@ -42,7 +42,7 @@ export default function Navbar() {
             <Divider />
             {NavItems.map(({ icon, title, href }) => {
                 let isCurPath = false
-                const curPath = pathname.split('/')[1]
+                const curPath = pathname.split('/')[2]
                 if (
                     pathname &&
                     curPath.toLowerCase().includes(title.toLowerCase())
