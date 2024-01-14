@@ -13,6 +13,7 @@ export default function LandingPageFooter() {
                         alt="lumos logo"
                         width={100}
                         height={50}
+                        className="w-full max-w-24 h-auto"
                     />
                     <Typography paragraph fontSize="13px">
                         {LayoutLandingFooter.description}
@@ -24,7 +25,7 @@ export default function LandingPageFooter() {
                     </Typography>
                     <div>
                         {LayoutLandingFooter.usefulLink.content.map((item) => (
-                            <div>
+                            <div key={item.title}>
                                 <Typography
                                     component="a"
                                     className="text-white"

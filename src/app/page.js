@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import LandingPageLayout from '@/components/Layout/LandingPage'
 import Typography from '@mui/material/Typography'
@@ -14,6 +15,7 @@ import Paper from '@mui/material/Paper'
 import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import SendIcon from '@mui/icons-material/ArrowCircleRightOutlined'
+import { useAppSelector } from '@/store'
 
 const IBM = IBM_Plex_Sans({
     subsets: ['latin'],
@@ -23,6 +25,7 @@ const IBM = IBM_Plex_Sans({
 const avatarWidth = 45
 
 export default function ButtonAppBar() {
+    const user = useAppSelector((state) => state.userAuthenticate)
     return (
         <LandingPageLayout>
             <div className="relative min-w-full min-h-[28rem] bg-primary flex pl-40 items-center">
@@ -83,7 +86,7 @@ export default function ButtonAppBar() {
                     width={650}
                     height={710}
                     priority={true}
-                    className="absolute bottom-0 right-20"
+                    className="absolute bottom-0 right-20 w-full max-w-[40rem] h-auto"
                 />
             </div>
             <div className="my-20 px-24 py-3 flex flex-col min-h-40 w-9/12 justify-center items-start bg-mosh">
@@ -101,13 +104,15 @@ export default function ButtonAppBar() {
                         height="77"
                         priority={true}
                         alt="download on playstore"
+                        className="w-full max-w-52 h-auto"
                     />
                     <Image
                         src="/IOS-badge.svg"
-                        width="170"
-                        height="50"
+                        width="0"
+                        height="0"
                         priority={true}
                         alt="download on playstore"
+                        style={{ width: '166px', height: 'auto' }}
                     />
                 </div>
             </div>
@@ -118,6 +123,7 @@ export default function ButtonAppBar() {
                         alt="nurse taking care"
                         width={520}
                         height={320}
+                        className="w-full max-w-[33rem] h-auto"
                     />
                     <div className="w-fit flex flex-col justify-between items-start space-y-3">
                         <Typography
@@ -131,6 +137,7 @@ export default function ButtonAppBar() {
                         {LandingPageText.whyChooseUs.content.map((item) => (
                             <Typography
                                 className="text-mosh w-fit"
+                                key={item}
                                 gutterBottom
                             >
                                 <span className="mr-1 ">
@@ -240,7 +247,7 @@ export default function ButtonAppBar() {
                                 const content = splittedItem[1]
 
                                 return (
-                                    <Typography fontSize="13px">
+                                    <Typography fontSize="13px" key={title}>
                                         <span className="font-bold mr-2">
                                             {title} :
                                         </span>
@@ -264,6 +271,7 @@ export default function ButtonAppBar() {
                         width={500}
                         height={200}
                         alt="nurse"
+                        className="w-full max-w-[32rem] h-auto"
                     />
                 </div>
             </div>

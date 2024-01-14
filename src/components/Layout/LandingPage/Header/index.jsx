@@ -20,6 +20,7 @@ export default function LandingPageHeader() {
                             width={150}
                             height={300}
                             priority={true}
+                            className="w-full max-w-40 h-auto"
                         />
                     </Link>
                     <div className="flex items-center justify-end w-fit">
