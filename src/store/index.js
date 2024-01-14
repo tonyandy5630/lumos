@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector, useStore } from 'react-redux'
-import { userSlice } from './slice/userSlice'
+import userSlice from './slice/userSlice'
 
 export const makeStore = () => {
     return configureStore({

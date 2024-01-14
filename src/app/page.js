@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client'
 import * as React from 'react'
 import LandingPageLayout from '@/components/Layout/LandingPage'
@@ -25,7 +26,7 @@ const IBM = IBM_Plex_Sans({
 const avatarWidth = 45
 
 export default function ButtonAppBar() {
-    const user = useAppSelector((state) => state.userAuthenticate)
+    const user = useAppSelector((state) => state.userAuthenticate.user)
     return (
         <LandingPageLayout>
             <div className="relative min-w-full min-h-[28rem] bg-primary flex pl-40 items-center">
