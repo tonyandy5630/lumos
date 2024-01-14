@@ -2,10 +2,10 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
 import Navbar from './Navbar'
+import Toolbar from '@mui/material/Toolbar'
 
-export default function Layout({ children }) {
+export default function AdminLayout({ children }) {
     return (
         <div className="flex flex-col min-h-[95vh] min-w-screen">
             <Box sx={{ display: 'flex' }}>
@@ -23,6 +23,7 @@ export default function Layout({ children }) {
                         px: 4,
                     }}
                 >
+                    <Toolbar />
                     {children}
                 </Box>
             </Box>

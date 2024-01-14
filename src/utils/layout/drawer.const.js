@@ -23,7 +23,11 @@ const NavItems = [
         icon: <SupplierIcon {...options} />,
         href: '/admin/suppliers',
     },
-    { title: 'Members', icon: <MemberIcon {...options} />, href: '/members' },
+    {
+        title: 'Members',
+        icon: <MemberIcon {...options} />,
+        href: '/admin/members',
+    },
     {
         title: 'Bookings',
         icon: <BookingIcon {...options} />,

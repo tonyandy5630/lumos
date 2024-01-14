@@ -4,11 +4,9 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
 import Toolbar from '@mui/material/Toolbar'
-import Navbar from '../Navbar'
 import OutLinedInput from '@mui/material/OutlinedInput'
 import SearchIcon from '@mui/icons-material/Search'
 import Avatar from '@mui/material/Avatar'
-import Stack from '@mui/material/Stack'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import Badge from '@mui/material/Badge'
 import { styled } from '@mui/material/styles'
@@ -39,13 +37,9 @@ export default function Header() {
                     width: `calc(100% - ${drawerWidth}px)`,
                     ml: `${drawerWidth}px`,
                 }}
+                position="fixed"
             >
-                <Toolbar
-                    component={Stack}
-                    justifyContent="space-between"
-                    alignItems="center"
-                    direction="row"
-                >
+                <Toolbar className="flex items-center justify-between min-w-full">
                     <OutLinedInput
                         sx={{
                             height: '36px',
