@@ -1,7 +1,7 @@
-import Layout from '@/components/Layout'
+import AdminLayout from '@/components/Layout/Admin'
 import PageTitle from '@/components/PageTitle'
 import Table from '@/components/Table'
-import verifySupplierTableCols from '@/utils/pages/suppliers/verify/table/columns'
+import verifySupplierTableCols from '@/constants/Pages/admin/suppliers/verify/table/columns'
 import React from 'react'
 
 export const metadata = {
@@ -23,7 +23,7 @@ const rows = [
 
 export default function SupplierVerifyPage() {
     return (
-        <Layout>
+        <AdminLayout>
             <PageTitle>Verify Supplier</PageTitle>
             <Table
                 rows={rows}
@@ -31,6 +31,6 @@ export default function SupplierVerifyPage() {
                 height={500}
                 hasActionRow={true}
             />
-        </Layout>
+        </AdminLayout>
     )
 }

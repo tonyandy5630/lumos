@@ -9,7 +9,7 @@ import Table from '@/components/Table'
 import {
     topServiceCols,
     topSupplierCols,
-} from '@/utils/pages/admin/homepage/table/columns'
+} from '@/constants/Pages/admin/homepage/table/columns'
 
 const supplierRows = [
     {
@@ -51,6 +51,11 @@ const serviceRows = [
         rate: 4.3,
     },
 ]
+
+export const metadata = {
+    title: 'Admin dashboard',
+    description: 'View all stats',
+}
 
 export default function HomePage() {
     return (
