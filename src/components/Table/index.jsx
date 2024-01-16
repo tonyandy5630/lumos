@@ -25,7 +25,10 @@ export default function Table(props) {
             elevation: 0,
             sx: {
                 minWidth: '100%',
-                border: '1px solid black',
+                border: '2px solid',
+                borderColor: 'secondary.main',
+                my: '12px',
+                borderRadius: '12px',
             },
         },
         muiTableContainerProps: {
@@ -39,7 +42,9 @@ export default function Table(props) {
         enableHiding: false,
         muiTableHeadCellProps: {
             sx: {
-                bgcolor: 'secondary.main',
+                bgcolor: `${
+                    props.secondary ? 'secondary.main' : 'primary.main'
+                }`,
                 '& .Mui-TableHeadCell-Content': {
                     justifyContent: 'space-between',
                 },

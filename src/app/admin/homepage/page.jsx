@@ -6,9 +6,12 @@ import { monthLabels } from '@/utils/chart'
 import { faker } from '@faker-js/faker'
 import LineChart from '@/components/Chart/LineChart'
 import Table from '@/components/Table'
-import topSupplierCols from '@/utils/pages/admin/homepage/table/columns'
+import {
+    topServiceCols,
+    topSupplierCols,
+} from '@/utils/pages/admin/homepage/table/columns'
 
-const rows = [
+const supplierRows = [
     {
         id: 1,
         supplierName: 'Nguyen Thi Nhu Quynh',
@@ -25,6 +28,26 @@ const rows = [
         id: 1,
         supplierName: 'Nguyen Thi Nhu Quynh',
         email: 'tonyandy789@fpt.edu.vn',
+        rate: 4.3,
+    },
+]
+const serviceRows = [
+    {
+        id: 1,
+        serviceName: 'Cham soc tre em duoi 3 thang',
+        supplierName: 'Bui Thanh Tu',
+        rate: 4.2,
+    },
+    {
+        id: 1,
+        serviceName: 'Cham soc tre em duoi 3 thang',
+        supplierName: 'Bui Thanh Tu',
+        rate: 4.4,
+    },
+    {
+        id: 1,
+        serviceName: 'Cham soc tre em duoi 3 thang',
+        supplierName: 'Bui Thanh Tu',
         rate: 4.3,
     },
 ]
@@ -88,8 +111,14 @@ export default function HomePage() {
             </div>
             <Table
                 title="Top Suppliers"
-                rows={rows}
+                rows={supplierRows}
                 columns={topSupplierCols}
+                height={400}
+            />
+            <Table
+                title="Top Service"
+                rows={serviceRows}
+                columns={topServiceCols}
                 height={400}
             />
         </AdminLayout>
