@@ -4,6 +4,7 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 //* Use Pagination on api
 
@@ -20,10 +21,18 @@ export default function Table(props) {
         enableStickyHeader: true,
         enableFullScreenToggle: false,
         enableDensityToggle: false,
+        muiTablePaperProps: {
+            elevation: 0,
+            sx: {
+                minWidth: '100%',
+                border: '1px solid black',
+            },
+        },
         muiTableContainerProps: {
             sx: {
                 maxHeight: '400px',
                 width: '100%',
+                minWidth: '100%',
                 minHeight: `${props.minHeight}px`,
             },
         },
@@ -45,9 +54,17 @@ export default function Table(props) {
         <Box
             sx={{
                 height: props.height,
+                minWidth: '100%',
                 width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'start',
+                flexDirection: 'column',
             }}
         >
+            <Typography variant="h4" fontWeight="bold">
+                {props.title}
+            </Typography>
             <MaterialReactTable table={table} />
         </Box>
     )

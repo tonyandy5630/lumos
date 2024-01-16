@@ -11,8 +11,9 @@ import {
     Title,
     Tooltip,
     Legend,
+    Filler,
 } from 'chart.js'
-import { monthLabels } from '@/utils/chart'
+import { getDatasets, monthLabels } from '@/utils/chart'
 
 ChartJS.register(
     CategoryScale,
@@ -20,37 +21,40 @@ ChartJS.register(
     PointElement,
     LineElement,
     Title,
-    Tooltip
+    Tooltip,
+    Filler,
+    Legend
 )
-
-export const options = {
-    plugins: {
-        legend: {
-            position: 'top',
-        },
-        title: {
-            display: true,
-            text: 'Return of Customer',
-        },
-    },
-    maintainAspectRatio: false,
-}
 
 export default function LineChart(props) {
     const data = useMemo(
         () => ({
             labels: monthLabels,
-            datasets: [
-                {
-                    data: props.data,
-                    borderColor: 'rgb(255, 99, 132)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    tension: 0.3,
-                },
-            ],
+            datasets: getDatasets(props.data),
         }),
         [props.data]
     )
+
+    const options = useMemo(() => {
+        return {
+            plugins: {
+                legend: {
+                    display: props.showLegend,
+                    position: 'top',
+                    align: 'end',
+                },
+                title: {
+                    display: true,
+                    text: props.title,
+                    font: {
+                        size: 19,
+                    },
+                    align: 'start',
+                },
+            },
+            maintainAspectRatio: false,
+        }
+    }, [])
 
     return <Line options={options} data={data} width={900} />
 }
