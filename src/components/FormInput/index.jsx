@@ -5,7 +5,6 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import InputLabel from '@mui/material/InputLabel'
 import OutlinedInput from '@mui/material/OutlinedInput'
-import Stack from '@mui/material/Stack'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import React, { useEffect, useState } from 'react'
 
@@ -41,11 +40,7 @@ export default function FormInput(props) {
     }
 
     return (
-        <FormControl
-            component={Stack}
-            className="w-full "
-            required={isRequired}
-        >
+        <FormControl className="w-full" required={isRequired}>
             <InputLabel
                 htmlFor={id}
                 size={isMd ? 'small' : 'normal'}
@@ -58,7 +53,7 @@ export default function FormInput(props) {
                 {label}
             </InputLabel>
             <OutlinedInput
-                className={`bg-white rounded-xl md:h-[40px]  ${className}`}
+                className={`bg-white rounded-xl md:h-[40px] ${className}`}
                 id={id}
                 {...register(name, registerOptions)}
                 autoComplete={autocomplete}
