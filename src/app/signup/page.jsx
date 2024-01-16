@@ -2,7 +2,6 @@
 import React from 'react'
 import MyButton from '@/components/Button'
 import FormInput from '@/components/FormInput'
-import ProtectedRoute from '@/components/ProtectedRoutes'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
@@ -20,7 +19,7 @@ export default function SignupPage() {
     } = useForm()
 
     return (
-        <div className=" flex justify-center items-center  min-w-full min-h-full bg-primary">
+        <div className="flex items-center justify-center min-w-full min-h-full bg-primary">
             <Stack
                 direction="row"
                 justifyContent="space-evenly"
@@ -40,7 +39,7 @@ export default function SignupPage() {
                         <Stack
                             justifyContent="center"
                             alignItems="center"
-                            className="mt-3"
+                            className="my-4"
                         >
                             <Typography
                                 variant="h5"
@@ -69,18 +68,57 @@ export default function SignupPage() {
                             </Typography>
                         </Stack>
                         <form className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] ">
-                            <Stack className="min-w-full" spacing={1}>
+                            <Stack className="min-w-full" spacing={2}>
                                 <FormInput
-                                    name="username"
-                                    id="username"
+                                    name="profile"
+                                    id="profile"
                                     autocomplete="on"
-                                    label="Username"
+                                    label="Profile"
                                     isRequired={true}
                                     register={register}
-                                    placeholder="Username"
-                                    helperText={errors.username?.message}
+                                    placeholder="Enter profile name"
+                                    helperText={errors.profile?.message}
                                     helperTextIsError={
-                                        errors.username !== undefined
+                                        errors.profile !== undefined
+                                    }
+                                />
+                                <FormInput
+                                    name="email"
+                                    id="email"
+                                    autocomplete="on"
+                                    label="Email"
+                                    isRequired={true}
+                                    register={register}
+                                    placeholder="Enter email"
+                                    helperText={errors.email?.message}
+                                    helperTextIsError={
+                                        errors.email !== undefined
+                                    }
+                                />
+                                <FormInput
+                                    name="phone"
+                                    id="phone"
+                                    autocomplete="on"
+                                    label="Phone"
+                                    isRequired={true}
+                                    register={register}
+                                    placeholder="Enter phone"
+                                    helperText={errors.phone?.message}
+                                    helperTextIsError={
+                                        errors.phone !== undefined
+                                    }
+                                />
+                                <FormInput
+                                    name="address"
+                                    id="address"
+                                    autocomplete="on"
+                                    label="Address"
+                                    isRequired={true}
+                                    register={register}
+                                    placeholder="Enter address"
+                                    helperText={errors.address?.message}
+                                    helperTextIsError={
+                                        errors.address !== undefined
                                     }
                                 />
                                 <FormInput
@@ -95,6 +133,20 @@ export default function SignupPage() {
                                     helperText={errors.password?.message}
                                     helperTextIsError={
                                         errors.username !== undefined
+                                    }
+                                />
+                                <FormInput
+                                    name="re_password"
+                                    id="re-password"
+                                    autocomplete="on"
+                                    label="Confirm password"
+                                    inputType="password"
+                                    isRequired={true}
+                                    register={register}
+                                    placeholder="Confirm password"
+                                    helperText={errors.re_password?.message}
+                                    helperTextIsError={
+                                        errors.re_password !== undefined
                                     }
                                 >
                                     <Typography
@@ -113,7 +165,7 @@ export default function SignupPage() {
                                     className="hover:bg-mosh hover:text-white"
                                     handleClick={() => console.log()}
                                 >
-                                    Log in
+                                    Sign up
                                 </MyButton>
                                 <MyButton
                                     variant="outlined"
