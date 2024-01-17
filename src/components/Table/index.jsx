@@ -67,7 +67,7 @@ export default function Table(props) {
                 flexDirection: 'column',
             }}
         >
-            <Typography variant="h4" fontWeight="bold">
+            <Typography variant="h5" fontWeight="bold">
                 {props.title}
             </Typography>
             <MaterialReactTable table={table} />
