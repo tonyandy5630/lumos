@@ -50,6 +50,18 @@ const serviceRows = [
         supplierName: 'Bui Thanh Tu',
         rate: 4.3,
     },
+    {
+        id: 1,
+        serviceName: 'Cham soc tre em duoi 3 thang',
+        supplierName: 'Bui Thanh Tu',
+        rate: 4.3,
+    },
+    {
+        id: 1,
+        serviceName: 'Cham soc tre em duoi 3 thang',
+        supplierName: 'Bui Thanh Tu',
+        rate: 4.3,
+    },
 ]
 
 export const metadata = {
@@ -121,7 +133,6 @@ export default function HomePage() {
                 title="Top Service"
                 rows={serviceRows}
                 columns={topServiceCols}
-                height={400}
             />
         </AdminLayout>
     )

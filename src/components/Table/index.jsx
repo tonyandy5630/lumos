@@ -33,10 +33,9 @@ export default function Table(props) {
         },
         muiTableContainerProps: {
             sx: {
-                maxHeight: '400px',
                 width: '100%',
                 minWidth: '100%',
-                minHeight: `${props.minHeight}px`,
+                minHeight: '400px',
             },
         },
         enableHiding: false,
