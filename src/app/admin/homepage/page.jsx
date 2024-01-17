@@ -80,40 +80,36 @@ export default function HomePage() {
                     )
                 })}
             </div>
-            <div className="w-full p-4 my-3 bg-white border-2 border-solid h-80 rounded-xl border-secondary">
-                <LineChart
-                    title="New User"
-                    showLegend={true}
-                    data={[
-                        {
-                            data: monthLabels.map(() =>
-                                faker.number.int({ min: 0, max: 1000 })
-                            ),
-                            label: 'Nurse',
-                        },
-                        {
-                            data: monthLabels.map(() =>
-                                faker.number.int({ min: 0, max: 1000 })
-                            ),
-                            label: 'Customer',
-                        },
-                    ]}
-                />
-            </div>
-            <div className="w-full p-4 my-3 bg-white border-2 border-solid h-80 rounded-xl border-secondary">
-                <LineChart
-                    title="Revenue in money"
-                    showLegend={false}
-                    data={[
-                        {
-                            data: monthLabels.map(() =>
-                                faker.number.int({ min: 0, max: 100000 })
-                            ),
-                            label: 'Nurse',
-                        },
-                    ]}
-                />
-            </div>
+            <LineChart
+                title="New User"
+                showLegend={true}
+                data={[
+                    {
+                        data: monthLabels.map(() =>
+                            faker.number.int({ min: 0, max: 1000 })
+                        ),
+                        label: 'Nurse',
+                    },
+                    {
+                        data: monthLabels.map(() =>
+                            faker.number.int({ min: 0, max: 1000 })
+                        ),
+                        label: 'Customer',
+                    },
+                ]}
+            />
+            <LineChart
+                title="Revenue in money"
+                showLegend={false}
+                data={[
+                    {
+                        data: monthLabels.map(() =>
+                            faker.number.int({ min: 0, max: 100000 })
+                        ),
+                        label: 'Nurse',
+                    },
+                ]}
+            />
             <Table
                 title="Top Suppliers"
                 rows={supplierRows}

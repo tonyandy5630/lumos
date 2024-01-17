@@ -56,5 +56,9 @@ export default function LineChart(props) {
         }
     }, [])
 
-    return <Line options={options} data={data} width={900} />
+    return (
+        <div className="w-full p-4 my-3 bg-white border-2 border-solid h-80 rounded-xl border-secondary">
+            <Line options={options} data={data} width={900} />
+        </div>
+    )
 }
