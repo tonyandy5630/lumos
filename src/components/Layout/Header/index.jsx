@@ -10,7 +10,7 @@ import Avatar from '@mui/material/Avatar'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import Badge from '@mui/material/Badge'
 import { styled } from '@mui/material/styles'
-import { drawerWidth } from '@/utils/layout/drawer.const'
+import { drawerWidth } from '@/utils/layout/admin_navbar.const'
 
 export default function Header() {
     const [searchTxt, setSearchTxt] = React.useState('')

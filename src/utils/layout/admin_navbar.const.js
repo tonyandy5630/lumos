@@ -8,11 +8,11 @@ import CustomerServiceIcon from '@mui/icons-material/HeadsetMicOutlined'
 import ProfileIcon from '@mui/icons-material/AccountCircleOutlined'
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 
-const options = {
+export const options = {
     color: 'secondary',
 }
 
-const NavItems = [
+const AdminNavItems = [
     {
         title: 'Homepage',
         icon: <HomeOutlinedIcon {...options} />,
@@ -41,6 +41,7 @@ const NavItems = [
     { title: 'Profile', icon: <ProfileIcon {...options} />, href: '/profile' },
     { title: 'Help', icon: <HelpIcon {...options} />, href: '/help' },
 ]
+
 export const drawerWidth = 286
 
-export default NavItems
+export default AdminNavItems

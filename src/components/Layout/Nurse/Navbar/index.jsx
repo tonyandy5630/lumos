@@ -7,12 +7,13 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
-import AdminNavItems, { drawerWidth } from '@/utils/layout/admin_navbar.const'
+import NurseNavItems from '@/utils/layout/nurse_navbar.const'
+import { drawerWidth } from '@/utils/layout/admin_navbar.const'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-export default function Navbar() {
+export default function NurseNavbar() {
     const pathname = usePathname()
     return (
         <Drawer
@@ -40,9 +41,9 @@ export default function Navbar() {
                 />
             </Toolbar>
             <Divider />
-            {AdminNavItems.map(({ icon, title, href }) => {
+            {NurseNavItems.map(({ icon, title, href }) => {
                 let isCurPath = false
-                const curPath = pathname.split('/')[2]
+                const curPath = pathname.split('/')[1]
                 if (
                     pathname &&
                     curPath.toLowerCase().includes(title.toLowerCase())
