@@ -83,6 +83,7 @@ export default function HomePage() {
             <LineChart
                 title="New User"
                 showLegend={true}
+                fill={true}
                 data={[
                     {
                         data: monthLabels.map(() =>

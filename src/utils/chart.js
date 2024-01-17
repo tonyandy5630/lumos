@@ -23,13 +23,13 @@ const lineColors = [
     },
 ]
 
-export const getDatasets = (data) =>
+export const getDatasets = (data, isFill) =>
     data.map((item, index) => {
         return {
             data: item.data,
             borderColor: lineColors[index].borderColor,
             tension: 0.3,
-            fill: true,
+            fill: isFill ?? false,
             backgroundColor: lineColors[index].backgroundColor,
             label: item.label,
         }

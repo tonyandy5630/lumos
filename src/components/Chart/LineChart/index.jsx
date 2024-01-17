@@ -30,7 +30,7 @@ export default function LineChart(props) {
     const data = useMemo(
         () => ({
             labels: monthLabels,
-            datasets: getDatasets(props.data),
+            datasets: getDatasets(props.data, props.fill),
         }),
         [props.data]
     )
@@ -39,7 +39,7 @@ export default function LineChart(props) {
         return {
             plugins: {
                 legend: {
-                    display: props.showLegend,
+                    display: props.showLegend ?? false,
                     position: 'top',
                     align: 'end',
                 },
