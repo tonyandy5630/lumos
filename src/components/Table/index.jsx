@@ -51,7 +51,7 @@ export default function Table(props) {
         },
         enableRowActions: props.hasActionRow ?? false,
         positionActionsColumn: 'last',
-        renderRowActionMenuItems: props.renderRowActionMenuItems,
+        renderRowActions: props.renderRowActions,
     })
 
     return (
