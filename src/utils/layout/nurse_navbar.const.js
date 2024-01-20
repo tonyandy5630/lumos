@@ -17,12 +17,12 @@ const NurseNavItems = [
     {
         title: 'Service',
         icon: <ServicesIcon {...options} />,
-        href: '/suppliers',
+        href: '/services',
     },
     {
         title: 'Bookings',
         icon: <BookingIcon {...options} />,
-        href: '/admin/bookings',
+        href: '/bookings',
     },
     { title: 'Bills', icon: <BillsIcon {...options} />, href: '/bills' },
     { title: 'Profile', icon: <ProfileIcon {...options} />, href: '/profile' },
