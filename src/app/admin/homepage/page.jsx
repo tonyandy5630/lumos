@@ -96,6 +96,7 @@ export default function HomePage() {
                 title="New User"
                 showLegend={true}
                 fill={true}
+                className="w-full h-80"
                 data={[
                     {
                         data: monthLabels.map(() =>
@@ -114,6 +115,7 @@ export default function HomePage() {
             <LineChart
                 title="Revenue in money"
                 showLegend={false}
+                className="w-full  h-80"
                 data={[
                     {
                         data: monthLabels.map(() =>
