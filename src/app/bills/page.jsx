@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client'
 import LineChart from '@/components/Chart/LineChart'
 import NurseLayout from '@/components/Layout/Nurse'
@@ -10,7 +11,7 @@ import billListCols from '@/constants/Pages/nurse/bills/table/columns'
 import IconButton from '@mui/material/IconButton'
 import Box from '@mui/material/Box'
 import DetailIcon from '@mui/icons-material/ArrowForwardIos'
-
+import Link from 'next/link'
 const rows = [
     {
         id: '1',
@@ -65,7 +66,8 @@ export default function BillPage() {
                 renderRowActions={({ row }) => (
                     <Box>
                         <IconButton
-                            onClick={() => console.info(row)}
+                            LinkComponent={Link}
+                            href={`/bills/detail/${row.id}`}
                             color="secondary"
                         >
                             <DetailIcon />
