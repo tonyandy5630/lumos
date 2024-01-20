@@ -69,6 +69,7 @@ export default function Table(props) {
             <Typography variant="h5" fontWeight="bold">
                 {props.title}
             </Typography>
+            {props.children}
             <MaterialReactTable table={table} />
         </Box>
     )
