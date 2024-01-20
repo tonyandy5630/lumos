@@ -1,5 +1,4 @@
 // @ts-nocheck
-'use client'
 import * as React from 'react'
 import LandingPageLayout from '@/components/Layout/LandingPage'
 import Typography from '@mui/material/Typography'
@@ -16,7 +15,6 @@ import Paper from '@mui/material/Paper'
 import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import SendIcon from '@mui/icons-material/ArrowCircleRightOutlined'
-import { useAppSelector } from '@/store'
 
 const IBM = IBM_Plex_Sans({
     subsets: ['latin'],
@@ -25,8 +23,11 @@ const IBM = IBM_Plex_Sans({
 
 const avatarWidth = 45
 
-export default function ButtonAppBar() {
-    const user = useAppSelector((state) => state.userAuthenticate.user)
+export const metadata = {
+    title: 'Lumos',
+}
+
+export default function LandingPage() {
     return (
         <LandingPageLayout>
             <div className="relative min-w-full min-h-[28rem] bg-primary flex pl-40 items-center">
