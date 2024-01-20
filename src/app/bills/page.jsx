@@ -48,6 +48,7 @@ export default function BillPage() {
             <PageTitle>Bills</PageTitle>
             <LineChart
                 title="Income in current month"
+                className="w-full h-80"
                 data={[
                     {
                         data: monthLabels.map(() =>
