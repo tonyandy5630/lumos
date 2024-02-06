@@ -68,7 +68,7 @@ export default function BillDetailPage() {
                             className="border border-solid border-black"
                         />
                         <div className="flex flex-col min-h-full items-start justify-between w-fit">
-                            <Typography variant="h4" fontWeight="bold">
+                            <Typography variant="h5" fontWeight="bold">
                                 {SERVICE.name}
                             </Typography>
                             <Typography
