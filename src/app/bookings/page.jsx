@@ -1,3 +1,4 @@
+'use client'
 import BarChart from '@/components/Chart/BarChart'
 import NurseLayout from '@/components/Layout/Nurse'
 import PageTitle from '@/components/PageTitle'
@@ -8,6 +9,10 @@ import { NurseBookingStat } from '@/constants/NurseBookingPage.const'
 import StatTab from '@/components/StatTab'
 import Table from '@/components/Table'
 import { bookingColumns } from '@/constants/Pages/nurse/booking/table/columns'
+import IconButton from '@mui/material/IconButton'
+import Box from '@mui/material/Box'
+import DetailIcon from '@mui/icons-material/ArrowForwardIos'
+import Link from 'next/link'
 
 const DATA = [
     {
@@ -70,7 +75,23 @@ export default function BookingPage() {
                     },
                 ]}
             />
-            <Table title="All Bookings" rows={DATA} columns={bookingColumns} />
+            <Table
+                title="All Bookings"
+                rows={DATA}
+                columns={bookingColumns}
+                hasActionRow={true}
+                renderRowActions={({ row }) => (
+                    <Box>
+                        <IconButton
+                            LinkComponent={Link}
+                            href={`/bookings/detail/${row.id}`}
+                            color="secondary"
+                        >
+                            <DetailIcon />
+                        </IconButton>
+                    </Box>
+                )}
+            />
         </NurseLayout>
     )
 }

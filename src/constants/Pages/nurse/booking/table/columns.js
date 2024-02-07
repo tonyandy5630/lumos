@@ -44,9 +44,7 @@ export const bookingColumns = [
         Cell: ({ cell }) => {
             const { color, icon, text } = getStatusStyle(cell.getValue())
             return (
-                <div
-                    className={`flex justify-between items-center rounded-full min-w-12 bg-red`}
-                >
+                <div className={`flex items-start`}>
                     <Chip
                         size="small"
                         label={text}
@@ -56,6 +54,8 @@ export const bookingColumns = [
                             fontSize: '13px',
                             bgcolor: color,
                             color: 'white',
+                            display: 'flex',
+                            justifyContent: 'start',
                         }}
                         icon={icon}
                     />
