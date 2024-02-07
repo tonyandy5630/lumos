@@ -9,7 +9,7 @@ import StoreProvider from '@/components/StoreProvider'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
-    weight: ['300', '400', '500', '600'],
+    weight: ['500', '600', '700'],
 })
 
 export default function RootLayout({ children }) {
