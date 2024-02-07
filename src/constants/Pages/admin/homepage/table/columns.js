@@ -27,7 +27,7 @@ export const topSupplierCols = [
         size: 150,
         headerClassName: 'bg-primary',
         Cell: ({ cell }) => (
-            <div className="flex items-start justify-center">
+            <div className="flex items-start">
                 <Rating readOnly value={cell.getValue()} precision={0.5} />
                 <span className="text-grey">({cell.getValue()})</span>
             </div>
@@ -60,7 +60,7 @@ export const topServiceCols = [
         size: 150,
         headerClassName: 'bg-primary',
         Cell: ({ cell }) => (
-            <div className="flex items-start justify-center">
+            <div className="flex items-start">
                 <Rating readOnly value={cell.getValue()} precision={0.5} />
                 <span className="text-grey">({cell.getValue()})</span>
             </div>
