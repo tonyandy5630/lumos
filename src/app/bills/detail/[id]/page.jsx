@@ -3,10 +3,11 @@ import NurseLayout from '@/components/Layout/Nurse'
 import PageTitle from '@/components/PageTitle'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
-import BookingInfo from '@/components/Pages/BillDetailPage/BookingDetail/BookingInfo'
-import ServiceInfo from '@/components/Pages/BillDetailPage/BookingDetail/ServiceInfo'
+import BookingInfo from '@/components/Pages/BillDetailPage/BookingInfo'
+import ServiceInfo from '@/components/Pages/BillDetailPage/ServiceInfo'
 import Divider from '@mui/material/Divider'
-import BillInfo from '@/components/Pages/BillDetailPage/BookingDetail/BillInfo'
+import BillInfo from '@/components/Pages/BillDetailPage/BillInfo'
+import PrimaryName from '@/components/PrimaryName'
 
 export const metadata = {
     title: 'Bill Detail',
@@ -58,19 +59,17 @@ export default function BillDetailPage() {
         <NurseLayout>
             <PageTitle>Bill Detail</PageTitle>
             <div className="min-h-[30rem] bg-primary rounded-xl py-10 px-7 flex flex-col items-center justify-start">
-                <div className="min-w-full flex justify-between items-center min-h-20 my-3">
-                    <div className="flex justify-between items-center space-x-5 min-h-full h-full">
+                <div className="flex items-center justify-between min-w-full my-3 min-h-20">
+                    <div className="flex items-center justify-between h-full min-h-full space-x-5">
                         <Image
                             src="/nothing.jpg"
                             width={80}
                             height={80}
                             alt="Service Image"
-                            className="border border-solid border-black"
+                            className="border border-black border-solid"
                         />
-                        <div className="flex flex-col min-h-full items-start justify-between w-fit">
-                            <Typography variant="h5" fontWeight="bold">
-                                {SERVICE.name}
-                            </Typography>
+                        <div className="flex flex-col items-start justify-between min-h-full w-fit">
+                            <PrimaryName>{SERVICE.name}</PrimaryName>
                             <Typography
                                 variant="subtitle1"
                                 className="text-gray-500"
@@ -83,8 +82,8 @@ export default function BillDetailPage() {
                         Invoice No: {SERVICE.invoice}
                     </Typography>
                 </div>
-                <div className="px-5 flex flex-col justify-between items-start w-full min-h-20">
-                    <div className="flex flex-col justify-between items-start text-mosh min-h-32">
+                <div className="flex flex-col items-start justify-between w-full px-5 min-h-20">
+                    <div className="flex flex-col items-start justify-between text-mosh min-h-32">
                         <Typography variant="h5">
                             {SERVICE.patient.name}
                         </Typography>
@@ -100,7 +99,7 @@ export default function BillDetailPage() {
                             </BookingInfo>
                         </div>
                     </div>
-                    <div className="my-4 flex flex-col justify-between items-stretch w-full">
+                    <div className="flex flex-col items-stretch justify-between w-full my-4">
                         {SERVICE.services.map((item) => (
                             <ServiceInfo
                                 key={item.serviceName}
@@ -110,7 +109,7 @@ export default function BillDetailPage() {
                     </div>
                 </div>
                 <Divider flexItem />
-                <div className="w-full my-3 px-5">
+                <div className="w-full px-5 my-3">
                     <BillInfo title="Sub Total">{SERVICE.subTotal}</BillInfo>
                     <BillInfo title="Discount">{SERVICE.discount}</BillInfo>
                     <BillInfo title="Grand Total">
