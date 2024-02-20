@@ -1,20 +1,13 @@
-'use client'
 import React from 'react'
 import Drawer from '@mui/material/Drawer'
 import Divider from '@mui/material/Divider'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import NurseNavItems from '@/utils/layout/nurse_navbar.const'
 import { drawerWidth } from '@/utils/layout/admin_navbar.const'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import NavItems from '../../NavItems'
 
 export default function NurseNavbar() {
-    const pathname = usePathname()
     return (
         <Drawer
             component="aside"
@@ -41,41 +34,7 @@ export default function NurseNavbar() {
                 />
             </Toolbar>
             <Divider />
-            {NurseNavItems.map(({ icon, title, href }) => {
-                let isCurPath = false
-                const curPath = pathname.split('/')[1]
-                if (
-                    pathname &&
-                    curPath.toLowerCase().includes(title.toLowerCase())
-                ) {
-                    isCurPath = true
-                }
-                return (
-                    <ListItem
-                        key={title}
-                        disablePadding
-                        component={Link}
-                        href={href}
-                    >
-                        <ListItemButton
-                            sx={{
-                                bgcolor: `${isCurPath ? '#FFE5E5' : ''}`,
-                            }}
-                        >
-                            <ListItemIcon>{icon}</ListItemIcon>
-                            <ListItemText
-                                primary={title}
-                                primaryTypographyProps={{
-                                    sx: {
-                                        fontWeight: '600',
-                                        color: '#0A4F45',
-                                    },
-                                }}
-                            />
-                        </ListItemButton>
-                    </ListItem>
-                )
-            })}
+            <NavItems items={NurseNavItems} roles={1} />
         </Drawer>
     )
 }
