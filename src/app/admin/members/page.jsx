@@ -9,6 +9,7 @@ import iconStatTabSx from '@/utils/icon'
 import LineChart from '@/components/Chart/LineChart'
 import { monthLabels } from '@/utils/chart'
 import { faker } from '@faker-js/faker'
+import { Label } from '@mui/icons-material'
 
 export const metadata = {
     title: 'Members Page',
@@ -84,13 +85,17 @@ export default function MemberPage() {
                         185%
                     </StatTab>
                 </div>
-                <div className="w-3/5 h-72 ">
-                    <LineChart
-                        data={monthLabels.map(() =>
-                            faker.number.int({ min: -1000, max: 1000 })
-                        )}
-                    />
-                </div>
+                <LineChart
+                    title="Return of users"
+                    width={800}
+                    data={[
+                        {
+                            data: monthLabels.map(() =>
+                                faker.number.int({ min: -1000, max: 1000 })
+                            ),
+                        },
+                    ]}
+                />
             </div>
             <Table rows={rows} columns={memberTableCols} height={500} />
         </AdminLayout>
