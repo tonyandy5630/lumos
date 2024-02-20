@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout'
+import AdminLayout from '@/components/Layout/Admin'
 import React from 'react'
 
 export const metadata = {
@@ -6,5 +6,5 @@ export const metadata = {
 }
 
 export default function PortfolioPage() {
-    return <Layout>PortfolioPage</Layout>
+    return <AdminLayout>PortfolioPage</AdminLayout>
 }
