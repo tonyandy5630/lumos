@@ -25,6 +25,7 @@ export default function FormInput(props) {
         className,
         sx,
         children,
+        autoFocus,
     } = props
     const [showPwd, setShowPwd] = useState(false)
     const [isError, setIsError] = useState(helperTextIsError)
@@ -61,6 +62,7 @@ export default function FormInput(props) {
                 inputProps={inputProps}
                 label={label}
                 color="info"
+                autoFocus={autoFocus}
                 sx={{
                     fontSize: 14,
 
