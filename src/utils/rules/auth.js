@@ -15,7 +15,7 @@ const getRules = (getValues) => ({
             message: LENGTH_WARNING,
         },
         maxLength: {
-            value: 20,
+            value: 30,
             message: LENGTH_WARNING,
         },
     },

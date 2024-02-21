@@ -1,5 +1,5 @@
 import { object, string } from 'yup'
-import getRules from '../rules/auth'
+import getRules from '../../rules/auth'
 import { EMPTY_WARNING, PHONE_REGEX } from '@/constants/Auth'
 
 const rules = getRules()
@@ -22,7 +22,6 @@ const UserSchema = object({
         .matches(PHONE_REGEX, 'Phone number is not valid'),
     address: string(),
     rePassword: string().min(1).max(20).required(EMPTY_WARNING),
-    code: string(),
 })
 
 export default UserSchema
