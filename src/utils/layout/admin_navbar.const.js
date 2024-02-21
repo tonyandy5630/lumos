@@ -17,47 +17,37 @@ const AdminNavItems = [
     {
         title: 'Homepage',
         icon: <HomeOutlinedIcon {...options} />,
-        href: ADMIN_URL.HOMEPAGE_URL,
+        href: ADMIN_URL.HOMEPAGE,
     },
     {
         title: 'Suppliers',
         icon: <SupplierIcon {...options} />,
-        href: ADMIN_URL.SUPPLIER_URL,
+        href: ADMIN_URL.SUPPLIER,
     },
     {
         title: 'Members',
         icon: <MemberIcon {...options} />,
-        href: ADMIN_URL.MEMBER_URL,
+        href: ADMIN_URL.MEMBER,
     },
     {
         title: 'Bookings',
         icon: <BookingIcon {...options} />,
-        href: ADMIN_URL.BOOKING_URL,
-        sub_menu: [
-            {
-                title: 'Pending Bookings',
-                href: ADMIN_URL.PENDING_BOOKING_URL,
-            },
-            {
-                title: 'Booking in Progress',
-                href: ADMIN_URL.WORKING_BOOKING_URL,
-            },
-        ],
+        href: ADMIN_URL.BOOKING,
     },
     {
         title: 'Customer Service',
         icon: <CustomerServiceIcon {...options} />,
-        href: ADMIN_URL.CUSTOMER_SERVICE_URL,
+        href: ADMIN_URL.CUSTOMER_SERVICE,
     },
     {
         title: 'Profile',
         icon: <ProfileIcon {...options} />,
-        href: ADMIN_URL.PROFILE_URL,
+        href: ADMIN_URL.PROFILE,
     },
     {
         title: 'Help',
         icon: <HelpIcon {...options} />,
-        href: ADMIN_URL.HELP_URL,
+        href: ADMIN_URL.HELP,
     },
 ]
 

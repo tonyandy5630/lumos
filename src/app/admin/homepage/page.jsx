@@ -115,13 +115,13 @@ export default function HomePage() {
             <LineChart
                 title="Revenue in money"
                 showLegend={false}
-                className="w-full  h-80"
+                className="w-full h-80"
                 data={[
                     {
                         data: monthLabels.map(() =>
                             faker.number.int({ min: 0, max: 100000 })
                         ),
-                        label: 'Nurse',
+                        label: 'VND',
                     },
                 ]}
             />
