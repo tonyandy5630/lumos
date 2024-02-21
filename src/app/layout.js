@@ -6,11 +6,18 @@ import theme from '@/utils/themes'
 import { ThemeProvider } from '@emotion/react'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import StoreProvider from '@/components/StoreProvider'
+import { AuthContextProvider } from '@/Context'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
     weight: ['500', '600', '700'],
 })
+
+const queryClient = new QueryClient()
 
 export default function RootLayout({ children }) {
     return (
@@ -18,7 +25,20 @@ export default function RootLayout({ children }) {
             <body className={montserrat.className}>
                 <AppRouterCacheProvider>
                     <ThemeProvider theme={theme}>
-                        <StoreProvider>{children}</StoreProvider>
+                        <StoreProvider>
+                            <QueryClientProvider client={queryClient}>
+                                <AuthContextProvider>
+                                    <ToastContainer />
+                                    <ProgressBar
+                                        height="4px"
+                                        color="#fffd00"
+                                        options={{ showSpinner: false }}
+                                        shallowRouting
+                                    />
+                                    {children}
+                                </AuthContextProvider>
+                            </QueryClientProvider>
+                        </StoreProvider>
                     </ThemeProvider>
                 </AppRouterCacheProvider>
             </body>

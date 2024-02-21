@@ -16,6 +16,7 @@ import { useMutation } from '@tanstack/react-query'
 import { loginAPI } from '@/api/auth.api'
 import { yupResolver } from '@hookform/resolvers/yup'
 import LoginSchema from '@/utils/schema/auth/loginSchema'
+import ADMIN_URL from '@/constants/URL/admin'
 
 export default function LoginPage() {
     const router = useRouter()
@@ -23,8 +24,7 @@ export default function LoginPage() {
         register,
         handleSubmit,
         resetField,
-        control,
-        setError,
+        reset,
         formState: { errors },
     } = useForm({ resolver: yupResolver(LoginSchema) })
     const { setUser } = useAuth()
@@ -35,20 +35,20 @@ export default function LoginPage() {
     })
 
     const onSubmit = async (data) => {
-        try {
-            console.log(data)
-            setUser(data)
-            await loginMutation.mutateAsync(data, {
-                onSuccess: (data, variables, context) => {
-                    console.log(data)
-                },
-                onError: (error) => {
-                    console.log(error)
-                },
-            })
-        } catch (error) {
-            resetField('password')
-        }
+        router.push(ADMIN_URL.HOMEPAGE)
+        // try {
+        //     await loginMutation.mutateAsync(data, {
+        //         onSuccess: (data) => {
+        //             setUser(data)
+        //             reset()
+        //         },
+        //         onError: (error) => {
+        //             console.log(error)
+        //         },
+        //     })
+        // } catch (error) {
+        //     resetField('password')
+        // }
     }
 
     const onError = (error) => console.log(error)
@@ -168,6 +168,7 @@ export default function LoginPage() {
                                 <MyButton
                                     type="submit"
                                     className="hover:bg-mosh hover:text-white"
+                                    loading={loginMutation.isPending}
                                 >
                                     Log in
                                 </MyButton>

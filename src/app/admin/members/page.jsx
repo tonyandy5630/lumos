@@ -1,4 +1,3 @@
-import AdminLayout from '@/components/Layout/Admin'
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import Table from '@/components/Table'
@@ -9,7 +8,6 @@ import iconStatTabSx from '@/utils/icon'
 import LineChart from '@/components/Chart/LineChart'
 import { monthLabels } from '@/utils/chart'
 import { faker } from '@faker-js/faker'
-import { Label } from '@mui/icons-material'
 
 export const metadata = {
     title: 'Members Page',
@@ -60,7 +58,7 @@ const rows = [
 
 export default function MemberPage() {
     return (
-        <AdminLayout>
+        <>
             <div className="flex items-center justify-start min-w-full ">
                 <Typography variant="h5" fontWeight="bold" gutterBottom>
                     Member list
@@ -98,6 +96,6 @@ export default function MemberPage() {
                 />
             </div>
             <Table rows={rows} columns={memberTableCols} height={500} />
-        </AdminLayout>
+        </>
     )
 }
