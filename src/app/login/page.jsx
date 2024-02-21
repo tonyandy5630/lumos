@@ -1,7 +1,6 @@
 'use client'
 import MyButton from '@/components/Button'
 import FormInput from '@/components/FormInput'
-import ProtectedRoute from '@/components/ProtectedRoutes'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
@@ -9,6 +8,8 @@ import Link from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import GoogleIcon from '@mui/icons-material/Google'
+import AUTH_URL from '@/constants/URL/auth'
+import _ from 'lodash'
 
 export default function LoginPage() {
     const {
@@ -19,6 +20,10 @@ export default function LoginPage() {
         setError,
         formState: { errors },
     } = useForm()
+
+    const onSubmit = async (data) => {
+        console.log(data)
+    }
 
     return (
         <div className="min-w-full min-h-full bg-primary">
@@ -80,7 +85,7 @@ export default function LoginPage() {
                             >
                                 New to Lumos?{' '}
                                 <Link
-                                    href="/register"
+                                    href={AUTH_URL.REGISTER}
                                     className="underline text-mosh"
                                 >
                                     Sign up for free
@@ -88,7 +93,10 @@ export default function LoginPage() {
                             </Typography>
                         </Stack>
 
-                        <form className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] ">
+                        <form
+                            className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] "
+                            onSubmit={handleSubmit(onSubmit)}
+                        >
                             <Stack className="min-w-full" spacing={1}>
                                 <FormInput
                                     name="username"
@@ -98,6 +106,7 @@ export default function LoginPage() {
                                     isRequired={true}
                                     register={register}
                                     placeholder="Username"
+                                    autoFocus={true}
                                     helperText={errors.username?.message}
                                     helperTextIsError={
                                         errors.username !== undefined
