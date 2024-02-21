@@ -34,7 +34,7 @@ export default function NurseNavbar() {
                 />
             </Toolbar>
             <Divider />
-            <NavItems items={NurseNavItems} roles={1} />
+            <NavItems items={NurseNavItems} />
         </Drawer>
     )
 }

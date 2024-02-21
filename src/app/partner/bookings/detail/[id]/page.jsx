@@ -1,4 +1,3 @@
-import NurseLayout from '@/components/Layout/Nurse'
 import PageTitle from '@/components/PageTitle'
 import BookingDetailSection from '@/components/Pages/NurseBookingDetailPage/BookingDetailSection'
 import BookingSteps from '@/components/Stepper'
@@ -28,10 +27,10 @@ const bookingDetail = {
 
 export default async function BookingDetailPage() {
     return (
-        <NurseLayout>
+        <>
             <PageTitle>Booking Detail</PageTitle>
             <BookingDetailSection bookingDetail={bookingDetail} />
             <BookingSteps currentStep={1} />
-        </NurseLayout>
+        </>
     )
 }

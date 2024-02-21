@@ -10,14 +10,14 @@ const NavItem = dynamic(() => import('./NavItem'), {
     ssr: false,
 })
 
-export default function NavItems({ items, roles }) {
+export default function NavItems({ items }) {
     const pathname = usePathname()
 
     return (
         <>
             {items?.map(({ icon, title, href, sub_menu }) => {
                 let active = false
-                const curPath = pathname.split('/')[roles]
+                const curPath = pathname.split('/')[2]
                 if (
                     pathname &&
                     curPath.toLowerCase().includes(title.toLowerCase())

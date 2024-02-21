@@ -34,7 +34,7 @@ export default function Navbar() {
                 />
             </Toolbar>
             <Divider />
-            <NavItems items={AdminNavItems} roles={2} />
+            <NavItems items={AdminNavItems} />
         </Drawer>
     )
 }

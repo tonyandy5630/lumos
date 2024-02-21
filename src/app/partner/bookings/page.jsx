@@ -1,6 +1,5 @@
 'use client'
 import BarChart from '@/components/Chart/BarChart'
-import NurseLayout from '@/components/Layout/Nurse'
 import PageTitle from '@/components/PageTitle'
 import { monthLabels } from '@/utils/chart'
 import React from 'react'
@@ -47,7 +46,7 @@ const DATA = [
 
 export default function BookingPage() {
     return (
-        <NurseLayout>
+        <>
             <PageTitle>Bookings</PageTitle>
             <div className="flex items-center justify-between min-w-full my-3">
                 {NurseBookingStat.map((item) => {
@@ -92,6 +91,6 @@ export default function BookingPage() {
                     </Box>
                 )}
             />
-        </NurseLayout>
+        </>
     )
 }
