@@ -6,9 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 const ExpandMore = dynamic(() => import('@mui/icons-material/ExpandMore'))
-const ExpandLess = dynamic(() => import('@mui/icons-material/ExpandLess'), {
-    loading: () => <p>Loading...</p>,
-})
+const ExpandLess = dynamic(() => import('@mui/icons-material/ExpandLess'))
 const Collapse = dynamic(() => import('@mui/material/Collapse'))
 import Link from 'next/link'
 
@@ -33,7 +31,7 @@ export default function NavItem(props) {
                 key={children}
                 disablePadding
                 component={Link}
-                className="h-fit w-full"
+                className="w-full h-fit"
                 href={href}
             >
                 <ListItemButton
