@@ -1,4 +1,3 @@
-import AdminLayout from '@/components/Layout/Admin'
 import StatTab from '@/components/StatTab'
 import { HomePageStatTabs } from '@/constants/HomePage.const'
 import React from 'react'
@@ -71,7 +70,7 @@ export const metadata = {
 
 export default function HomePage() {
     return (
-        <AdminLayout>
+        <>
             <div className="flex items-center justify-between min-w-full my-3">
                 {HomePageStatTabs.map((item) => {
                     return (
@@ -136,6 +135,6 @@ export default function HomePage() {
                 rows={serviceRows}
                 columns={topServiceCols}
             />
-        </AdminLayout>
+        </>
     )
 }

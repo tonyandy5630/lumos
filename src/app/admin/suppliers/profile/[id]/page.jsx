@@ -1,4 +1,3 @@
-import AdminLayout from '@/components/Layout/Admin'
 import React from 'react'
 import ProfileBanner from '@/components/ProfileBanner'
 import Stack from '@mui/material/Stack'
@@ -48,7 +47,7 @@ export default function SupplierProfile() {
     ))
 
     return (
-        <AdminLayout>
+        <>
             <ProfileBanner
                 actionButton="Portfolio"
                 name="Dr. Maria Waston"
@@ -112,7 +111,7 @@ export default function SupplierProfile() {
             >
                 {reviewTabs}
             </Grid>
-        </AdminLayout>
+        </>
     )
 }
 
