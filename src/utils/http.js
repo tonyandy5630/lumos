@@ -38,7 +38,7 @@ class Http {
                     HttpStatusCode.UnprocessableEntity
                 ) {
                     const data = error.response?.data
-                    const message = data.message || error.message
+                    const message = data?.message || error.message
                     toast.error(message)
                 }
                 return Promise.reject(error)

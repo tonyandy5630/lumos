@@ -10,20 +10,48 @@ import { useForm } from 'react-hook-form'
 import GoogleIcon from '@mui/icons-material/Google'
 import AUTH_URL from '@/constants/URL/auth'
 import _ from 'lodash'
+import { useAuth } from '@/Context'
+import { useRouter } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
+import { loginAPI } from '@/api/auth.api'
+import { yupResolver } from '@hookform/resolvers/yup'
+import LoginSchema from '@/utils/schema/auth/loginSchema'
 
 export default function LoginPage() {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
-        reset,
+        resetField,
         control,
         setError,
         formState: { errors },
-    } = useForm()
+    } = useForm({ resolver: yupResolver(LoginSchema) })
+    const { setUser } = useAuth()
+
+    const loginMutation = useMutation({
+        mutationKey: ['/login'],
+        mutationFn: loginAPI,
+    })
 
     const onSubmit = async (data) => {
-        console.log(data)
+        try {
+            console.log(data)
+            setUser(data)
+            await loginMutation.mutateAsync(data, {
+                onSuccess: (data, variables, context) => {
+                    console.log(data)
+                },
+                onError: (error) => {
+                    console.log(error)
+                },
+            })
+        } catch (error) {
+            resetField('password')
+        }
     }
+
+    const onError = (error) => console.log(error)
 
     return (
         <div className="min-w-full min-h-full bg-primary">
@@ -95,21 +123,21 @@ export default function LoginPage() {
 
                         <form
                             className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] "
-                            onSubmit={handleSubmit(onSubmit)}
+                            onSubmit={handleSubmit(onSubmit, onError)}
                         >
                             <Stack className="min-w-full" spacing={1}>
                                 <FormInput
-                                    name="username"
+                                    name="email"
                                     id="username"
                                     autocomplete="on"
-                                    label="Username"
+                                    label="Email"
                                     isRequired={true}
                                     register={register}
-                                    placeholder="Username"
+                                    placeholder="Email"
                                     autoFocus={true}
-                                    helperText={errors.username?.message}
+                                    helperText={errors.email?.message}
                                     helperTextIsError={
-                                        errors.username !== undefined
+                                        errors.email !== undefined
                                     }
                                 />
                                 <FormInput
@@ -123,7 +151,7 @@ export default function LoginPage() {
                                     placeholder="Enter password"
                                     helperText={errors.password?.message}
                                     helperTextIsError={
-                                        errors.username !== undefined
+                                        errors.password !== undefined
                                     }
                                 >
                                     <Typography
@@ -140,7 +168,6 @@ export default function LoginPage() {
                                 <MyButton
                                     type="submit"
                                     className="hover:bg-mosh hover:text-white"
-                                    handleClick={() => console.log()}
                                 >
                                     Log in
                                 </MyButton>
