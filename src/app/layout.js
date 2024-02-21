@@ -10,7 +10,6 @@ import { AuthContextProvider } from '@/Context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
@@ -29,12 +28,6 @@ export default function RootLayout({ children }) {
                             <QueryClientProvider client={queryClient}>
                                 <AuthContextProvider>
                                     <ToastContainer />
-                                    <ProgressBar
-                                        height="4px"
-                                        color="#fffd00"
-                                        options={{ showSpinner: false }}
-                                        shallowRouting
-                                    />
                                     {children}
                                 </AuthContextProvider>
                             </QueryClientProvider>
