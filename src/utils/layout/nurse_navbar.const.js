@@ -28,14 +28,14 @@ const NurseNavItems = [
         href: NURSE_URL.BOOKING,
         sub_menu: [
             {
-                title: 'Working Bookings',
-                href: NURSE_URL.WORKING_BOOKING,
-                icon: <WorkingIcon {...options} />,
-            },
-            {
                 title: 'Pending Bookings',
                 href: NURSE_URL.PENDING_BOOKING,
                 icon: <PendingIcon {...options} />,
+            },
+            {
+                title: 'Working Bookings',
+                href: NURSE_URL.WORKING_BOOKING,
+                icon: <WorkingIcon {...options} />,
             },
         ],
     },
