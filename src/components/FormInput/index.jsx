@@ -1,12 +1,14 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material'
+import dynamic from 'next/dynamic'
 import FormControl from '@mui/material/FormControl'
-import FormHelperText from '@mui/material/FormHelperText'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
+const FormHelperText = dynamic(() => import('@mui/material/FormHelperText'))
+const InputAdornment = dynamic(() => import('@mui/material/InputAdornment'))
+const IconButton = dynamic(() => import('@mui/material/IconButton'))
+const Visibility = dynamic(() => import('@mui/icons-material/Visibility'))
+const VisibilityOff = dynamic(() => import('@mui/icons-material/VisibilityOff'))
 import InputLabel from '@mui/material/InputLabel'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export default function FormInput(props) {
     const {
@@ -27,12 +29,12 @@ export default function FormInput(props) {
         children,
         autoFocus,
     } = props
-    const [showPwd, setShowPwd] = useState(false)
-    const [isError, setIsError] = useState(helperTextIsError)
+    const [showPwd, setShowPwd] = React.useState(false)
+    const [isError, setIsError] = React.useState(helperTextIsError)
     const isMd = useMediaQuery('(min-width:784px)')
     const handleClickShowPassword = () => setShowPwd((show) => !show)
 
-    useEffect(() => {
+    React.useEffect(() => {
         setIsError((prev) => helperTextIsError)
     }, [helperTextIsError])
 
