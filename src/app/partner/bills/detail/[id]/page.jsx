@@ -1,5 +1,4 @@
 import React from 'react'
-import NurseLayout from '@/components/Layout/Nurse'
 import PageTitle from '@/components/PageTitle'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
@@ -56,7 +55,7 @@ const SERVICE = {
 }
 export default function BillDetailPage() {
     return (
-        <NurseLayout>
+        <>
             <PageTitle>Bill Detail</PageTitle>
             <div className="min-h-[30rem] bg-primary rounded-xl py-10 px-7 flex flex-col items-center justify-start">
                 <div className="flex items-center justify-between min-w-full my-3 min-h-20">
@@ -117,6 +116,6 @@ export default function BillDetailPage() {
                     </BillInfo>
                 </div>
             </div>
-        </NurseLayout>
+        </>
     )
 }

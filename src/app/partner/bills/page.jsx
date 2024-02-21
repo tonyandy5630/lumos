@@ -1,7 +1,6 @@
 // @ts-nocheck
 'use client'
 import LineChart from '@/components/Chart/LineChart'
-import NurseLayout from '@/components/Layout/Nurse'
 import PageTitle from '@/components/PageTitle'
 import { monthLabels } from '@/utils/chart'
 import React from 'react'
@@ -44,7 +43,7 @@ const rows = [
 ]
 export default function BillPage() {
     return (
-        <NurseLayout>
+        <>
             <PageTitle>Bills</PageTitle>
             <LineChart
                 title="Income in current month"
@@ -76,6 +75,6 @@ export default function BillPage() {
                     </Box>
                 )}
             />
-        </NurseLayout>
+        </>
     )
 }
