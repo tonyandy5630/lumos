@@ -7,5 +7,5 @@ export const metadata = {
 }
 
 export default function SupplierPage() {
-    return <AdminLayout>SupplierPage</AdminLayout>
+    return <AdminLayout>Working on it...</AdminLayout>
 }
