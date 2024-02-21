@@ -29,7 +29,8 @@ export default function Navbar() {
                     alt="lumos's logo"
                     width={drawerWidth - 30}
                     height={drawerWidth - 30}
-                    priority={true}
+                    placeholder="blur"
+                    blurDataURL="/lumos_text.png"
                 />
             </Toolbar>
             <Divider />
