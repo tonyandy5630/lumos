@@ -5,8 +5,8 @@ import ROLES from '@/constants/roles.const'
 
 export default function NurseLayoutComp({ children }) {
     return (
-        <NurseLayout>
-            <Authorize authorizeRole={ROLES.partner}>{children}</Authorize>
-        </NurseLayout>
+        <Authorize authorizeRole={ROLES.partner}>
+            <NurseLayout>{children}</NurseLayout>
+        </Authorize>
     )
 }

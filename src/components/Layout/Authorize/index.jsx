@@ -1,5 +1,6 @@
 'use client'
-import AlertDialog from '@/components/AlertDialog'
+import dynamic from 'next/dynamic'
+const Error403 = dynamic(() => import('@/components/error/403'))
 import { userRole_c } from '@/constants/cookies.const'
 import useCookie from '@/hooks/useCookie'
 import { useRouter } from 'next/navigation'
@@ -11,13 +12,5 @@ export default function Authorize(props) {
     const [userRole, _] = React.useState(useCookie(userRole_c))
     const handleClose = () => {}
 
-    return (
-        <>
-            {userRole === authorizeRole ? (
-                children
-            ) : (
-                <AlertDialog>Not authorized</AlertDialog>
-            )}
-        </>
-    )
+    return <>{userRole === authorizeRole ? children : <Error403 />}</>
 }
