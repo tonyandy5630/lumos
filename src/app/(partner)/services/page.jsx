@@ -1,4 +1,3 @@
-import NurseLayout from '@/components/Layout/Nurse'
 import React from 'react'
 import StatTab from '@/components/StatTab'
 import LineChart from '@/components/Chart/LineChart'
@@ -28,9 +27,9 @@ const rows = [
 
 export default function ServicePage() {
     return (
-        <NurseLayout>
+        <>
             <PageTitle>Your Services</PageTitle>
-            <div className="flex items-center justify-between min-w-full h-72 my-5">
+            <div className="flex items-center justify-between min-w-full my-5 h-72">
                 <div className="flex flex-col items-start justify-center w-2/5 min-h-full p-4 space-y-6">
                     <StatTab
                         title="Total Services"
@@ -64,7 +63,7 @@ export default function ServicePage() {
                 columns={serviceCols}
                 height={500}
             >
-                <div className="flex items-start justify-center space-x-7 my-1">
+                <div className="flex items-start justify-center my-1 space-x-7">
                     <Button
                         className="h-8 !rounded-xl !text-white !font-bold"
                         sx={{
@@ -94,6 +93,6 @@ export default function ServicePage() {
                     </Button>
                 </div>
             </Table>
-        </NurseLayout>
+        </>
     )
 }
