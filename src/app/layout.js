@@ -6,10 +6,10 @@ import theme from '@/utils/themes'
 import { ThemeProvider } from '@emotion/react'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import StoreProvider from '@/components/StoreProvider'
-import { AuthContextProvider } from '@/context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { AuthContextProvider } from '@/context'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
