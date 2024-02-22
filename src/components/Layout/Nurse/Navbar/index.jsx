@@ -6,6 +6,7 @@ import NurseNavItems from '@/utils/layout/nurse_navbar.const'
 import { drawerWidth } from '@/utils/layout/admin_navbar.const'
 import Image from 'next/image'
 import NavItems from '../../NavItems'
+import ROLES from '@/constants/roles.const'
 
 export default function NurseNavbar() {
     return (
@@ -34,7 +35,7 @@ export default function NurseNavbar() {
                 />
             </Toolbar>
             <Divider />
-            <NavItems items={NurseNavItems} />
+            <NavItems items={NurseNavItems} roles={ROLES.partner - 2} />
         </Drawer>
     )
 }
