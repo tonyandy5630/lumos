@@ -14,6 +14,12 @@ const montserrat = Montserrat({
     weight: ['500', '600', '700'],
 })
 
+export const metadata = {
+    icons: {
+        icon: '/favicon.ico', // /public path
+    },
+}
+
 export default function RootLayout({ children }) {
     return (
         <html lang="en">

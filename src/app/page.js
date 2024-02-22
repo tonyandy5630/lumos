@@ -91,7 +91,7 @@ export default function LandingPage() {
                     className="absolute bottom-0 right-20 w-full max-w-[40rem] h-auto"
                 />
             </div>
-            <div className="my-20 px-24 py-3 flex flex-col min-h-40 w-9/12 justify-center items-start bg-mosh">
+            <div className="flex flex-col items-start justify-center w-9/12 px-24 py-3 my-20 min-h-40 bg-mosh">
                 <Typography
                     variant="h4"
                     fontWeight="bold"
@@ -99,14 +99,14 @@ export default function LandingPage() {
                 >
                     Download now
                 </Typography>
-                <div className="flex ml-5 justify-start items-center">
+                <div className="flex items-center justify-start ml-5">
                     <Image
                         src="/google-play-badge.png"
                         width="200"
                         height="77"
                         priority={true}
                         alt="download on playstore"
-                        className="w-full max-w-52 h-auto"
+                        className="w-full h-auto max-w-52"
                     />
                     <Image
                         src="/IOS-badge.svg"
@@ -118,7 +118,7 @@ export default function LandingPage() {
                     />
                 </div>
             </div>
-            <div className="min-w-full flex justify-start my-3 min-h-96 py-10 pl-40">
+            <div className="flex justify-start min-w-full py-10 pl-40 my-3 min-h-96">
                 <div className="flex justify-start w-10/12 space-x-24">
                     <Image
                         src="/why-choose.png"
@@ -127,7 +127,7 @@ export default function LandingPage() {
                         height={320}
                         className="w-full max-w-[33rem] h-auto"
                     />
-                    <div className="w-fit flex flex-col justify-between items-start space-y-3">
+                    <div className="flex flex-col items-start justify-between space-y-3 w-fit">
                         <Typography
                             variant="h4"
                             fontWeight="bold"
@@ -151,7 +151,7 @@ export default function LandingPage() {
                         <Typography
                             component="a"
                             fontWeight="bold"
-                            className="underline underline-offset-4 text-mosh mt-3"
+                            className="mt-3 underline underline-offset-4 text-mosh"
                             href="https://www.google.com/"
                         >
                             Learn more
@@ -161,8 +161,8 @@ export default function LandingPage() {
                 </div>
             </div>
             <div className="min-w-full flex items-center my-12 min-h-[26rem] py-10 px-40 bg-[#CAF4EE]">
-                <div className="w-full flex justify-between items-center">
-                    <div className="flex flex-col justify-between items-start max-w-lg space-y-5 ">
+                <div className="flex items-center justify-between w-full">
+                    <div className="flex flex-col items-start justify-between max-w-lg space-y-5 ">
                         <Typography variant="h4" fontWeight="bold">
                             <div>
                                 What
@@ -175,7 +175,7 @@ export default function LandingPage() {
                         <Typography>
                             {LandingPageText.memberSayingAboutUs.content}
                         </Typography>
-                        <div className="flex justify-center items-center space-x-5">
+                        <div className="flex items-center justify-center space-x-5">
                             <MyAvatarGroup />
                             <Typography variant="subtitle1" fontWeight="bold">
                                 500K+ Feedbacks
@@ -183,8 +183,8 @@ export default function LandingPage() {
                         </div>
                     </div>
                     <Paper className="flex flex-col justify-between items-center p-10 w-6/12 space-y-8 !rounded-lg">
-                        <div className="flex justify-between items-center min-w-full">
-                            <div className="flex justify-between items-center space-x-5">
+                        <div className="flex items-center justify-between min-w-full">
+                            <div className="flex items-center justify-between space-x-5">
                                 <Avatar
                                     src="/broken-image.jpg"
                                     alt="someone avatar"
@@ -193,7 +193,7 @@ export default function LandingPage() {
                                         height: `${avatarWidth}px`,
                                     }}
                                 />
-                                <div className="flex flex-col justify-center items-start min-h-full">
+                                <div className="flex flex-col items-start justify-center min-h-full">
                                     <Typography
                                         fontSize="15px"
                                         fontWeight="bold"
@@ -228,17 +228,17 @@ export default function LandingPage() {
                 </div>
             </div>
             <div className="min-w-full justify-stretch min-h-[25rem] flex px-40 my-10">
-                <div className="min-w-full flex justify-between items-center">
-                    <div className="flex flex-col justify-center items-start min-h-full max-w-xl space-y-5">
+                <div className="flex items-center justify-between min-w-full">
+                    <div className="flex flex-col items-start justify-center max-w-xl min-h-full space-y-5">
                         <div className="max-w-fit">
                             <Typography variant="h4">
                                 The
-                                <span className="mx-2 text-green font-bold">
+                                <span className="mx-2 font-bold text-green">
                                     key value
                                 </span>
                                 of <span className="font-bold">Lumos</span>:
                             </Typography>
-                            <div className="min-w-full text-center text-gray-600 text-xl">
+                            <div className="min-w-full text-xl text-center text-gray-600">
                                 {LandingPageText.keyValue.subtitle}
                             </div>
                         </div>
@@ -250,7 +250,7 @@ export default function LandingPage() {
 
                                 return (
                                     <Typography fontSize="13px" key={title}>
-                                        <span className="font-bold mr-2">
+                                        <span className="mr-2 font-bold">
                                             {title} :
                                         </span>
                                         {content}
@@ -261,7 +261,7 @@ export default function LandingPage() {
                         <Typography
                             component="a"
                             fontWeight="bold"
-                            className="underline underline-offset-4 text-mosh mt-3"
+                            className="mt-3 underline underline-offset-4 text-mosh"
                             href="https://www.google.com/"
                         >
                             Learn more
@@ -277,8 +277,8 @@ export default function LandingPage() {
                     />
                 </div>
             </div>
-            <div className="flex justify-center items-center px-40 min-h-80">
-                <div className="flex flex-col space-y-6 w-full h-3/4 bg-green rounded-xl justify-center items-center">
+            <div className="flex items-center justify-center px-40 min-h-80">
+                <div className="flex flex-col items-center justify-center w-full space-y-6 h-3/4 bg-green rounded-xl">
                     <Typography
                         variant="h4"
                         className="text-white"
