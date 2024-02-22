@@ -7,16 +7,44 @@ import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import { useMutation } from '@tanstack/react-query'
+import { registerAPI } from '@/api/auth.api'
+import { yupResolver } from '@hookform/resolvers/yup'
+import UserSchema from '@/utils/schema/auth/userSchema'
+import { toast } from 'react-toastify'
 
 export default function SignupPage() {
     const {
         register,
         handleSubmit,
         reset,
-        control,
-        setError,
         formState: { errors },
-    } = useForm()
+    } = useForm({ resolver: yupResolver(UserSchema) })
+
+    const registerMutation = useMutation({
+        mutationKey: ['/register'],
+        mutationFn: registerAPI,
+    })
+
+    const onSubmit = async (data) => {
+        try {
+            await registerMutation.mutateAsync(data, {
+                onSuccess: (data) => {
+                    const status = data.data.statusCode
+                    if (status === 200) {
+                        toast.success('Register successfully', {
+                            position: 'top-center',
+                            autoClose: 2000,
+                        })
+                        reset()
+                    }
+                },
+                onError: (error) => {
+                    console.log()
+                },
+            })
+        } catch (error) {}
+    }
 
     return (
         <div className="flex items-center justify-center min-w-full min-h-full bg-primary">
@@ -67,19 +95,22 @@ export default function SignupPage() {
                                 </Link>
                             </Typography>
                         </Stack>
-                        <form className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] ">
+                        <form
+                            className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] "
+                            onSubmit={handleSubmit(onSubmit)}
+                        >
                             <Stack className="min-w-full" spacing={2}>
                                 <FormInput
-                                    name="profile"
-                                    id="profile"
+                                    name="fullname"
+                                    id="fullname"
                                     autocomplete="on"
-                                    label="Profile"
+                                    label="Fullname"
                                     isRequired={true}
                                     register={register}
-                                    placeholder="Enter profile name"
-                                    helperText={errors.profile?.message}
+                                    placeholder="Enter fullname name"
+                                    helperText={errors.fullname?.message}
                                     helperTextIsError={
-                                        errors.profile !== undefined
+                                        errors.fullname !== undefined
                                     }
                                 />
                                 <FormInput
@@ -109,19 +140,6 @@ export default function SignupPage() {
                                     }
                                 />
                                 <FormInput
-                                    name="address"
-                                    id="address"
-                                    autocomplete="on"
-                                    label="Address"
-                                    isRequired={true}
-                                    register={register}
-                                    placeholder="Enter address"
-                                    helperText={errors.address?.message}
-                                    helperTextIsError={
-                                        errors.address !== undefined
-                                    }
-                                />
-                                <FormInput
                                     name="password"
                                     id="password"
                                     autocomplete="on"
@@ -132,21 +150,21 @@ export default function SignupPage() {
                                     placeholder="Enter password"
                                     helperText={errors.password?.message}
                                     helperTextIsError={
-                                        errors.username !== undefined
+                                        errors.password !== undefined
                                     }
                                 />
                                 <FormInput
-                                    name="re_password"
-                                    id="re-password"
+                                    name="confirmPassword"
+                                    id="confirmPassword"
                                     autocomplete="on"
                                     label="Confirm password"
                                     inputType="password"
                                     isRequired={true}
                                     register={register}
                                     placeholder="Confirm password"
-                                    helperText={errors.re_password?.message}
+                                    helperText={errors.confirmPassword?.message}
                                     helperTextIsError={
-                                        errors.re_password !== undefined
+                                        errors.confirmPassword !== undefined
                                     }
                                 >
                                     <Typography
@@ -163,14 +181,14 @@ export default function SignupPage() {
                                 <MyButton
                                     type="submit"
                                     className="hover:bg-mosh hover:text-white"
-                                    handleClick={() => console.log()}
+                                    loading={registerMutation.isPending}
                                 >
                                     Sign up
                                 </MyButton>
                                 <MyButton
                                     variant="outlined"
-                                    type="submit"
                                     className="!bg-white border border-black border-solid"
+                                    loading={registerMutation.isPending}
                                     handleClick={() => console.log()}
                                 >
                                     Continue with google
