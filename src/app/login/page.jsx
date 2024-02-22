@@ -10,7 +10,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import GoogleIcon from '@mui/icons-material/Google'
 import AUTH_URL from '@/constants/URL/auth'
-import { useAuth } from '@/Context'
+import { useAuth } from '@/context'
 import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { loginAPI } from '@/api/auth.api'
@@ -22,6 +22,8 @@ import NURSE_URL from '@/constants/URL/partner'
 const AlertDialog = dynamic(() => import('@/components/AlertDialog'))
 const Backdrop = dynamic(() => import('@mui/material/Backdrop'))
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'))
+import { setCookie } from 'cookies-next'
+import { c_optns, userRole_c } from '@/constants/cookies.const'
 
 export default function LoginPage() {
     const router = useRouter()
@@ -58,6 +60,8 @@ export default function LoginPage() {
                     if (userRole === ROLES.partner)
                         router.push(NURSE_URL.HOMEPAGE)
                     if (userRole === ROLES.customer) setOpenDialog(true)
+
+                    setCookie(userRole_c, userRole, c_optns)
                 },
                 onError: (error) => {
                     console.log(error)
