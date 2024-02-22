@@ -1,13 +1,13 @@
-const HOMEPAGE = '/partner/homepage'
-const SERVICE = '/partner/services'
+const HOMEPAGE = '/homepage'
+const SERVICE = '/services'
 // Booking
-const BOOKING = '/partner/bookings'
+const BOOKING = '/bookings'
 const BOOKING_WORKING = BOOKING + '/working'
 const BOOKING_PENDING = BOOKING + '/pending'
 
-const BILL = '/partner/bills'
-const PROFILE = '/partner/profile'
-const HELP = '/partner/help'
+const BILL = '/bills'
+const PROFILE = '/profile'
+const HELP = '/help'
 
 const NURSE_URL = {
     HOMEPAGE,
