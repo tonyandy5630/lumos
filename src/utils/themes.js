@@ -1,4 +1,7 @@
+'use client'
+import React from 'react'
 import { createTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@emotion/react'
 
 const theme = createTheme({
     typography: {
@@ -31,4 +34,6 @@ const theme = createTheme({
     },
 })
 
-export default theme
+export default function ThemeProviderComponent({ children }) {
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+}
