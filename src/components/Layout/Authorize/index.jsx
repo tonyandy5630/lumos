@@ -3,14 +3,30 @@ import dynamic from 'next/dynamic'
 const Error403 = dynamic(() => import('@/components/error/403'))
 import { userRole_c } from '@/constants/cookies.const'
 import useCookie from '@/hooks/useCookie'
-import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function Authorize(props) {
-    const router = useRouter()
     const { children, authorizeRole } = props
     const [userRole, _] = React.useState(useCookie(userRole_c))
-    const handleClose = () => {}
+    const [isLoading, setIsLoading] = React.useState(true)
+    const [isAuth, setIsAuth] = React.useState(false)
 
-    return <>{userRole === authorizeRole ? children : <Error403 />}</>
+    React.useEffect(() => {
+        if (userRole !== authorizeRole.toString()) {
+            setIsAuth(false)
+        } else {
+            setIsAuth(true)
+        }
+        setIsLoading(false)
+    }, [])
+
+    const shouldRenderChildren = !isLoading && isAuth
+
+    return isLoading ? (
+        <div>Loading...</div>
+    ) : shouldRenderChildren ? (
+        children
+    ) : (
+        <Error403 />
+    )
 }
