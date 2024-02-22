@@ -68,7 +68,7 @@ export const metadata = {
     description: 'View all stats',
 }
 
-export default function HomePage() {
+export default async function HomePage() {
     return (
         <>
             <div className="flex items-center justify-between min-w-full my-3">
