@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar'
 import AdminNavItems, { drawerWidth } from '@/utils/layout/admin_navbar.const'
 import Image from 'next/image'
 import NavItems from '../../NavItems'
+import ROLES from '@/constants/roles.const'
 
 export default function Navbar() {
     return (
@@ -34,7 +35,7 @@ export default function Navbar() {
                 />
             </Toolbar>
             <Divider />
-            <NavItems items={AdminNavItems} />
+            <NavItems items={AdminNavItems} roles={ROLES.admin + 1} />
         </Drawer>
     )
 }
