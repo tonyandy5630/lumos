@@ -10,7 +10,7 @@ export default function Error403() {
         <div id="app">
             <div>403</div>
             <div className="txt">
-                You're not authorize<span className="blink">_</span>
+                You&rsquo;re not authorize<span className="blink">_</span>
             </div>
             <a
                 className="p-3 my-3 text-base border border-solid hover:cursor-pointer hover:underline text-primary border-primary"
