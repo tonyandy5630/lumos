@@ -8,10 +8,8 @@ import { NurseBookingStat } from '@/constants/NurseBookingPage.const'
 import StatTab from '@/components/StatTab'
 import Table from '@/components/Table'
 import { bookingColumns } from '@/constants/Pages/nurse/booking/table/columns'
-import IconButton from '@mui/material/IconButton'
-import Box from '@mui/material/Box'
-import DetailIcon from '@mui/icons-material/ArrowForwardIos'
-import Link from 'next/link'
+import NURSE_URL from '@/constants/URL/partner'
+import DetailButton from '@/components/DetailButton'
 
 const DATA = [
     {
@@ -80,15 +78,7 @@ export default function BookingPage() {
                 columns={bookingColumns}
                 hasActionRow={true}
                 renderRowActions={({ row }) => (
-                    <Box>
-                        <IconButton
-                            LinkComponent={Link}
-                            href={`/bookings/detail/${row.id}`}
-                            color="secondary"
-                        >
-                            <DetailIcon />
-                        </IconButton>
-                    </Box>
+                    <DetailButton href={NURSE_URL.BOOKING_DETAIL(row.id)} />
                 )}
             />
         </>

@@ -8,6 +8,8 @@ const ADD_SERVICE = SERVICE + '/add'
 const BOOKING = '/bookings'
 const BOOKING_WORKING = BOOKING + '/working'
 const BOOKING_PENDING = BOOKING + '/pending'
+const BOOKING_DETAIL = (id) => BOOKING + '/detail/' + id
+const BOOKING_PENDING_DETAIL = (id) => BOOKING_PENDING + '/detail/' + id
 
 const BILL = '/bills'
 const PROFILE = '/profile'
@@ -23,6 +25,8 @@ const NURSE_URL = {
     WORKING_BOOKING: BOOKING_WORKING,
     PENDING_BOOKING: BOOKING_PENDING,
     ADD_SERVICE,
+    BOOKING_DETAIL,
+    BOOKING_PENDING_DETAIL,
 }
 
 export default NURSE_URL
