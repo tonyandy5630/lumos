@@ -22,6 +22,7 @@ import { useRouter } from 'next/navigation'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
+import LocalStorageUtils from '@/utils/localStorage'
 
 export default function LoginForm() {
     const router = useRouter()
@@ -51,15 +52,18 @@ export default function LoginForm() {
                     setUser(data)
                     reset()
                     const userRole = data.data.data.userdetails.role
+                    const token = data.data.data.token
+
+                    setCookie(userRole_c, userRole, c_optns)
+                    LocalStorageUtils.setTokenToLS(token)
                     if (userRole === ROLES.admin) {
                         router.push(ADMIN_URL.HOMEPAGE)
+                        return
                     }
 
                     if (userRole === ROLES.partner)
                         router.push(NURSE_URL.HOMEPAGE)
                     if (userRole === ROLES.customer) setOpenDialog(true)
-
-                    setCookie(userRole_c, userRole, c_optns)
                 },
                 onError: (error) => {
                     console.log(error)
