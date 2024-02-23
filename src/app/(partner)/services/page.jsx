@@ -48,8 +48,8 @@ export default function ServicePage() {
                 </div>
                 <LineChart
                     title="Revenue in money"
-                    className="w-4/5 h-full"
-                    width={900}
+                    className="h-full "
+                    width={800}
                     data={[
                         {
                             data: monthLabels.map(() =>
