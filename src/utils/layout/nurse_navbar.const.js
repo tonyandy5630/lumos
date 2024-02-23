@@ -10,6 +10,7 @@ import BillsIcon from '@mui/icons-material/MonetizationOnOutlined'
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import ServicesIcon from '@mui/icons-material/MedicalServicesOutlined'
 import NURSE_URL from '@/constants/URL/partner'
+import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 
 const NurseNavItems = [
     {
@@ -21,6 +22,13 @@ const NurseNavItems = [
         title: 'Service',
         icon: <ServicesIcon {...options} />,
         href: NURSE_URL.SERVICE,
+        sub_menu: [
+            {
+                title: 'Add Services',
+                href: NURSE_URL.ADD_SERVICE,
+                icon: <AddIcon {...options} />,
+            },
+        ],
     },
     {
         title: 'Bookings',
