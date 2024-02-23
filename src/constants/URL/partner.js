@@ -1,5 +1,9 @@
 const HOMEPAGE = '/homepage'
+
+// Service
 const SERVICE = '/services'
+const ADD_SERVICE = SERVICE + '/add'
+
 // Booking
 const BOOKING = '/bookings'
 const BOOKING_WORKING = BOOKING + '/working'
@@ -18,6 +22,7 @@ const NURSE_URL = {
     HELP,
     WORKING_BOOKING: BOOKING_WORKING,
     PENDING_BOOKING: BOOKING_PENDING,
+    ADD_SERVICE,
 }
 
 export default NURSE_URL

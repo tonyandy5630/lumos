@@ -28,6 +28,7 @@ export default function FormInput(props) {
         sx,
         children,
         autoFocus,
+        multiline,
     } = props
     const [showPwd, setShowPwd] = React.useState(false)
     const [isError, setIsError] = React.useState(helperTextIsError)
@@ -56,7 +57,9 @@ export default function FormInput(props) {
                 {label}
             </InputLabel>
             <OutlinedInput
-                className={`bg-white rounded-xl md:h-[40px] ${className}`}
+                className={`bg-white rounded-xl ${
+                    multiline ? ' md:min-h-[40px]' : 'md:h-[40px]'
+                } ${className}`}
                 id={id}
                 {...register(name, registerOptions)}
                 autoComplete={autocomplete}
@@ -65,6 +68,9 @@ export default function FormInput(props) {
                 label={label}
                 color="info"
                 autoFocus={autoFocus}
+                multiline={multiline}
+                minRows={multiline ? 2 : ''}
+                maxRows={multiline ? 4 : ''}
                 sx={{
                     fontSize: 14,
 

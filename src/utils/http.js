@@ -40,7 +40,9 @@ class Http {
                 ) {
                     const data = error.response?.data
                     const message = data?.message || error.message
-                    toast.error(message)
+                    toast.error(message, {
+                        toastId: data.message ? data.message : error.message,
+                    })
                 }
                 return Promise.reject(error)
             }

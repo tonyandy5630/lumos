@@ -10,6 +10,8 @@ import serviceCols from '@/constants/Pages/nurse/services/table/column'
 import PageTitle from '@/components/PageTitle'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined'
+import Link from 'next/link'
+import NURSE_URL from '@/constants/URL/partner'
 
 export const metadata = {
     title: 'Your services',
@@ -66,6 +68,8 @@ export default function ServicePage() {
                 <div className="flex items-start justify-center my-1 space-x-7">
                     <Button
                         className="h-8 !rounded-xl !text-white !font-bold"
+                        LinkComponent={Link}
+                        href={NURSE_URL.ADD_SERVICE}
                         sx={{
                             bgcolor: 'secondary.dark',
                             minWidth: '92px',
@@ -76,20 +80,6 @@ export default function ServicePage() {
                         variant="contained"
                     >
                         <AddIcon sx={{ mr: '5px', fontSize: '20px' }} /> Add
-                    </Button>
-                    <Button
-                        className="h-8 !rounded-xl !font-bold"
-                        sx={{
-                            borderColor: 'secondary.dark',
-                            color: 'secondary.dark',
-                            '&:hover': {
-                                borderColor: 'secondary.main',
-                                color: 'black',
-                            },
-                        }}
-                        variant="outlined"
-                    >
-                        Verifing
                     </Button>
                 </div>
             </Table>

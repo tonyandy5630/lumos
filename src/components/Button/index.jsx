@@ -16,9 +16,9 @@ export default function MyButton(props) {
         <LoadingButton
             variant={variant}
             disabled={disable}
-            className={` ${disable ? '!bg-slate-400' : ''} ${
+            className={` !min-w-full ${disable ? '!bg-slate-400' : ''} ${
                 variant !== 'contained' ? '!bg-none' : '!bg-secondary'
-            }  !rounded-xl !text-mosh !min-w-full  ${className} min-h-10`}
+            }  !rounded-xl !text-mosh  min-h-10  ${className}`}
             sx={{
                 border: '1px solid',
                 borderColor: 'secondary.main',
