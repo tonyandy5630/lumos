@@ -38,7 +38,14 @@ export default function TanstackQueryProviders({ children }) {
     //       have a suspense boundary between this and the code that may
     //       suspend because React will throw away the client on the initial
     //       render if it suspends and there is no boundary
-    const queryClient = getQueryClient()
+    const queryClient = getQueryClient({
+        defaultOptions: {
+            queries: {
+                staleTime: 60 * 60 * 3,
+                refetchOnWindowFocus: false,
+            },
+        },
+    })
 
     return (
         <QueryClientProvider client={queryClient}>
