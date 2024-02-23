@@ -7,19 +7,19 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { yupResolver } from '@hookform/resolvers/yup'
 import ServiceSchema from '@/utils/schema/service/serviceSchema'
 import { addPartnerServiceAPI } from '@/api/partner.api'
-const { toast } = dynamic(() => import('react-toastify'))
-import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import { useForm, Controller } from 'react-hook-form'
 import FormRow from './FormRow'
 import Typography from '@mui/material/Typography'
 import InputWrapper from './InputWrapper'
 import { getAllCategoryAPI } from '@/api/category'
+import Skeleton from '@mui/material/Skeleton'
 const Chip = dynamic(() => import('@mui/material/Chip'))
 const FormGroup = dynamic(() => import('@mui/material/FormGroup'))
 const FormControlLabel = dynamic(() => import('@mui/material/FormControlLabel'))
 const Checkbox = dynamic(() => import('@mui/material/Checkbox'))
 const MomIcon = dynamic(() => import('@mui/icons-material/PregnantWoman'))
 const BabyIcon = dynamic(() => import('@mui/icons-material/ChildCareOutlined'))
-import Skeleton from '@mui/material/Skeleton'
 const FormHelperText = dynamic(() => import('@mui/material/FormHelperText'))
 
 export default function ServiceForm() {
@@ -28,9 +28,18 @@ export default function ServiceForm() {
         handleSubmit,
         reset,
         setValue,
+        getValues,
+        control,
         formState: { errors },
-    } = useForm({ resolver: yupResolver(ServiceSchema) })
+    } = useForm({
+        resolver: yupResolver(ServiceSchema),
+        defaultValues: {
+            categories: [],
+        },
+    })
     const [categories, setCategories] = React.useState([])
+
+    const btnRef = React.useRef()
 
     const {
         data: categoriesData,
@@ -74,17 +83,19 @@ export default function ServiceForm() {
         }
         setValue('categories', cateValues)
     }
+
     const categoryCheckList = () => {
         if (categoriesLoading || categoriesRefetching) {
             return <Skeleton variant="rectangular" width={210} height={60} />
         } else if (categoriesSuccess) {
-            return categoriesData.data.data.map((i) => {
+            return categoriesData.data.data.map((i, index) => {
                 const icon = i.categoryId === 1 ? <MomIcon /> : <BabyIcon />
                 return (
                     <FormControlLabel
                         key={i.categoryId}
                         control={
                             <Checkbox
+                                defaultValue={false}
                                 color="secondary"
                                 name={i.category}
                                 value={i.categoryId}
@@ -103,6 +114,25 @@ export default function ServiceForm() {
         return <></>
     }
 
+    const categoryChips = () => {
+        return categories.map((i) => {
+            return (
+                <Chip
+                    color={i === 1 ? 'info' : 'secondary'}
+                    label={i === 1 ? 'Mẹ' : 'Bé'}
+                    variant="outlined"
+                    sx={{ minWidth: '90px' }}
+                    icon={i === 1 ? <MomIcon /> : <BabyIcon />}
+                />
+            )
+        })
+    }
+
+    const renderCategoryChip = React.useMemo(
+        () => categoryChips,
+        [categories[0], categories[1]]
+    )
+
     const renderCategoryCheckList = React.useMemo(
         () => categoryCheckList,
         [categoriesLoading, categoriesRefetching, categoriesSuccess]
@@ -115,7 +145,7 @@ export default function ServiceForm() {
                     const status = data.data.statusCode
                     if (status === 200) {
                         toast.success('Add successfully', {
-                            position: 'top-left',
+                            position: 'top-center',
                             autoClose: 2000,
                         })
                         reset()
@@ -125,13 +155,18 @@ export default function ServiceForm() {
                     console.log()
                 },
             })
-        } catch (error) {}
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
         <form
             className="flex flex-col items-start justify-between space-y-5 max-w-4/6 min-h-[190px] "
             onSubmit={handleSubmit(onSubmit)}
+            onReset={() => {
+                location.reload()
+            }}
         >
             <FormRow>
                 <InputWrapper>
@@ -150,15 +185,15 @@ export default function ServiceForm() {
                 </InputWrapper>
                 <InputWrapper>
                     <FormInput
-                        name="serviceName"
-                        id="serviceName"
+                        name="name"
+                        id="name"
                         autocomplete="on"
                         label="Service Name"
                         isRequired={true}
                         register={register}
                         placeholder="Enter Service Name"
-                        helperText={errors.serviceName?.message}
-                        helperTextIsError={errors.serviceName !== undefined}
+                        helperText={errors.name?.message}
+                        helperTextIsError={errors.name !== undefined}
                     />
                 </InputWrapper>
                 <InputWrapper>
@@ -169,7 +204,6 @@ export default function ServiceForm() {
                         label="Price"
                         isRequired={true}
                         register={register}
-                        placeholder="Enter Service's Price"
                         helperText={errors.price?.message}
                         helperTextIsError={errors.price !== undefined}
                     />
@@ -202,18 +236,12 @@ export default function ServiceForm() {
                     />
                 </InputWrapper>
             </FormRow>
-            <div className="flex flex-col items-center justify-start">
+            <div className="flex flex-col items-start justify-start">
                 <div className="flex justify-center space-x-2">
                     <Typography fontWeight="bold" fontSize={20}>
                         Category:
                     </Typography>
-                    <Chip
-                        color="secondary"
-                        label="Mẹ"
-                        variant="outlined"
-                        sx={{ minWidth: '90px' }}
-                        icon={<MomIcon />}
-                    />
+                    {renderCategoryChip()}
                 </div>
                 <FormGroup>{renderCategoryCheckList()}</FormGroup>
                 {errors.categories ? (
@@ -236,7 +264,7 @@ export default function ServiceForm() {
                     variant="outlined"
                     className="!bg-white border border-black border-solid !min-w-[90px] max-w-5"
                     loading={addMutation.isPending}
-                    handleClick={() => reset()}
+                    type="reset"
                 >
                     Reset
                 </MyButton>

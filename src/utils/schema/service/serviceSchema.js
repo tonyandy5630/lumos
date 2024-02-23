@@ -14,7 +14,7 @@ const ServiceSchema = object({
         .max(rules.duration.max.limit, rules.duration.max.message)
         .round('floor')
         .required(EMPTY_WARNING),
-    serviceName: string()
+    name: string()
         .trim()
         .max(
             rules.serviceName.maxLength.value,
