@@ -118,6 +118,7 @@ export default function ServiceForm() {
         return categories.map((i) => {
             return (
                 <Chip
+                    key={i}
                     color={i === 1 ? 'info' : 'secondary'}
                     label={i === 1 ? 'Mẹ' : 'Bé'}
                     variant="outlined"
