@@ -1,4 +1,4 @@
-import PendingBookingTable from '@/components/Pages/PartnerPendingBookingPage/PendingBooking'
+import PendingBookingTable from '@/components/Pages/PartnerPendingBookingPage/PendingBookingList'
 import React from 'react'
 
 export const metadata = {

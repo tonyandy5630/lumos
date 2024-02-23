@@ -7,7 +7,6 @@ import PrimaryName from '@/components/PrimaryName'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import BookingInfo from '../../BillDetailPage/BookingInfo'
 import DetailContainer from './DetailContainer'
-import BookingSteps from '@/components/Stepper'
 
 const avatar_size = 90
 
@@ -16,7 +15,7 @@ export default function BookingDetailSection(props) {
     const { bookingDetail } = props
 
     return (
-        <div className="flex items-center justify-start w-full px-10 space-x-3 border border-black py-7 rounded-xl min-h-96 bg-primary">
+        <div className="flex items-center justify-start w-full px-10 space-x-3 border border-black py-7 rounded-xl min-h-80 bg-primary">
             <Image
                 src="/unknown.jpg"
                 width={avatar_size}
@@ -24,7 +23,7 @@ export default function BookingDetailSection(props) {
                 alt="partner's avatar"
                 className="self-start border border-black rounded-xl"
             />
-            <div className="flex flex-col items-start justify-between min-h-full space-y-3">
+            <div className="flex flex-col items-start justify-between min-h-full space-y-1">
                 <div>
                     <PrimaryName>{bookingDetail.partner}</PrimaryName>
                     <Typography
@@ -44,7 +43,7 @@ export default function BookingDetailSection(props) {
                     </Typography>
                 </div>
                 {/* Detail section */}
-                <div className="flex items-start w-full space-x-32 min-h-32">
+                <div className="flex items-start w-full space-x-32in-h-32">
                     <DetailContainer>
                         <BookingInfo title="BookingId">
                             {bookingDetail.booking.id}
