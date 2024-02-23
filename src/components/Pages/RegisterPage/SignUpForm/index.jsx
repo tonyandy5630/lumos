@@ -45,6 +45,7 @@ export default function SignUpForm() {
             })
         } catch (error) {}
     }
+
     return (
         <form
             className="flex flex-col items-start justify-center space-y-5 w-4/6 min-h-[260px] "
