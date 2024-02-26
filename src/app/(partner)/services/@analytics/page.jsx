@@ -6,8 +6,21 @@ import { faker } from '@faker-js/faker'
 import { monthLabels } from '@/utils/chart'
 import BankIcon from '@mui/icons-material/AccountBalanceOutlined'
 import iconStatTabSx from '@/utils/icon'
+import { useQuery } from '@tanstack/react-query'
+import { getStatPartnerServiceAPI } from '@/api/partner.api'
 
 export default function ServicesAnalytics() {
+    const {
+        data,
+        error,
+        isLoading: isStatLoading,
+        isSuccess: isStatSuccess,
+        isError: isStatError,
+    } = useQuery({
+        queryKey: ['/partner-service-stat'],
+        queryFn: getStatPartnerServiceAPI,
+        retry: 2,
+    })
     return (
         <>
             <div className="flex items-center justify-between min-w-full my-5 h-72">
@@ -16,13 +29,21 @@ export default function ServicesAnalytics() {
                         title="Total Services"
                         icon={<BankIcon fontSize="large" sx={iconStatTabSx} />}
                     >
-                        5000
+                        {isStatLoading
+                            ? 'Loading'
+                            : isStatError
+                              ? 'Error'
+                              : data.data.data.totalServices}
                     </StatTab>
                     <StatTab
                         title="NET Profits"
                         icon={<BankIcon fontSize="large" sx={iconStatTabSx} />}
                     >
-                        1200
+                        {isStatLoading
+                            ? 'Loading'
+                            : isStatError
+                              ? 'Error'
+                              : data.data.data.revenue}
                     </StatTab>
                 </div>
                 <LineChart

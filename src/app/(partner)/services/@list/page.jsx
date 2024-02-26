@@ -17,7 +17,7 @@ import Loading from '@/components/Loading'
 export default function ListPage() {
     const [rows, setRows] = React.useState([])
 
-    const { data, error, isLoading, isSuccess } = useQuery({
+    const { data, error, isLoading, isSuccess, isError } = useQuery({
         queryKey: ['get/partner-all-service'],
         queryFn: getPartnerServicesAPI,
         retry: 2,
@@ -41,6 +41,10 @@ export default function ListPage() {
 
     if (isLoading) {
         return <Loading className="w-full min-h-80" />
+    }
+
+    if (isError) {
+        return <div>Something went wrong</div>
     }
 
     if (isSuccess) {
