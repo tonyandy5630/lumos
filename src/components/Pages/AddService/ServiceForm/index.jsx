@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import ServiceSchema from '@/utils/schema/service/serviceSchema'
 import { addPartnerServiceAPI } from '@/api/partner.api'
 import { toast } from 'react-toastify'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import FormRow from './FormRow'
 import Typography from '@mui/material/Typography'
 import InputWrapper from './InputWrapper'
@@ -38,8 +38,6 @@ export default function ServiceForm() {
         },
     })
     const [categories, setCategories] = React.useState([])
-
-    const btnRef = React.useRef()
 
     const {
         data: categoriesData,
