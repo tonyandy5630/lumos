@@ -11,9 +11,12 @@ import { useMutation } from '@tanstack/react-query'
 import { registerAPI } from '@/api/auth.api'
 import { yupResolver } from '@hookform/resolvers/yup'
 import UserSchema from '@/utils/schema/auth/userSchema'
-const { toast } = dynamic(() => import('react-toastify'))
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
+import AUTH_URL from '@/constants/URL/auth'
 
 export default function SignUpForm() {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -37,13 +40,16 @@ export default function SignUpForm() {
                             autoClose: 2000,
                         })
                         reset()
+                        router.push(AUTH_URL.LOGIN)
                     }
                 },
                 onError: (error) => {
                     console.log()
                 },
             })
-        } catch (error) {}
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

@@ -166,7 +166,7 @@ export default function ServiceForm() {
             className="flex flex-col items-start justify-between space-y-5 max-w-4/6 min-h-[190px] "
             onSubmit={handleSubmit(onSubmit)}
             onReset={() => {
-                location.reload()
+                setTimeout(() => location.reload(), 1000)
             }}
         >
             <FormRow>

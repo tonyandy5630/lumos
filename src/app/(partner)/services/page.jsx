@@ -20,7 +20,7 @@ export const metadata = {
 const rows = [
     {
         id: 1,
-        serviceName: 'Male',
+        serviceName: 'Cham soc me va be',
         patientName: 'Nguyen Thi Nhu Quynh',
         rate: 4.6,
         numberOfBooking: 3,

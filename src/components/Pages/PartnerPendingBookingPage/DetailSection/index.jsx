@@ -11,7 +11,7 @@ import { useMutation } from '@tanstack/react-query'
 import { acceptBookingAPI } from '@/api/bookings.api'
 import { useRouter } from 'next/navigation'
 import NURSE_URL from '@/constants/URL/partner'
-
+import { toast } from 'react-toastify'
 const SERVICE = [
     {
         serviceName: 'Chăm sóc mẹ bầu',
@@ -67,6 +67,7 @@ export default function PendingBookingDetail() {
             await acceptMutation.mutateAsync(data, {
                 onSuccess: (data) => {
                     console.log(data)
+                    toast.success('Booking Accepted')
                     router.push(NURSE_URL.PENDING_BOOKING)
                 },
                 onError: (error) => {
