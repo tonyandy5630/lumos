@@ -55,7 +55,7 @@ export default function Table(props) {
     return (
         <Box
             sx={{
-                height: props.height,
+                minHeight: props.height,
                 minWidth: '100%',
                 width: '100%',
                 display: 'flex',
