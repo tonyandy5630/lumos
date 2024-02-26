@@ -4,10 +4,10 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import SupplierIcon from '@mui/icons-material/Person2Outlined'
 import MemberIcon from '@mui/icons-material/GroupOutlined'
 import BookingIcon from '@mui/icons-material/MedicalInformationOutlined'
-import CustomerServiceIcon from '@mui/icons-material/HeadsetMicOutlined'
-import ProfileIcon from '@mui/icons-material/AccountCircleOutlined'
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import ADMIN_URL from '@/constants/URL/admin'
+import AddPartnerIcon from '@mui/icons-material/DomainAdd'
+import PartnerIcon from '@mui/icons-material/Business'
 
 export const options = {
     color: 'secondary',
@@ -35,14 +35,16 @@ const AdminNavItems = [
         href: ADMIN_URL.BOOKING,
     },
     {
-        title: 'Customer Service',
-        icon: <CustomerServiceIcon {...options} />,
-        href: ADMIN_URL.CUSTOMER_SERVICE,
-    },
-    {
-        title: 'Profile',
-        icon: <ProfileIcon {...options} />,
-        href: ADMIN_URL.PROFILE,
+        title: 'Partners',
+        icon: <PartnerIcon {...options} />,
+        href: ADMIN_URL.PARTNER,
+        sub_menu: [
+            {
+                title: 'Add Partner',
+                icon: <AddPartnerIcon {...options} />,
+                href: ADMIN_URL.ADD_PARTNER,
+            },
+        ],
     },
     {
         title: 'Help',

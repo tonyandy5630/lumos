@@ -5,6 +5,8 @@ const BOOKING = '/admin/bookings'
 const CUSTOMER_SERVICE = '/customer-service'
 const PROFILE = '/profile'
 const HELP = '/help'
+const PARTNER = '/admin/partners'
+const ADD_PARTNER = PARTNER + '/add'
 
 const ADMIN_URL = {
     HOMEPAGE,
@@ -14,6 +16,8 @@ const ADMIN_URL = {
     CUSTOMER_SERVICE,
     PROFILE,
     HELP,
+    PARTNER,
+    ADD_PARTNER,
 }
 
 export default ADMIN_URL
