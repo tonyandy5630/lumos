@@ -1,4 +1,5 @@
 import {
+    basePartner,
     basePartnerService,
     getPartnerServicesAPI_URL,
     getStatPartnerServiceAPI_URL,
@@ -12,3 +13,5 @@ export const getPartnerServicesAPI = () => http.get(getPartnerServicesAPI_URL)
 
 export const getStatPartnerServiceAPI = () =>
     http.get(getStatPartnerServiceAPI_URL)
+
+export const addPartnerAPI = (body) => http.post(basePartner, body)
