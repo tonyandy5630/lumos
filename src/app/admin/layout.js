@@ -5,9 +5,8 @@ import React from 'react'
 
 export default function AdminLayoutComponent({ children }) {
     return (
-        <AdminLayout>{children}</AdminLayout>
-        // <Authorize authorizeRole={ROLES.admin}>
-        //     <AdminLayout>{children}</AdminLayout>
-        // </Authorize>
+        <Authorize authorizeRole={ROLES.admin}>
+            <AdminLayout>{children}</AdminLayout>
+        </Authorize>
     )
 }

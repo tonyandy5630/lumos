@@ -22,6 +22,7 @@ export default function AddPartnerForm() {
         formState: { errors },
     } = useForm({
         resolver: yupResolver(PartnerSchema),
+        defaultValues: {},
     })
 
     const addPartnerMutation = useMutation({
@@ -31,7 +32,7 @@ export default function AddPartnerForm() {
 
     const onSubmit = async (body) => {
         try {
-            await addPartnerMutation.mutateAsync(data, {
+            await addPartnerMutation.mutateAsync(body, {
                 onSuccess: (data) => {
                     console.log(data)
                 },
@@ -46,11 +47,30 @@ export default function AddPartnerForm() {
 
     return (
         <form
-            className="flex flex-col items-start justify-between space-y-5 max-w-4/6 min-h-[190px] "
-            onSubmit={handleSubmit(onSubmit, reset)}
+            className="flex flex-col items-start justify-between space-y-5 min-w-full  min-h-[190px] "
+            onSubmit={handleSubmit(onSubmit)}
         >
             <FormRow>
-                <InputWrapper full={true}></InputWrapper>
+                <InputWrapper full={true}>
+                    <FormRow justifyContent="start" pr={0}>
+                        <InputWrapper className="items-start">
+                            <FormInput
+                                name="partnerName"
+                                id="partnerName"
+                                autocomplete="on"
+                                label="Partner Name"
+                                isRequired={true}
+                                register={register}
+                                placeholder="Enter Partner Name"
+                                helperText={errors.partnerName?.message}
+                                helperTextIsError={
+                                    errors.partnerName !== undefined
+                                }
+                                autoFocus={true}
+                            />
+                        </InputWrapper>
+                    </FormRow>
+                </InputWrapper>
                 <InputWrapper>
                     <FormInput
                         name="email"
@@ -62,21 +82,19 @@ export default function AddPartnerForm() {
                         placeholder="Enter Email"
                         helperText={errors.email?.message}
                         helperTextIsError={errors.email !== undefined}
-                        autoFocus={true}
                     />
                 </InputWrapper>
                 <InputWrapper>
                     <FormInput
-                        name="partnerName"
-                        id="partnerName"
+                        name="licenseNumber"
+                        id="licenseNumber"
                         autocomplete="on"
-                        label="Partner Name"
+                        label="License Number"
                         isRequired={true}
                         register={register}
-                        placeholder="Enter Partner Name"
-                        helperText={errors.partnerName?.message}
-                        helperTextIsError={errors.partnerName !== undefined}
-                        autoFocus={true}
+                        placeholder="Enter License Number"
+                        helperText={errors.licenseNumber?.message}
+                        helperTextIsError={errors.licenseNumber !== undefined}
                     />
                 </InputWrapper>
                 <InputWrapper>
@@ -90,7 +108,6 @@ export default function AddPartnerForm() {
                         placeholder="Enter Display Name"
                         helperText={errors.displayName?.message}
                         helperTextIsError={errors.displayName !== undefined}
-                        autoFocus={true}
                     />
                 </InputWrapper>
                 <InputWrapper>
@@ -104,7 +121,6 @@ export default function AddPartnerForm() {
                         placeholder="Enter phone"
                         helperText={errors.phone?.message}
                         helperTextIsError={errors.phone !== undefined}
-                        autoFocus={true}
                     />
                 </InputWrapper>
                 <InputWrapper full={true}>
@@ -118,7 +134,6 @@ export default function AddPartnerForm() {
                         placeholder="Enter Address Name"
                         helperText={errors.address?.message}
                         helperTextIsError={errors.address !== undefined}
-                        autoFocus={true}
                     />
                 </InputWrapper>
             </FormRow>

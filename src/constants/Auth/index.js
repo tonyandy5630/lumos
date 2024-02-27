@@ -1,5 +1,6 @@
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const PHONE_REGEX = /^(?:\+?\d{10,15}|\d{10})$/
+export const BUSINESS_LICENSE_REGEX = /^[0-9]{2}[A-Z]-[0-9]{1,5}$/
 
 export const LENGTH_WARNING = 'At least 6 - 20 characters'
 export const EMPTY_WARNING = 'Required'

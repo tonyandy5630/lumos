@@ -1,4 +1,5 @@
 import {
+    BUSINESS_LICENSE_REGEX,
     EMAIL_REGEX,
     LENGTH_WARNING,
     PHONE_LENGTH_WARNING,
@@ -17,11 +18,11 @@ const getRules = (getValues) => ({
         },
     },
     displayName: {
-        maxLength: {
+        minLength: {
             value: 5,
             message: LENGTH_WARNING,
         },
-        minLength: {
+        maxLength: {
             value: 50,
             message: LENGTH_WARNING,
         },
@@ -62,6 +63,12 @@ const getRules = (getValues) => ({
         maxLength: {
             value: 100,
             message: LENGTH_WARNING,
+        },
+    },
+    licenseNumber: {
+        pattern: {
+            value: BUSINESS_LICENSE_REGEX,
+            message: 'Not a valid license',
         },
     },
 })

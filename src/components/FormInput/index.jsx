@@ -73,7 +73,6 @@ export default function FormInput(props) {
                 maxRows={multiline ? 4 : ''}
                 sx={{
                     fontSize: 14,
-
                     ...sx,
                 }}
                 placeholder={placeholder}

@@ -1,5 +1,5 @@
 import getRules from '@/utils/rules/partner'
-import { object, string, ref } from 'yup'
+import { object, string } from 'yup'
 
 const rules = getRules()
 
@@ -38,6 +38,12 @@ const PartnerSchema = object({
         .required()
         .min(rules.address.minLength.value, rules.address.minLength.message)
         .max(rules.address.maxLength.value, rules.address.maxLength.message),
+    licenseNumber: string()
+        .required()
+        .matches(
+            rules.licenseNumber.pattern.value,
+            rules.licenseNumber.pattern.message
+        ),
 })
 
 export default PartnerSchema
