@@ -1,5 +1,5 @@
 import getRules from '@/utils/rules/partner'
-import { object, string } from 'yup'
+import { object, string, number } from 'yup'
 
 const rules = getRules()
 
@@ -24,6 +24,7 @@ const PartnerSchema = object({
             rules.displayName.maxLength.value,
             rules.displayName.maxLength.message
         ),
+    typeId: number().required(),
     email: string()
         .required()
         .matches(rules.email.pattern.value, rules.email.pattern.message)
@@ -33,12 +34,12 @@ const PartnerSchema = object({
         .required()
         .matches(rules.phone.pattern.value, rules.phone.pattern.message)
         .min(rules.phone.minLength.value, rules.phone.minLength.message)
-        .max(rules.email.maxLength.value, rules.email.maxLength.message),
+        .max(rules.phone.maxLength.value, rules.phone.maxLength.message),
     address: string()
         .required()
         .min(rules.address.minLength.value, rules.address.minLength.message)
         .max(rules.address.maxLength.value, rules.address.maxLength.message),
-    licenseNumber: string()
+    businessLicenseNumber: string()
         .required()
         .matches(
             rules.licenseNumber.pattern.value,

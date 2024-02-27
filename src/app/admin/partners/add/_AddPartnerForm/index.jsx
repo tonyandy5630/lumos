@@ -10,6 +10,7 @@ import FormRow from '@/components/FormRow'
 import InputWrapper from '@/components/InputWrapper'
 import FormInput from '@/components/FormInput'
 import MyButton from '@/components/Button'
+import { handleErrorMutation } from '@/utils/handleErrors'
 
 export default function AddPartnerForm() {
     const {
@@ -19,10 +20,13 @@ export default function AddPartnerForm() {
         setValue,
         getValues,
         control,
+        setError,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(PartnerSchema),
-        defaultValues: {},
+        defaultValues: {
+            typeId: 1,
+        },
     })
 
     const addPartnerMutation = useMutation({
@@ -34,14 +38,23 @@ export default function AddPartnerForm() {
         try {
             await addPartnerMutation.mutateAsync(body, {
                 onSuccess: (data) => {
-                    console.log(data)
+                    toast.success(data.data.data.message)
+                    reset()
                 },
                 onError: (error) => {
-                    console.log(error)
+                    const errors = error.response.data.data
+                    for (const [key, value] of Object.entries(errors)) {
+                        if (value !== null) {
+                            setError(key, {
+                                type: 'custom',
+                                message: value,
+                            })
+                        }
+                    }
                 },
             })
         } catch (error) {
-            toast.error('Unhandled Error')
+            handleErrorMutation(error)
         }
     }
 
@@ -86,15 +99,17 @@ export default function AddPartnerForm() {
                 </InputWrapper>
                 <InputWrapper>
                     <FormInput
-                        name="licenseNumber"
-                        id="licenseNumber"
+                        name="businessLicenseNumber"
+                        id="businessLicenseNumber"
                         autocomplete="on"
                         label="License Number"
                         isRequired={true}
                         register={register}
                         placeholder="Enter License Number"
-                        helperText={errors.licenseNumber?.message}
-                        helperTextIsError={errors.licenseNumber !== undefined}
+                        helperText={errors.businessLicenseNumber?.message}
+                        helperTextIsError={
+                            errors.businessLicenseNumber !== undefined
+                        }
                     />
                 </InputWrapper>
                 <InputWrapper>

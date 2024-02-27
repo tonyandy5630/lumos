@@ -52,7 +52,7 @@ const getRules = (getValues) => ({
         },
         pattern: {
             value: PHONE_REGEX,
-            message: `Not a valid email format`,
+            message: `Not a valid phone format`,
         },
     },
     address: {
