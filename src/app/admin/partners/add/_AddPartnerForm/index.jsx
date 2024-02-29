@@ -17,10 +17,6 @@ export default function AddPartnerForm() {
         register,
         handleSubmit,
         reset,
-        setValue,
-        getValues,
-        control,
-        setError,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(PartnerSchema),
