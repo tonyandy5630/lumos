@@ -1,7 +1,5 @@
-// @ts-nocheck
 import React from 'react'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
-import SupplierIcon from '@mui/icons-material/Person2Outlined'
 import MemberIcon from '@mui/icons-material/GroupOutlined'
 import BookingIcon from '@mui/icons-material/MedicalInformationOutlined'
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
@@ -18,11 +16,6 @@ const AdminNavItems = [
         title: 'Homepage',
         icon: <HomeOutlinedIcon {...options} />,
         href: ADMIN_URL.HOMEPAGE,
-    },
-    {
-        title: 'Suppliers',
-        icon: <SupplierIcon {...options} />,
-        href: ADMIN_URL.SUPPLIER,
     },
     {
         title: 'Members',

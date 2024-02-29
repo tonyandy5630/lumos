@@ -6,7 +6,7 @@ import {
     PHONE_REGEX,
 } from '@/constants/Auth'
 
-const getRules = (getValues) => ({
+const getRules = () => ({
     partnerName: {
         minLength: {
             value: 5,
