@@ -1,6 +1,6 @@
 export const pendingBookingColumns = [
     {
-        accessorKey: 'code',
+        accessorKey: 'bookingId',
         header: 'Code',
         size: 30,
     },
@@ -12,14 +12,20 @@ export const pendingBookingColumns = [
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'date',
-        header: 'Date',
+        accessorKey: 'bookingDate',
+        header: 'Book Date',
         size: 200,
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'time',
-        header: 'Rate',
+        accessorKey: 'address',
+        header: 'Address',
+        size: 150,
+        headerClassName: 'bg-primary',
+    },
+    {
+        accessorKey: 'status',
+        header: 'Status',
         size: 150,
         headerClassName: 'bg-primary',
     },

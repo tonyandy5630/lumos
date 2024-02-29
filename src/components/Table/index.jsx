@@ -15,6 +15,9 @@ export default function Table(props) {
     const table = useMaterialReactTable({
         columns: props.columns,
         data: props.rows,
+        state: {
+            isLoading: props.isLoading,
+        },
         enableBottomToolbar: true,
         enableStickyHeader: true,
         enableFullScreenToggle: false,
