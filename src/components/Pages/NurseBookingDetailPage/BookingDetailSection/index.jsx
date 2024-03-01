@@ -13,7 +13,6 @@ const avatar_size = 90
 export default function BookingDetailSection(props) {
     const bookingId = useParams()
     const { bookingDetail } = props
-
     return (
         <div className="flex items-center justify-start w-full px-10 space-x-3 border border-black py-7 rounded-xl min-h-80 bg-primary">
             <Image
@@ -25,7 +24,7 @@ export default function BookingDetailSection(props) {
             />
             <div className="flex flex-col items-start justify-between min-h-full space-y-1">
                 <div>
-                    <PrimaryName>{bookingDetail.partner}</PrimaryName>
+                    <PrimaryName>{bookingDetail?.partner}</PrimaryName>
                     <Typography
                         variant="subtitle1"
                         fontWeight="bold"
@@ -37,33 +36,25 @@ export default function BookingDetailSection(props) {
                                 mr: 1,
                             }}
                         />
-                        <span>{bookingDetail.date}</span>
+                        <span>{bookingDetail?.bookingDate?.date}</span>
                         <span className="mx-2">-</span>
-                        <span>{bookingDetail.booking.time}</span>
+                        <span>{bookingDetail?.bookingDate?.time}</span>
                     </Typography>
+                    <PrimaryName className="!text-4xl">
+                        {bookingDetail?.customerName}
+                    </PrimaryName>
                 </div>
                 {/* Detail section */}
                 <div className="flex items-start w-full space-x-32in-h-32">
                     <DetailContainer>
                         <BookingInfo title="BookingId">
-                            {bookingDetail.booking.id}
+                            {bookingDetail?.bookingId}
                         </BookingInfo>
                         <BookingInfo title="Booking Date">
-                            {bookingDetail.booking.date}
+                            {bookingDetail?.bookingDate.date}
                         </BookingInfo>
                         <BookingInfo title="Address">
-                            {bookingDetail.booking.address}
-                        </BookingInfo>
-                    </DetailContainer>
-                    <DetailContainer>
-                        <BookingInfo title="BookingId">
-                            {bookingDetail.booking.id}
-                        </BookingInfo>
-                        <BookingInfo title="Booking Date">
-                            {bookingDetail.booking.date}
-                        </BookingInfo>
-                        <BookingInfo title="Address">
-                            {bookingDetail.booking.address}
+                            {bookingDetail?.address}
                         </BookingInfo>
                     </DetailContainer>
                 </div>
@@ -73,7 +64,7 @@ export default function BookingDetailSection(props) {
                         Booking note:
                     </span>
                     <Typography paragraph>
-                        {bookingDetail.booking.note}
+                        {bookingDetail?.booking?.note}
                     </Typography>
                 </div>
             </div>

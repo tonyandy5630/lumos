@@ -16,6 +16,7 @@ export default function PendingBookingTable() {
         queryFn: getPartnerPendingBookingsAPI,
         retry: 2,
         refetchOnWindowFocus: false,
+        retryOnMount: true,
     })
 
     const rows = useMemo(() => {
