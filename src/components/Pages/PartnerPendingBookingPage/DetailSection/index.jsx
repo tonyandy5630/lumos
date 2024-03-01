@@ -74,7 +74,6 @@ export default function PendingBookingDetail() {
     useEffect(() => {
         if (isSuccess) {
             const res = data.data.data
-            console.log(res)
             const {
                 partner,
                 bookingId,
@@ -101,9 +100,9 @@ export default function PendingBookingDetail() {
         }
     }, [isSuccess])
 
-    const handleAccept = async (data) => {
+    const handleAccept = async () => {
         try {
-            const data = {}
+            const data = { bookingId: booking?.bookingDetail?.bookingId }
             await acceptMutation.mutateAsync(data, {
                 onSuccess: (data) => {
                     console.log(data)
@@ -111,6 +110,7 @@ export default function PendingBookingDetail() {
                     router.push(NURSE_URL.PENDING_BOOKING)
                 },
                 onError: (error) => {
+                    console.log(data)
                     console.log(error)
                 },
             })
@@ -138,7 +138,9 @@ export default function PendingBookingDetail() {
                         type="button"
                         className="hover:bg-mosh hover:text-white "
                         handleClick={handleAccept}
-                        loading={acceptMutation.isPending}
+                        isLoading={
+                            acceptMutation.isPending || acceptMutation.isPending
+                        }
                     >
                         Accept
                     </MyButton>
@@ -147,6 +149,9 @@ export default function PendingBookingDetail() {
                     <MyButton
                         variant="outlined"
                         type="button"
+                        isLoading={
+                            acceptMutation.isPending || acceptMutation.isPending
+                        }
                         className="!text-red-600 hover:bg-mosh hover:text-white"
                     >
                         Decline
