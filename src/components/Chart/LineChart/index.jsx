@@ -1,5 +1,7 @@
 'use client'
-import React, { Suspense, useMemo } from 'react'
+import { useMemo } from 'react'
+import dynamic from 'next/dynamic'
+const Typography = dynamic(() => import('@mui/material/Typography'))
 import { Line } from 'react-chartjs-2'
 import {
     Chart as ChartJS,
@@ -13,6 +15,7 @@ import {
     Filler,
 } from 'chart.js'
 import { getDatasets, monthLabels } from '@/utils/chart'
+import Skeleton from '@mui/material/Skeleton'
 
 ChartJS.register(
     CategoryScale,
@@ -54,16 +57,32 @@ export default function LineChart(props) {
             maintainAspectRatio: false,
         }
     }, [])
-
+    console.log(props.isLoading ? props.isLoading : undefined)
     return (
         <div
-            className={` ${props.className} p-4 my-3 bg-white border-2 border-solid rounded-xl border-secondary`}
+            className={` ${
+                props.className
+            } p-4 my-3 bg-white border-2 border-solid rounded-xl ${
+                props.isError ? 'border-error' : 'border-secondary'
+            }`}
         >
-            <Line
-                options={options}
-                data={data}
-                width={`${props.width ?? 900}`}
-            />
+            {props.isError && (
+                <Typography className="text-error">
+                    Something went wrong
+                </Typography>
+            )}
+            {props.isLoading ? (
+                <Skeleton
+                    variant="rounded"
+                    className="min-w-full min-h-full !rounded-xl"
+                />
+            ) : (
+                <Line
+                    options={options}
+                    data={data}
+                    width={`${props.width ?? 900}`}
+                />
+            )}
         </div>
     )
 }
