@@ -5,7 +5,7 @@ import Rating from '@mui/material/Rating'
 export const topSupplierCols = [
     {
         accessorKey: 'code',
-        header: 'ID',
+        header: 'Code',
         size: 30,
     },
     {
@@ -37,8 +37,8 @@ export const topSupplierCols = [
 
 export const topServiceCols = [
     {
-        accessorKey: 'id',
-        header: 'ID',
+        accessorKey: 'serviceCode',
+        header: 'Code',
         size: 30,
     },
     {
@@ -49,14 +49,20 @@ export const topServiceCols = [
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'supplierName',
+        accessorKey: 'partnerName',
         header: 'Supplier Name',
         size: 200,
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'rate',
-        header: 'Rate',
+        accessorKey: 'numberOfBooking',
+        header: 'Booked Times',
+        size: 200,
+        headerClassName: 'bg-primary',
+    },
+    {
+        accessorKey: 'rating',
+        header: 'Rating',
         size: 150,
         headerClassName: 'bg-primary',
         Cell: ({ cell }) => (

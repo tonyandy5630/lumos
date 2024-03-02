@@ -6,61 +6,7 @@ import {
     topSupplierCols,
 } from '@/constants/Pages/admin/homepage/table/columns'
 import { useQuery } from '@tanstack/react-query'
-import { getTopPartnerRatingAPI } from '@/api/admin.api'
-import { formatTopPartnerData } from './_formatData/topPartner'
-
-const supplierRows = [
-    {
-        id: 1,
-        supplierName: 'Nguyen Thi Nhu Quynh',
-        email: 'tonyandy789@fpt.edu.vn',
-        rate: 4.7,
-    },
-    {
-        id: 1,
-        supplierName: 'Nguyen Thi Nhu Quynh',
-        email: 'tonyandy789@fpt.edu.vn',
-        rate: 4.9,
-    },
-    {
-        id: 1,
-        supplierName: 'Nguyen Thi Nhu Quynh',
-        email: 'tonyandy789@fpt.edu.vn',
-        rate: 4.3,
-    },
-]
-const serviceRows = [
-    {
-        id: 1,
-        serviceName: 'Cham soc tre em duoi 3 thang',
-        supplierName: 'Bui Thanh Tu',
-        rate: 4.2,
-    },
-    {
-        id: 1,
-        serviceName: 'Cham soc tre em duoi 3 thang',
-        supplierName: 'Bui Thanh Tu',
-        rate: 4.4,
-    },
-    {
-        id: 1,
-        serviceName: 'Cham soc tre em duoi 3 thang',
-        supplierName: 'Bui Thanh Tu',
-        rate: 4.3,
-    },
-    {
-        id: 1,
-        serviceName: 'Cham soc tre em duoi 3 thang',
-        supplierName: 'Bui Thanh Tu',
-        rate: 4.3,
-    },
-    {
-        id: 1,
-        serviceName: 'Cham soc tre em duoi 3 thang',
-        supplierName: 'Bui Thanh Tu',
-        rate: 4.3,
-    },
-]
+import { getTopPartnerRatingAPI, getTopServiceBookedAPI } from '@/api/admin.api'
 
 export default function AdminLists() {
     const {
@@ -69,8 +15,20 @@ export default function AdminLists() {
         isSuccess: isPartnerSuccess,
         isError: isPartnerError,
     } = useQuery({
-        queryKey: ['/top-services'],
+        queryKey: ['/top-partner'],
         queryFn: () => getTopPartnerRatingAPI(5),
+        retry: 2,
+        refetchOnWindowFocus: false,
+    })
+
+    const {
+        data: serviceData,
+        isLoading: isServiceLoading,
+        isSuccess: isServiceSuccess,
+        isError: isServiceError,
+    } = useQuery({
+        queryKey: ['/top-services'],
+        queryFn: () => getTopServiceBookedAPI(5),
         retry: 2,
         refetchOnWindowFocus: false,
     })
@@ -78,18 +36,23 @@ export default function AdminLists() {
     const topPartners = useMemo(() => {
         if (isPartnerSuccess) {
             const res = partnerData.data.data
-            const formatData = res.map((partner) =>
-                formatTopPartnerData(partner)
-            )
-            return formatData
+            return res
         }
         return []
     }, [isPartnerSuccess])
 
+    const topServices = useMemo(() => {
+        if (isServiceSuccess) {
+            const res = serviceData.data.data
+            return res
+        }
+        return []
+    }, [isServiceSuccess])
+
     return (
         <>
             <Table
-                title="Top Partners"
+                title="Top Partners Rating"
                 rows={topPartners}
                 isLoading={isPartnerLoading}
                 columns={topSupplierCols}
@@ -97,8 +60,10 @@ export default function AdminLists() {
                 isError={isPartnerError}
             />
             <Table
-                title="Top Service"
-                rows={serviceRows}
+                title="Top Service Booked"
+                rows={topServices}
+                isLoading={isServiceLoading}
+                isError={isServiceError}
                 columns={topServiceCols}
             />
         </>

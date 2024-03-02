@@ -3,6 +3,7 @@ import {
     getAppMonthlyRevenueAPI_URL,
     getAppNewMonthlyUserAPI_URL,
     getTopPartnerRatingAPI_URL,
+    getTopServiceBookedAPI_URL,
 } from '@/constants/API-URL/admin'
 import http from '@/utils/http'
 
@@ -17,3 +18,6 @@ export const getAppRevenueMonthlyAPI = (year) =>
 
 export const getTopPartnerRatingAPI = (top) =>
     http.get(getTopPartnerRatingAPI_URL(top))
+
+export const getTopServiceBookedAPI = (top) =>
+    http.get(getTopServiceBookedAPI_URL(top))
