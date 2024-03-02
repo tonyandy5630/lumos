@@ -62,7 +62,7 @@ export default async function AdminLists() {
     return (
         <>
             <Table
-                title="Top Suppliers"
+                title="Top Partners"
                 rows={supplierRows}
                 columns={topSupplierCols}
                 height={400}

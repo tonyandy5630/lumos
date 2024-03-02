@@ -1,28 +1,43 @@
 'use client'
 import { useMemo, useState } from 'react'
-import { monthLabels } from '@/utils/chart'
-import { faker } from '@faker-js/faker'
 import { useQuery } from '@tanstack/react-query'
 import LineChart from '@/components/Chart/LineChart'
-import { getAppNewMonthlyUserAPI } from '@/api/admin.api'
+import {
+    getAppNewMonthlyUserAPI,
+    getAppRevenueMonthlyAPI,
+} from '@/api/admin.api'
 
 export default function AdminAnalytics() {
     const [userYear, setUserYear] = useState(new Date().getFullYear() - 1)
     const {
-        data,
+        data: userData,
         isLoading: isUserChartLoading,
-        isSuccess,
+        isSuccess: isUserChartSuccess,
         isError: isUserChartError,
     } = useQuery({
         queryKey: ['/app/user/monthly'],
         queryFn: () => getAppNewMonthlyUserAPI(userYear),
         retry: 2,
         enabled: userYear !== undefined,
+        refetchOnWindowFocus: false,
+    })
+
+    const {
+        data: revenueData,
+        isLoading: isRevenueChartLoading,
+        isSuccess: isRevenueChartSuccess,
+        isError: isRevenueChartError,
+    } = useQuery({
+        queryKey: ['app/revenue/monthly'],
+        queryFn: () => getAppRevenueMonthlyAPI(userYear),
+        retry: 2,
+        enabled: userYear !== undefined,
+        refetchOnWindowFocus: false,
     })
 
     const userChart = useMemo(() => {
-        if (isSuccess) {
-            const res = data.data.data
+        if (isUserChartSuccess) {
+            const res = userData.data.data
             const { newCustomerMonthly, newPartnerMonthly } = res
 
             return {
@@ -34,7 +49,15 @@ export default function AdminAnalytics() {
             partnerChart: [],
             customerChart: [],
         }
-    }, [isSuccess])
+    }, [isUserChartSuccess])
+
+    const revenueChart = useMemo(() => {
+        if (isRevenueChartSuccess) {
+            const res = revenueData?.data.data.data
+            return res
+        }
+        return []
+    }, [isRevenueChartSuccess])
 
     return (
         <>
@@ -60,11 +83,11 @@ export default function AdminAnalytics() {
                 title="Revenue in money"
                 showLegend={false}
                 className="w-full h-80"
+                isLoading={isRevenueChartLoading}
+                isError={isRevenueChartError}
                 data={[
                     {
-                        data: monthLabels.map(() =>
-                            faker.number.int({ min: 0, max: 100000 })
-                        ),
+                        data: revenueChart,
                         label: 'VND',
                     },
                 ]}

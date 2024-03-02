@@ -6,3 +6,6 @@ export const getAdminDashBoardStatAPI_URL = `${baseAdmin}/dashboard/stat`
 
 export const getAppNewMonthlyUserAPI_URL = (year) =>
     `${baseAdmin}/user/${year}/monthly`
+
+export const getAppMonthlyRevenueAPI_URL = (year) =>
+    `${baseAdmin}/revenue/monthly/${year}`
