@@ -8,7 +8,7 @@ import {
 } from '@/api/admin.api'
 
 export default function AdminAnalytics() {
-    const [userYear, setUserYear] = useState(new Date().getFullYear() - 1)
+    const [userYear, setUserYear] = useState(new Date().getFullYear())
     const {
         data: userData,
         isLoading: isUserChartLoading,

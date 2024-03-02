@@ -2,6 +2,7 @@ import {
     getAdminDashBoardStatAPI_URL,
     getAppMonthlyRevenueAPI_URL,
     getAppNewMonthlyUserAPI_URL,
+    getTopPartnerRatingAPI_URL,
 } from '@/constants/API-URL/admin'
 import http from '@/utils/http'
 
@@ -13,3 +14,6 @@ export const getAppNewMonthlyUserAPI = (year) =>
 
 export const getAppRevenueMonthlyAPI = (year) =>
     http.get(getAppMonthlyRevenueAPI_URL(year))
+
+export const getTopPartnerRatingAPI = (top) =>
+    http.get(getTopPartnerRatingAPI_URL(top))

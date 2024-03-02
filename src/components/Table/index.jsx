@@ -7,16 +7,28 @@ import Typography from '@mui/material/Typography'
 //* Use Pagination on api
 
 export default function Table(props) {
+    const {
+        columns,
+        rows,
+        isLoading,
+        isError,
+        secondary,
+        hasActionRow,
+        renderRowActions,
+        height,
+        title,
+        children,
+    } = props
     const [paginationModel, setPaginationModel] = React.useState({
         page: 0,
         pageSize: 5,
     })
 
     const table = useMaterialReactTable({
-        columns: props.columns,
-        data: props.rows,
+        columns: columns,
+        data: rows,
         state: {
-            isLoading: props.isLoading,
+            isLoading: isLoading,
         },
         enableBottomToolbar: true,
         enableStickyHeader: true,
@@ -42,23 +54,21 @@ export default function Table(props) {
         enableHiding: false,
         muiTableHeadCellProps: {
             sx: {
-                bgcolor: `${
-                    props.secondary ? 'secondary.main' : 'primary.main'
-                }`,
+                bgcolor: `${secondary ? 'secondary.main' : 'primary.main'}`,
                 '& .Mui-TableHeadCell-Content': {
                     justifyContent: 'space-between',
                 },
             },
         },
-        enableRowActions: props.hasActionRow ?? false,
+        enableRowActions: hasActionRow ?? false,
         positionActionsColumn: 'last',
-        renderRowActions: props.renderRowActions,
+        renderRowActions: renderRowActions,
     })
 
     return (
         <Box
             sx={{
-                minHeight: props.height,
+                minHeight: height,
                 minWidth: '100%',
                 width: '100%',
                 display: 'flex',
@@ -68,9 +78,16 @@ export default function Table(props) {
             }}
         >
             <Typography variant="h5" fontWeight="bold">
-                {props.title}
+                {title}
             </Typography>
-            {props.children}
+            {children}
+            {isError ? (
+                <Typography className="text-error">
+                    Something went wrong
+                </Typography>
+            ) : (
+                <></>
+            )}
             <MaterialReactTable table={table} />
         </Box>
     )

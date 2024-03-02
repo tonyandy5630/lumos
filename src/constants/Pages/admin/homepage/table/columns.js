@@ -4,13 +4,13 @@ import Rating from '@mui/material/Rating'
 
 export const topSupplierCols = [
     {
-        accessorKey: 'id',
+        accessorKey: 'code',
         header: 'ID',
         size: 30,
     },
     {
-        accessorKey: 'supplierName',
-        header: 'Supplier Name',
+        accessorKey: 'displayName',
+        header: 'Partner Name',
         sortable: false,
         size: 200,
         headerClassName: 'bg-primary',
@@ -22,8 +22,8 @@ export const topSupplierCols = [
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'rate',
-        header: 'Rate',
+        accessorKey: 'rating',
+        header: 'Rating',
         size: 150,
         headerClassName: 'bg-primary',
         Cell: ({ cell }) => (

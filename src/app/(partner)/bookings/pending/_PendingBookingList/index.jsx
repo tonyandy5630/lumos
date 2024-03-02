@@ -8,7 +8,6 @@ import NURSE_URL from '@/constants/URL/partner'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerPendingBookingsAPI } from '@/api/partner.api'
 import { toPendingTableData } from '../_formatData/pending'
-const Typography = dynamic(() => import('@mui/material/Typography'))
 
 export default function PendingBookingTable() {
     const { data, isLoading, isSuccess, isError } = useQuery({
@@ -36,6 +35,7 @@ export default function PendingBookingTable() {
             rows={rows}
             isLoading={isLoading}
             hasActionRow={true}
+            isError={isError}
             renderRowActions={({ row }) => {
                 const code = row.original.bookingId
                 return (
@@ -44,14 +44,6 @@ export default function PendingBookingTable() {
                     />
                 )
             }}
-        >
-            {isError ? (
-                <Typography className="text-error">
-                    Something went wrong
-                </Typography>
-            ) : (
-                <></>
-            )}
-        </Table>
+        />
     )
 }

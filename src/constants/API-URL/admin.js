@@ -1,4 +1,4 @@
-import { admin } from '.'
+import { admin, partner } from '.'
 
 export const baseAdmin = `${process.env.NEXT_PUBLIC_SERVER_URL}/${admin}`
 
@@ -9,3 +9,6 @@ export const getAppNewMonthlyUserAPI_URL = (year) =>
 
 export const getAppMonthlyRevenueAPI_URL = (year) =>
     `${baseAdmin}/revenue/monthly/${year}`
+
+export const getTopPartnerRatingAPI_URL = (top) =>
+    `${baseAdmin}/${top}/${partner}`
