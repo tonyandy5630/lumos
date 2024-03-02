@@ -57,7 +57,6 @@ export default function LineChart(props) {
             maintainAspectRatio: false,
         }
     }, [])
-    console.log(props.isLoading ? props.isLoading : undefined)
     return (
         <div
             className={` ${
