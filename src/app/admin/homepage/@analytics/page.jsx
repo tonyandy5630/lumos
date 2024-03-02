@@ -18,10 +18,8 @@ export default function AdminAnalytics() {
         queryKey: ['/app/user/monthly'],
         queryFn: () => getAppNewMonthlyUserAPI(userYear),
         retry: 2,
-        enabled: userYear !== undefined,
         refetchOnWindowFocus: false,
     })
-
     const {
         data: revenueData,
         isLoading: isRevenueChartLoading,
@@ -31,7 +29,6 @@ export default function AdminAnalytics() {
         queryKey: ['app/revenue/monthly'],
         queryFn: () => getAppRevenueMonthlyAPI(userYear),
         retry: 2,
-        enabled: userYear !== undefined,
         refetchOnWindowFocus: false,
     })
 
