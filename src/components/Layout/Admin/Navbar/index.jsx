@@ -32,6 +32,7 @@ export default function Navbar() {
                     height={drawerWidth - 30}
                     placeholder="blur"
                     blurDataURL="/lumos_text.png"
+                    className="min-w-full max-h-16"
                 />
             </Toolbar>
             <Divider />
