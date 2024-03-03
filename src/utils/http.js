@@ -16,8 +16,6 @@ class Http {
                 'Content-Type': 'application/json',
             },
         })
-        console.log(process.env.NODE_ENV)
-
         this.instance.interceptors.request.use(
             (config) => {
                 if (this.accessToken !== '' && config.headers) {

@@ -6,13 +6,13 @@ import DetailButton from '@/components/DetailButton'
 import NURSE_URL from '@/constants/URL/partner'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerStatusBookingsAPI } from '@/api/partner.api'
-import { toPendingTableData } from '../../_formatData/pending'
-import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+import { toPendingTableData } from '../_formatData/pending'
 
-export default function PendingBookingTable() {
+export default function StatusBookingTable(props) {
+    const { status } = props
     const { data, isLoading, isSuccess, isError } = useQuery({
-        queryKey: ['/partner/bookings/pending'],
-        queryFn: () => getPartnerStatusBookingsAPI(BOOKING_STATUS_ENUM.Pending),
+        queryKey: ['/partner/bookings/' + status],
+        queryFn: () => getPartnerStatusBookingsAPI(status),
         retry: 2,
         refetchOnWindowFocus: false,
         retryOnMount: true,
@@ -29,7 +29,6 @@ export default function PendingBookingTable() {
 
     return (
         <Table
-            title="Pending Booking"
             height={500}
             columns={BookingColumns}
             rows={rows}

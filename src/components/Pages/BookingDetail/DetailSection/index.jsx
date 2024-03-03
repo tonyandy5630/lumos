@@ -14,7 +14,7 @@ import { toast } from 'react-toastify'
 import { useParams } from 'next/navigation'
 const Typography = dynamic(() => import('@mui/material/Typography'))
 
-export default function PendingBookingDetail() {
+export default function BookingDetail() {
     const router = useRouter()
     const params = useParams()
     const [booking, setBooking] = useState({
@@ -23,7 +23,7 @@ export default function PendingBookingDetail() {
     })
 
     const acceptMutation = useMutation({
-        mutationKey: '/accept/bookings',
+        mutationKey: '/accept/bookings' + params.id.toString(),
         mutationFn: acceptBookingAPI,
     })
     const { data, isLoading, isSuccess, isError } = useQuery({
@@ -43,6 +43,7 @@ export default function PendingBookingDetail() {
                 address,
                 medicalServices,
                 customer,
+                status,
             } = res
             const newBookingDate = new Date(bookingDate).toLocaleDateString()
             const bookingTime = new Date(bookingDate).toLocaleTimeString()
@@ -56,6 +57,7 @@ export default function PendingBookingDetail() {
                         time: bookingTime,
                     },
                     address,
+                    status,
                 },
                 medicalReports: medicalServices,
             })
@@ -67,12 +69,10 @@ export default function PendingBookingDetail() {
             const data = { bookingId: booking?.bookingDetail?.bookingId }
             await acceptMutation.mutateAsync(data, {
                 onSuccess: (data) => {
-                    console.log(data)
                     toast.success('Booking Accepted')
                     router.push(NURSE_URL.PENDING_BOOKING)
                 },
                 onError: (error) => {
-                    console.log(data)
                     console.log(error)
                 },
             })

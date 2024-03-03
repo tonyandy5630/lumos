@@ -1,4 +1,6 @@
-import PendingBookingTable from '@/app/(partner)/bookings/pending/_PendingBookingList'
+import PendingBookingTable from '@/app/(partner)/bookings/_StatusBookingTable'
+import PageTitle from '@/components/PageTitle'
+import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
 import React from 'react'
 
 export const metadata = {
@@ -6,5 +8,10 @@ export const metadata = {
 }
 
 export default function PendingBookingPage() {
-    return <PendingBookingTable />
+    return (
+        <>
+            <PageTitle>Pending Bookings</PageTitle>
+            <PendingBookingTable status={BOOKING_STATUS_ENUM.Pending} />
+        </>
+    )
 }
