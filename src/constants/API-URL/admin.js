@@ -1,7 +1,8 @@
-import { admin, partner, service } from '.'
+import { admin, partner } from '.'
+import root from '.'
 import { baseBookings } from './bookings'
 
-export const baseAdmin = `${process.env.NEXT_PUBLIC_SERVER_URL}/${admin}`
+export const baseAdmin = `${root}/${admin}`
 
 export const getAdminDashBoardStatAPI_URL = `${baseAdmin}/dashboard/stat`
 
