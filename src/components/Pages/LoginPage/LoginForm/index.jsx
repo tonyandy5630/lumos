@@ -80,7 +80,7 @@ export default function LoginForm() {
                     color: '#fff',
                     zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
-                open={loginMutation.isPending}
+                open={loginMutation.isPending || loginMutation.isSuccess}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
