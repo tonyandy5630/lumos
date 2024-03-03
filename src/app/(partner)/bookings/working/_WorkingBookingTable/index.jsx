@@ -9,27 +9,26 @@ import { getPartnerStatusBookingsAPI } from '@/api/partner.api'
 import { toPendingTableData } from '../../_formatData/pending'
 import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
 
-export default function PendingBookingTable() {
+export default function WorkingTable() {
     const { data, isLoading, isSuccess, isError } = useQuery({
-        queryKey: ['/partner/bookings/pending'],
-        queryFn: () => getPartnerStatusBookingsAPI(BOOKING_STATUS_ENUM.Pending),
+        queryKey: ['/partner/bookings/doing'],
+        queryFn: () => getPartnerStatusBookingsAPI(BOOKING_STATUS_ENUM.Doing),
         retry: 2,
         refetchOnWindowFocus: false,
-        retryOnMount: true,
     })
 
     const rows = useMemo(() => {
         if (isSuccess) {
             const res = data.data?.data
             if (!res) return []
-            return res.map((i) => toPendingTableData(i))
+            return res.map((data) => toPendingTableData(data))
         }
         return []
     }, [isSuccess])
 
     return (
         <Table
-            title="Pending Booking"
+            title="Doing Bookings"
             height={500}
             columns={BookingColumns}
             rows={rows}

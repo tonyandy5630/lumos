@@ -1,5 +1,5 @@
 import PageTitle from '@/components/PageTitle'
-import BookingDetailSection from '@/components/Pages/NurseBookingDetailPage/BookingDetailSection'
+import BookingDetailSection from '@/components/Pages/BookingDetail/BookingDetailSection'
 import BookingSteps from '@/components/Stepper'
 import React from 'react'
 

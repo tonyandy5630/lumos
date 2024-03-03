@@ -1,4 +1,4 @@
-export const pendingBookingColumns = [
+export const BookingColumns = [
     {
         accessorKey: 'bookingId',
         header: 'Code',

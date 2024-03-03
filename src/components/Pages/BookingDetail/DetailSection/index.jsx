@@ -13,44 +13,6 @@ import NURSE_URL from '@/constants/URL/partner'
 import { toast } from 'react-toastify'
 import { useParams } from 'next/navigation'
 const Typography = dynamic(() => import('@mui/material/Typography'))
-const SERVICE = [
-    {
-        serviceName: 'Chăm sóc mẹ bầu',
-        price: '500000',
-        bookDate: '23/1/2024',
-        time: '8:00 - 8:30 AM',
-    },
-    {
-        serviceName: 'Chăm sóc mẹ bầu 1',
-        price: '500000',
-        bookDate: '23/1/2024',
-        time: '8:00 - 8:30 AM',
-    },
-    {
-        serviceName: 'Chăm sóc mẹ bầu 2',
-        price: '500000',
-        bookDate: '23/1/2024',
-        time: '8:00 - 8:30 AM',
-    },
-]
-
-// const bookingDetail = {
-//     partner: 'Apollo international hospital',
-//     date: 'March 2',
-//     time: '8:00 - 9:00 AM',
-//     booking: {
-//         id: 'Ls-34658',
-//         date: '26/10/2023',
-//         time: ' 12:45 am',
-//         address: '6 Vinh Vien Street, Cu Chi, Vietnam',
-//         patient: {
-//             fullName: 'Aaron Leigh',
-//             age: 30,
-//             sex: 'Male',
-//         },
-//         note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac lectus vel tortor laoreet fringilla. Mauris vitae commodo diam. Morbi tempor viverra lorem vel elementum. Phasellus congue ligula vel lectus convallis convallis. ',
-//     },
-// }
 
 export default function PendingBookingDetail() {
     const router = useRouter()
