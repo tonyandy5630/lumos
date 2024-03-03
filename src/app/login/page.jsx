@@ -70,7 +70,7 @@ export default function LoginPage() {
                                         color: '#107B6C',
                                     }}
                                 >
-                                    New to Lumos?{' '}
+                                    Join as Customer
                                     <Link
                                         href={AUTH_URL.REGISTER}
                                         className="underline text-mosh"
