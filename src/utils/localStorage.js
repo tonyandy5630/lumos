@@ -9,7 +9,6 @@ class LocalStorageUtils {
         }
         return ''
     }
-
     static setTokenToLS = (token) => {
         if (typeof window !== 'undefined') {
             const t =
