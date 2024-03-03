@@ -46,6 +46,7 @@ export default function LoginForm() {
     })
 
     const onSubmit = async (data) => {
+        const storage = new LocalStorageUtils()
         try {
             await loginMutation.mutateAsync(data, {
                 onSuccess: (data) => {
@@ -53,16 +54,16 @@ export default function LoginForm() {
                     reset()
                     const userRole = data.data.data.userdetails.role
                     const token = data.data.data.token
-
                     setCookie(userRole_c, userRole, c_optns)
-                    LocalStorageUtils.setTokenToLS(token)
+                    storage.setTokenToLS(token)
                     if (userRole === ROLES.admin) {
                         router.push(ADMIN_URL.HOMEPAGE)
                         return
                     }
 
-                    if (userRole === ROLES.partner)
+                    if (userRole === ROLES.partner) {
                         router.push(NURSE_URL.HOMEPAGE)
+                    }
                     if (userRole === ROLES.customer) setOpenDialog(true)
                 },
                 onError: (error) => {
@@ -73,6 +74,7 @@ export default function LoginForm() {
             resetField('password')
         }
     }
+
     return (
         <>
             <Backdrop

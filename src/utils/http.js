@@ -2,9 +2,9 @@ import axios, { HttpStatusCode } from 'axios'
 import { toast } from 'react-toastify'
 import LocalStorageUtils from './localStorage'
 
+const storage = new LocalStorageUtils()
 class Http {
     constructor() {
-        this.accessToken = LocalStorageUtils.getTokenFromLS()
         this.instance = axios.create({
             baseURL:
                 process.env.NODE_ENV === 'development'
@@ -18,8 +18,9 @@ class Http {
         })
         this.instance.interceptors.request.use(
             (config) => {
-                if (this.accessToken !== '' && config.headers) {
-                    config.headers.Authorization = `Bearer ${this.accessToken}`
+                const latestToken = storage.getTokenFromLS()
+                if (latestToken !== '' && config.headers) {
+                    config.headers.Authorization = `Bearer ${latestToken}`
                     return config
                 }
                 return config
