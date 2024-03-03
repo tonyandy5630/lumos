@@ -23,10 +23,7 @@ export default function NavItem(props) {
     }
 
     return (
-        <div
-            onMouseEnter={sub_menu ? handleClick : undefined}
-            onMouseLeave={sub_menu ? handleClick : undefined}
-        >
+        <div>
             <ListItem
                 key={children}
                 disablePadding
@@ -47,9 +44,19 @@ export default function NavItem(props) {
                     {(() => {
                         if (sub_menu) {
                             if (!open) {
-                                return <ExpandMore />
+                                return (
+                                    <ExpandMore
+                                        onClick={
+                                            sub_menu ? handleClick : undefined
+                                        }
+                                    />
+                                )
                             }
-                            return <ExpandLess />
+                            return (
+                                <ExpandLess
+                                    onClick={sub_menu ? handleClick : undefined}
+                                />
+                            )
                         }
                         return <></>
                     })()}
