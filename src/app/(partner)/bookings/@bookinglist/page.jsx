@@ -7,6 +7,7 @@ import DetailButton from '@/components/DetailButton'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerBookingsAPI } from '@/api/partner.api'
 import { toBookingTableData } from '../_formatData/bookingData'
+import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
 
 export default function BookingTable() {
     const { data, isLoading, isSuccess, isError } = useQuery({
@@ -17,7 +18,6 @@ export default function BookingTable() {
     const rows = useMemo(() => {
         if (isSuccess) {
             const res = data?.data?.data
-
             return res.map((row) => toBookingTableData(row))
         }
         return []
@@ -31,9 +31,26 @@ export default function BookingTable() {
             isLoading={isLoading}
             isError={isError}
             hasActionRow={true}
-            renderRowActions={({ row }) => (
-                <DetailButton href={NURSE_URL.BOOKING_DETAIL(row.id)} />
-            )}
+            renderRowActions={({ row }) => {
+                const { bookingId, status } = row.original
+                let detailHref
+                ;(() => {
+                    switch (status) {
+                        case BOOKING_STATUS_ENUM.Pending:
+                            detailHref =
+                                NURSE_URL.BOOKING_PENDING_DETAIL(bookingId)
+                            break
+                        case BOOKING_STATUS_ENUM.Doing:
+                            detailHref =
+                                NURSE_URL.BOOKING_WORKING_DETAIL(bookingId)
+                            break
+                        default:
+                            detailHref = NURSE_URL.BOOKING_DETAIL(bookingId)
+                            break
+                    }
+                })()
+                return <DetailButton href={detailHref} />
+            }}
         />
     )
 }
