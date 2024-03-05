@@ -14,7 +14,7 @@ export default function BookingStats() {
                         title={item.title}
                         icon={item.icon}
                     >
-                        300.000.000
+                        0
                     </StatTab>
                 )
             })}
