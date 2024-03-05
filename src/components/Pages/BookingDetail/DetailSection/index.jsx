@@ -104,7 +104,7 @@ export default function BookingDetail() {
                             acceptMutation.isPending || acceptMutation.isPending
                         }
                     >
-                        Accept
+                        Finish
                     </MyButton>
                 </div>
                 <div className="min-w-32">

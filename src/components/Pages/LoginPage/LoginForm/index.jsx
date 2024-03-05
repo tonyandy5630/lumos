@@ -22,6 +22,7 @@ import { useRouter } from 'next/navigation'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
+import { toast } from 'react-toastify'
 import LocalStorageUtils from '@/utils/localStorage'
 
 export default function LoginForm() {
@@ -35,6 +36,7 @@ export default function LoginForm() {
         register,
         handleSubmit,
         resetField,
+        setError,
         reset,
         formState: { errors },
     } = useForm({ resolver: yupResolver(LoginSchema) })
@@ -66,12 +68,18 @@ export default function LoginForm() {
                     }
                     if (userRole === ROLES.customer) setOpenDialog(true)
                 },
-                onError: (error) => {
-                    console.log(error)
-                },
             })
         } catch (error) {
-            resetField('password')
+            const res = error?.response?.data?.data
+            if (res) {
+                for (const [key, error] of Object.entries(res)) {
+                    resetField(key)
+                    setError(key, {
+                        type: 'custom',
+                        message: error,
+                    })
+                }
+            }
         }
     }
 
