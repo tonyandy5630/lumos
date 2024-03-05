@@ -1,6 +1,6 @@
 'use client'
 import Table from '@/components/Table'
-import { BookingColumns } from '@/constants/Pages/nurse/booking/pendingTable/columns'
+import BookingColumns from '@/constants/Pages/nurse/booking/table/columns'
 import { useMemo } from 'react'
 import DetailButton from '@/components/DetailButton'
 import NURSE_URL from '@/constants/URL/partner'

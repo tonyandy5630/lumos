@@ -12,7 +12,9 @@ const avatar_size = 90
 export default function BookingDetailSection(props) {
     const { bookingDetail } = props
     return (
-        <div className="flex items-center justify-start min-w-full px-10 space-x-3 border border-black py-7 rounded-xl min-h-80 bg-primary">
+        <div
+            className={`flex items-center justify-start min-w-full px-10 space-x-3 border border-black py-7 rounded-xl min-h-80 bg-primary`}
+        >
             <Image
                 src="/unknown.jpg"
                 width={avatar_size}

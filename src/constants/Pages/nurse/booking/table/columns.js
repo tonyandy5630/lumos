@@ -1,9 +1,11 @@
 'use client'
 import React from 'react'
+import dynamic from 'next/dynamic'
 import SuccessIcon from '@mui/icons-material/CheckCircleOutlineOutlined'
 import PendingIcon from '@mui/icons-material/QueryBuilderOutlined'
 import CancelIcon from '@mui/icons-material/CancelOutlined'
-import Chip from '@mui/material/Chip'
+import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+const Chip = dynamic(() => import('@mui/material/Chip'))
 
 const ICON_SIZE = 10
 const iconSx = {
@@ -11,7 +13,7 @@ const iconSx = {
     color: 'white !important',
 }
 
-export const bookingColumns = [
+const BookingColumns = [
     {
         accessorKey: 'code',
         header: 'Code',
@@ -31,8 +33,8 @@ export const bookingColumns = [
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'time',
-        header: 'Rate',
+        accessorKey: 'bookingDate',
+        header: 'Booking time',
         size: 150,
         headerClassName: 'bg-primary',
     },
@@ -66,19 +68,19 @@ export const bookingColumns = [
 ]
 
 const getStatusStyle = (status) => {
-    if (status === 0) {
+    if (status === BOOKING_STATUS_ENUM.Completed) {
         return {
             color: '#2EE656',
             icon: <SuccessIcon sx={iconSx} />,
             text: 'SUCCESS',
         }
-    } else if (status === 1) {
+    } else if (status === BOOKING_STATUS_ENUM.Doing) {
         return {
             color: '#E6BE2E',
             icon: <PendingIcon sx={iconSx} />,
             text: 'PENDING',
         }
-    } else if (status === 2) {
+    } else if (status === BOOKING_STATUS_ENUM.Canceled) {
         return {
             color: '#E62E2E',
             icon: <CancelIcon sx={iconSx} />,
@@ -86,3 +88,5 @@ const getStatusStyle = (status) => {
         }
     }
 }
+
+export default BookingColumns
