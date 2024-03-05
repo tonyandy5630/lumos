@@ -4,6 +4,18 @@ import {
     PHONE_LENGTH_WARNING,
 } from '@/constants/Auth'
 
+const MIN_EMAIL = 6
+const MAX_EMAIL = 30
+const EMAIL_LENGTH_WARNING = LENGTH_WARNING(MIN_EMAIL, MAX_EMAIL)
+
+const MIN_NAME = 6
+const MAX_NAME = 50
+const NAME_LENGTH_WARNING = LENGTH_WARNING(MIN_NAME, MAX_NAME)
+
+const MIN_PWD = 6
+const MAX_PWD = 20
+const PWD_LENGTH_WARNING = LENGTH_WARNING(MIN_PWD, MAX_PWD)
+
 const getRules = (getValues) => ({
     email: {
         pattern: {
@@ -11,22 +23,22 @@ const getRules = (getValues) => ({
             message: `Not a valid email format`,
         },
         minLength: {
-            value: 6,
-            message: LENGTH_WARNING,
+            value: MIN_EMAIL,
+            message: EMAIL_LENGTH_WARNING,
         },
         maxLength: {
-            value: 30,
-            message: LENGTH_WARNING,
+            value: MAX_EMAIL,
+            message: EMAIL_LENGTH_WARNING,
         },
     },
     name: {
         maxLength: {
-            value: 20,
-            message: LENGTH_WARNING,
+            value: MAX_NAME,
+            message: NAME_LENGTH_WARNING,
         },
         minLength: {
-            value: 6,
-            message: LENGTH_WARNING,
+            value: MIN_NAME,
+            message: NAME_LENGTH_WARNING,
         },
     },
     phone: {
@@ -41,12 +53,12 @@ const getRules = (getValues) => ({
     },
     pwd: {
         minLength: {
-            value: 6,
-            message: LENGTH_WARNING,
+            value: MIN_PWD,
+            message: PWD_LENGTH_WARNING,
         },
         maxLength: {
-            value: 20,
-            message: LENGTH_WARNING,
+            value: MAX_PWD,
+            message: PWD_LENGTH_WARNING,
         },
     },
     rePwd: {

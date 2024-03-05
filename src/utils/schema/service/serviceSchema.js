@@ -5,10 +5,6 @@ import { EMPTY_WARNING } from '@/constants/Auth'
 const rules = getRules()
 
 const ServiceSchema = object({
-    code: string()
-        .trim()
-        .min(rules.code.minLength.value, rules.code.minLength.message)
-        .max(rules.code.maxLength.value, rules.code.maxLength.message),
     duration: number()
         .min(rules.duration.min.limit, rules.duration.min.message)
         .max(rules.duration.max.limit, rules.duration.max.message)

@@ -1,54 +1,58 @@
-import { LENGTH_WARNING, PHONE_LENGTH_WARNING } from '@/constants/Auth'
+import { LENGTH_WARNING } from '@/constants/Auth'
+
+const MIN_PRICE = 0
+const MAX_PRICE = 3000000
+
+const MIN_DURATION = 10
+const MAX_DURATION = 180
+
+const MIN_DESC = 0
+const MAX_DESC = 180
+const DESC_LENGTH_WARNING = LENGTH_WARNING(MIN_DESC, MAX_DESC)
+
+const MIN_NAME = 6
+const MAX_NAME = 50
+const NAME_LENGTH_WARNING = LENGTH_WARNING(MIN_NAME, MAX_NAME)
 
 const getRules = (getValues) => ({
-    code: {
-        minLength: {
-            value: 4,
-            message: LENGTH_WARNING,
-        },
-        maxLength: {
-            value: 6,
-            message: LENGTH_WARNING,
-        },
-    },
     serviceName: {
         maxLength: {
-            value: 20,
-            message: LENGTH_WARNING,
+            value: MAX_NAME,
+            message: NAME_LENGTH_WARNING,
         },
         minLength: {
-            value: 6,
-            message: LENGTH_WARNING,
+            value: MIN_NAME,
+            message: NAME_LENGTH_WARNING,
         },
     },
     price: {
         min: {
-            limit: 0,
+            limit: MIN_PRICE,
             message: 'Price is not valid',
         },
         max: {
-            limit: 3000000,
+            limit: MAX_PRICE,
             message: 'Price is too large',
         },
     },
     duration: {
         min: {
-            limit: 10,
+            limit: MIN_DURATION,
             message: 'Duration is too short',
         },
         max: {
-            limit: 180,
+            limit: MAX_DURATION,
             message: 'Duration is too long',
         },
     },
     description: {
         minLength: {
-            value: 0,
-            message: LENGTH_WARNING,
+            value: MIN_DESC,
+            message: DESC_LENGTH_WARNING,
         },
         maxLength: {
-            value: 100,
-            message: LENGTH_WARNING,
+            value: MAX_DESC,
+            message: DESC_LENGTH_WARNING,
         },
     },
     categories: {

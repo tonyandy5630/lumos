@@ -6,25 +6,33 @@ import {
     PHONE_REGEX,
 } from '@/constants/Auth'
 
+const MIN_NAME = 6
+const MAX_NAME = 50
+const NAME_LENGTH_WARNING = LENGTH_WARNING(MIN_NAME, MAX_NAME)
+
+const MIN_ADDRESS = 6
+const MAX_ADDRESS = 100
+const NAME_ADDRESS_WARNING = LENGTH_WARNING(MIN_ADDRESS, MAX_ADDRESS)
+
 const getRules = () => ({
     partnerName: {
         minLength: {
-            value: 5,
-            message: LENGTH_WARNING,
+            value: MIN_NAME,
+            message: NAME_LENGTH_WARNING,
         },
         maxLength: {
-            value: 50,
-            message: LENGTH_WARNING,
+            value: MAX_NAME,
+            message: NAME_LENGTH_WARNING,
         },
     },
     displayName: {
         minLength: {
-            value: 5,
-            message: LENGTH_WARNING,
+            value: MIN_NAME,
+            message: NAME_LENGTH_WARNING,
         },
         maxLength: {
-            value: 50,
-            message: LENGTH_WARNING,
+            value: MAX_NAME,
+            message: NAME_LENGTH_WARNING,
         },
     },
     email: {
@@ -57,12 +65,12 @@ const getRules = () => ({
     },
     address: {
         minLength: {
-            value: 5,
-            message: LENGTH_WARNING,
+            value: MIN_ADDRESS,
+            message: NAME_ADDRESS_WARNING,
         },
         maxLength: {
-            value: 100,
-            message: LENGTH_WARNING,
+            value: MAX_ADDRESS,
+            message: NAME_ADDRESS_WARNING,
         },
     },
     licenseNumber: {
