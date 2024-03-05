@@ -6,7 +6,7 @@ import DetailButton from '@/components/DetailButton'
 import NURSE_URL from '@/constants/URL/partner'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerStatusBookingsAPI } from '@/api/partner.api'
-import { toPendingTableData } from '../_formatData/pending'
+import { toBookingTableData } from '../_formatData/bookingData'
 
 export default function StatusBookingTable(props) {
     const { status } = props
@@ -22,7 +22,7 @@ export default function StatusBookingTable(props) {
         if (isSuccess) {
             const res = data.data?.data
             if (!res) return []
-            return res.map((i) => toPendingTableData(i))
+            return res.map((i) => toBookingTableData(i))
         }
         return []
     }, [isSuccess])

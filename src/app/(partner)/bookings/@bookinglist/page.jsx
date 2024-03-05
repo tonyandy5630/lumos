@@ -6,7 +6,7 @@ import NURSE_URL from '@/constants/URL/partner'
 import DetailButton from '@/components/DetailButton'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerBookingsAPI } from '@/api/partner.api'
-import { toBookingTableData } from '../_formatData/pending'
+import { toBookingTableData } from '../_formatData/bookingData'
 
 export default function BookingTable() {
     const { data, isLoading, isSuccess, isError } = useQuery({
