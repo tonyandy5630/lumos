@@ -26,7 +26,7 @@ export default function SignupPage() {
                     <Stack
                         justifyContent="center"
                         alignItems="center"
-                        className="w-10/12 py-3 bg-white/65 min-h-[26rem] rounded-3xl"
+                        className="w-10/12 py-3 bg-white/65 min-h-[26rem] rounded-3xl  border-2 border-black border-solid shadow-lg "
                     >
                         <Stack
                             justifyContent="center"
@@ -41,7 +41,7 @@ export default function SignupPage() {
                                     color: '#107B6C',
                                 }}
                             >
-                                Sign up with email address
+                                Customer Register
                             </Typography>
                             <Typography
                                 variant="subtitle1"
@@ -50,7 +50,7 @@ export default function SignupPage() {
                                     color: '#107B6C',
                                 }}
                             >
-                                Already has an account?{' '}
+                                Already one of our partners?
                                 <Link
                                     href="/login"
                                     className="underline text-mosh"

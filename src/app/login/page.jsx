@@ -46,7 +46,7 @@ export default function LoginPage() {
                         <Stack
                             justifyContent="center"
                             alignItems="center"
-                            className="w-7/12 py-3 bg-white/65 min-h-[26rem] rounded-3xl"
+                            className="w-7/12 py-3 bg-white/65 min-h-[26rem] rounded-3xl border-2 border-black border-solid shadow-lg"
                         >
                             <Stack
                                 justifyContent="center"
@@ -70,12 +70,11 @@ export default function LoginPage() {
                                         color: '#107B6C',
                                     }}
                                 >
-                                    Join as Customer
                                     <Link
                                         href={AUTH_URL.REGISTER}
                                         className="underline text-mosh"
                                     >
-                                        Sign up for free
+                                        Join with us as a Customer
                                     </Link>
                                 </Typography>
                             </Stack>

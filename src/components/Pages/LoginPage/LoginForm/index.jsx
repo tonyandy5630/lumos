@@ -22,7 +22,6 @@ import { useRouter } from 'next/navigation'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
-import { toast } from 'react-toastify'
 import LocalStorageUtils from '@/utils/localStorage'
 
 export default function LoginForm() {
