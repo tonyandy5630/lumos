@@ -1,11 +1,11 @@
 import React from 'react'
-import Segment from './_Segment'
+import Segment from '@/components/ConditionalSegment'
 
 export default async function ServicesLayout({ analytics, list, children }) {
     return (
         <>
             {children}
-            <Segment>
+            <Segment segments={['add']}>
                 {analytics}
                 {list}
             </Segment>

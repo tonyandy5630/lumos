@@ -2,7 +2,7 @@
 import { useSelectedLayoutSegment } from 'next/navigation'
 import React from 'react'
 
-export default function Segment({ children }) {
+export default function Segment({ children, segments }) {
     const segment = useSelectedLayoutSegment()
-    return <>{segment === 'add' ? <></> : children}</>
+    return <>{segments.includes(segment) ? <></> : children}</>
 }
