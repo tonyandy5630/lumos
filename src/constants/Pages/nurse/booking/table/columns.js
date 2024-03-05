@@ -75,7 +75,7 @@ const getStatusStyle = (status) => {
             icon: <SuccessIcon sx={iconSx} />,
             text: 'SUCCESS',
         }
-    } else if (status === BOOKING_STATUS_ENUM.Doing) {
+    } else if (status === BOOKING_STATUS_ENUM.Pending) {
         return {
             color: '#E6BE2E',
             icon: <PendingIcon sx={iconSx} />,
