@@ -28,8 +28,8 @@ export default function ServiceForm() {
         handleSubmit,
         reset,
         setValue,
-        getValues,
-        control,
+        setError,
+        resetField,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(ServiceSchema),
@@ -150,12 +150,18 @@ export default function ServiceForm() {
                         reset()
                     }
                 },
-                onError: (error) => {
-                    console.log()
-                },
             })
         } catch (error) {
-            console.log(error)
+            const res = error?.response?.data?.data
+            if (res) {
+                for (const [key, value] of Object.entries(res)) {
+                    resetField(key)
+                    setError(key, {
+                        type: 'custom',
+                        message: value,
+                    })
+                }
+            }
         }
     }
 
@@ -168,32 +174,22 @@ export default function ServiceForm() {
             }}
         >
             <FormRow>
-                <InputWrapper>
-                    <FormInput
-                        name="code"
-                        id="code"
-                        autocomplete="on"
-                        label="Code"
-                        isRequired={true}
-                        register={register}
-                        placeholder="Enter service code"
-                        helperText={errors.code?.message}
-                        helperTextIsError={errors.code !== undefined}
-                        autoFocus={true}
-                    />
-                </InputWrapper>
-                <InputWrapper>
-                    <FormInput
-                        name="name"
-                        id="name"
-                        autocomplete="on"
-                        label="Service Name"
-                        isRequired={true}
-                        register={register}
-                        placeholder="Enter Service Name"
-                        helperText={errors.name?.message}
-                        helperTextIsError={errors.name !== undefined}
-                    />
+                <InputWrapper full={true}>
+                    <FormRow justifyContent="start" pr={0}>
+                        <InputWrapper>
+                            <FormInput
+                                name="name"
+                                id="name"
+                                autocomplete="on"
+                                label="Service Name"
+                                isRequired={true}
+                                register={register}
+                                placeholder="Enter Service Name"
+                                helperText={errors.name?.message}
+                                helperTextIsError={errors.name !== undefined}
+                            />
+                        </InputWrapper>
+                    </FormRow>
                 </InputWrapper>
                 <InputWrapper>
                     <FormInput
@@ -227,7 +223,6 @@ export default function ServiceForm() {
                         id="description"
                         autocomplete="on"
                         label="Description"
-                        isRequired={true}
                         register={register}
                         placeholder="Enter Description"
                         helperText={errors.description?.message}
