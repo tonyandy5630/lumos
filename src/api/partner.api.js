@@ -1,9 +1,10 @@
 import {
     basePartner,
     basePartnerService,
-    GetPartnerStatusBookingAPI_URL,
+    getPartnerStatusBookingAPI_URL,
     getPartnerServicesAPI_URL,
     getStatPartnerServiceAPI_URL,
+    partnerGetAllBookingsAPI_URL,
 } from '@/constants/API-URL/partner'
 import http from '@/utils/http'
 
@@ -18,4 +19,7 @@ export const getStatPartnerServiceAPI = () =>
 export const addPartnerAPI = (body) => http.post(basePartner, body)
 
 export const getPartnerStatusBookingsAPI = (status) =>
-    http.get(GetPartnerStatusBookingAPI_URL(status))
+    http.get(getPartnerStatusBookingAPI_URL(status))
+
+export const getPartnerBookingsAPI = (page) =>
+    http.get(partnerGetAllBookingsAPI_URL(page))

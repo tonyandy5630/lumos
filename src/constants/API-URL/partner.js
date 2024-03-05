@@ -9,5 +9,8 @@ export const getStatPartnerServiceAPI_URL = `${baseStat}/${service}s`
 export const getPartnerRevenueAPI_URL = `${partner}/revenue`
 export const getPartnerServicesAPI_URL = `${basePartnerService}s`
 
-export const GetPartnerStatusBookingAPI_URL = (status) =>
+export const getPartnerStatusBookingAPI_URL = (status) =>
     `${basePartner}/${booking}s/status/${status}`
+
+export const partnerGetAllBookingsAPI_URL = (page) =>
+    basePartner + `/${booking}s` + `/${page}`

@@ -5,6 +5,7 @@ import SuccessIcon from '@mui/icons-material/CheckCircleOutlineOutlined'
 import PendingIcon from '@mui/icons-material/QueryBuilderOutlined'
 import CancelIcon from '@mui/icons-material/CancelOutlined'
 import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+import WorkingIcon from '@mui/icons-material/EditCalendarOutlined'
 const Chip = dynamic(() => import('@mui/material/Chip'))
 
 const ICON_SIZE = 10
@@ -15,7 +16,7 @@ const iconSx = {
 
 const BookingColumns = [
     {
-        accessorKey: 'code',
+        accessorKey: 'bookingId',
         header: 'Code',
         size: 30,
     },
@@ -33,7 +34,7 @@ const BookingColumns = [
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'bookingDate',
+        accessorKey: 'bookingTime',
         header: 'Booking time',
         size: 150,
         headerClassName: 'bg-primary',
@@ -80,13 +81,26 @@ const getStatusStyle = (status) => {
             icon: <PendingIcon sx={iconSx} />,
             text: 'PENDING',
         }
-    } else if (status === BOOKING_STATUS_ENUM.Canceled) {
+    } else if (status === BOOKING_STATUS_ENUM.Doing) {
+        return {
+            color: '#FF9E9E',
+            icon: <WorkingIcon sx={iconSx} />,
+            text: 'On-going',
+        }
+    } else {
         return {
             color: '#E62E2E',
             icon: <CancelIcon sx={iconSx} />,
             text: 'CANCELLED',
         }
     }
+    // } else if (status === BOOKING_STATUS_ENUM.Canceled) {
+    //     return {
+    //         color: '#E62E2E',
+    //         icon: <CancelIcon sx={iconSx} />,
+    //         text: 'CANCELLED',
+    //     }
+    // }
 }
 
 export default BookingColumns

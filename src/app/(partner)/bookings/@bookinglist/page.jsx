@@ -1,16 +1,35 @@
 'use client'
 import BookingColumns from '@/constants/Pages/nurse/booking/table/columns'
-import React from 'react'
+import { useMemo } from 'react'
 import Table from '@/components/Table'
 import NURSE_URL from '@/constants/URL/partner'
 import DetailButton from '@/components/DetailButton'
+import { useQuery } from '@tanstack/react-query'
+import { getPartnerBookingsAPI } from '@/api/partner.api'
+import { toBookingTableData } from '../_formatData/pending'
 
 export default function BookingTable() {
+    const { data, isLoading, isSuccess, isError } = useQuery({
+        queryKey: ['/partner/bookings/all'],
+        queryFn: () => getPartnerBookingsAPI(1),
+    })
+
+    const rows = useMemo(() => {
+        if (isSuccess) {
+            const res = data?.data?.data
+
+            return res.map((row) => toBookingTableData(row))
+        }
+        return []
+    }, [isSuccess])
+
     return (
         <Table
             title="All Bookings"
-            rows={[]}
+            rows={rows}
             columns={BookingColumns}
+            isLoading={isLoading}
+            isError={isError}
             hasActionRow={true}
             renderRowActions={({ row }) => (
                 <DetailButton href={NURSE_URL.BOOKING_DETAIL(row.id)} />
