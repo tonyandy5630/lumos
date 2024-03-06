@@ -1,5 +1,5 @@
 import PageTitle from '@/components/PageTitle'
-import BookingDetailSection from '@/components/Pages/BookingDetail/BookingDetailSection'
+// import BookingDetailSection from '@/components/Pages/BookingDetail/BookingDetailSection'
 import BookingSteps from '@/components/Stepper'
 import React from 'react'
 
@@ -29,7 +29,7 @@ export default async function BookingDetailPage() {
     return (
         <>
             <PageTitle>Booking Detail</PageTitle>
-            <BookingDetailSection bookingDetail={bookingDetail} />
+            {/* <BookingDetailSection bookingDetail={bookingDetail} /> */}
             <BookingSteps currentStep={1} />
         </>
     )
