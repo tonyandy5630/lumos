@@ -14,3 +14,5 @@ export const getPartnerStatusBookingAPI_URL = (status) =>
 
 export const partnerGetAllBookingsAPI_URL = (page) =>
     basePartner + `/${booking}s` + `/${page}`
+
+export const AddScheduleAPI_URL = `${basePartner}/schedule`

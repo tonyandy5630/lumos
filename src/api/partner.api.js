@@ -5,6 +5,7 @@ import {
     getPartnerServicesAPI_URL,
     getStatPartnerServiceAPI_URL,
     partnerGetAllBookingsAPI_URL,
+    AddScheduleAPI_URL,
 } from '@/constants/API-URL/partner'
 import http from '@/utils/http'
 

@@ -1,9 +1,10 @@
 import getRules from '@/utils/rules/partner'
-import { object, string, number } from 'yup'
+import { object, string, number, array } from 'yup'
+import ScheduleSchema from '../schedule/scheduleSchema'
 
 const rules = getRules()
 
-const PartnerSchema = object({
+const Partner = object({
     partnerName: string()
         .required()
         .min(
@@ -44,6 +45,19 @@ const PartnerSchema = object({
         .matches(
             rules.licenseNumber.pattern.value,
             rules.licenseNumber.pattern.message
+        ),
+})
+
+const PartnerSchema = object({
+    partner: Partner,
+    schedules: array()
+        .required('Schedule is required')
+        .min(1, 'Schedule is required')
+        .of(
+            object({
+                workShift: number().required(),
+                dayOfWeek: number().required(),
+            })
         ),
 })
 
