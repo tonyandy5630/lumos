@@ -17,7 +17,7 @@ export const dayMapping = {
     Thursday: 5,
     Friday: 6,
     Saturday: 7,
-    Sunday: 1,
+    Sunday: 8,
 }
 
 export const shiftMapping = {

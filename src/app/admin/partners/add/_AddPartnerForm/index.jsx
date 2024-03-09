@@ -43,6 +43,7 @@ function AddPartnerForm(props) {
 
     const onSubmit = async (body) => {
         body.schedules = schedule
+        console.log(body)
         try {
             await addPartnerMutation.mutateAsync(body, {
                 onSuccess: (data) => {
@@ -55,6 +56,7 @@ function AddPartnerForm(props) {
                 },
                 onError: (error) => {
                     const partnerError = error.response.data.data
+                    console.log(error)
                     for (const [key, value] of Object.entries(partnerError)) {
                         if (value !== null) {
                             setError(key, {
@@ -66,6 +68,7 @@ function AddPartnerForm(props) {
                 },
             })
         } catch (error) {
+            console.log(error)
             handleErrorMutation(error)
         }
     }
