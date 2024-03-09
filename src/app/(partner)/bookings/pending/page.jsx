@@ -1,6 +1,6 @@
 import PendingBookingTable from '@/app/(partner)/bookings/_StatusBookingTable'
 import PageTitle from '@/components/PageTitle'
-import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
 import React from 'react'
 
 export const metadata = {

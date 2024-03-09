@@ -7,11 +7,15 @@ const ServiceInfo = dynamic(
 import BookingDetailSection from '../../NurseBookingDetailPage/BookingDetailSection'
 import MyButton from '@/components/Button'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { acceptBookingAPI, getBookingDetailAPI } from '@/api/bookings.api'
+import {
+    progressToNextBookingStatusAPI,
+    getBookingDetailAPI,
+} from '@/api/bookings.api'
 import { useRouter } from 'next/navigation'
 import NURSE_URL from '@/constants/URL/partner'
 import { toast } from 'react-toastify'
 import { useParams } from 'next/navigation'
+import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
 const Typography = dynamic(() => import('@mui/material/Typography'))
 
 export default function BookingDetail() {
@@ -24,7 +28,7 @@ export default function BookingDetail() {
 
     const acceptMutation = useMutation({
         mutationKey: '/accept/bookings' + params.id.toString(),
-        mutationFn: acceptBookingAPI,
+        mutationFn: progressToNextBookingStatusAPI,
     })
     const { data, isLoading, isSuccess, isError } = useQuery({
         queryKey: ['/booking/details' + params.id],
@@ -69,14 +73,34 @@ export default function BookingDetail() {
             const data = { bookingId: booking?.bookingDetail?.bookingId }
             await acceptMutation.mutateAsync(data, {
                 onSuccess: (data) => {
-                    toast.success('Booking Accepted')
-                    router.push(NURSE_URL.PENDING_BOOKING)
-                },
-                onError: (error) => {
-                    console.log(error)
+                    toast.success(
+                        booking?.bookingDetail?.status ===
+                            BOOKING_STATUS_ENUM.Pending
+                            ? 'Booking Accepted'
+                            : 'Booking Finished',
+                        {
+                            autoClose: 1000,
+                        }
+                    )
+                    toast.onChange((payload) => {
+                        if (payload.status === 'removed') {
+                            if (
+                                booking?.bookingDetail?.status ===
+                                BOOKING_STATUS_ENUM.Pending
+                            ) {
+                                router.push(NURSE_URL.PENDING_BOOKING)
+                            } else if (
+                                booking?.bookingDetail?.status ===
+                                BOOKING_STATUS_ENUM.Doing
+                            ) {
+                                router.push(NURSE_URL.WORKING_BOOKING)
+                            }
+                        }
+                    })
                 },
             })
         } catch (error) {
+            toast.error('Something went wrong')
             console.log(error)
         }
     }
@@ -100,25 +124,37 @@ export default function BookingDetail() {
                         type="button"
                         className="hover:bg-mosh hover:text-white "
                         handleClick={handleAccept}
-                        isLoading={
+                        loading={
                             acceptMutation.isPending || acceptMutation.isPending
                         }
                     >
-                        Finish
+                        {booking?.bookingDetail?.status ===
+                        BOOKING_STATUS_ENUM.Pending
+                            ? 'Doing'
+                            : booking?.bookingDetail?.status ===
+                                BOOKING_STATUS_ENUM.Doing
+                              ? 'Finish'
+                              : 'Accept'}
                     </MyButton>
                 </div>
-                <div className="min-w-32">
-                    <MyButton
-                        variant="outlined"
-                        type="button"
-                        isLoading={
-                            acceptMutation.isPending || acceptMutation.isPending
-                        }
-                        className="!text-red-600 hover:bg-mosh hover:text-white"
-                    >
-                        Decline
-                    </MyButton>
-                </div>
+                {booking?.bookingDetail?.status ===
+                BOOKING_STATUS_ENUM.Pending ? (
+                    <div className="min-w-32">
+                        <MyButton
+                            variant="outlined"
+                            type="button"
+                            loading={
+                                acceptMutation.isPending ||
+                                acceptMutation.isPending
+                            }
+                            className="!text-red-600 hover:bg-mosh hover:text-white"
+                        >
+                            Decline
+                        </MyButton>
+                    </div>
+                ) : (
+                    <></>
+                )}
             </div>
         </>
     )

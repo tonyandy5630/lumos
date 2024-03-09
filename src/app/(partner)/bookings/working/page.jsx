@@ -1,6 +1,6 @@
 import React from 'react'
 import StatusBookingTable from '../_StatusBookingTable'
-import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
 import PageTitle from '@/components/PageTitle'
 
 export const metadata = {

@@ -7,7 +7,7 @@ import DetailButton from '@/components/DetailButton'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerBookingsAPI } from '@/api/partner.api'
 import { toBookingTableData } from '../_formatData/bookingData'
-import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
 
 export default function BookingTable() {
     const { data, isLoading, isSuccess, isError } = useQuery({

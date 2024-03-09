@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import SuccessIcon from '@mui/icons-material/CheckCircleOutlineOutlined'
 import PendingIcon from '@mui/icons-material/QueryBuilderOutlined'
 import CancelIcon from '@mui/icons-material/CancelOutlined'
-import BOOKING_STATUS_ENUM from '@/constants/BookingStatus.const'
+import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
 import WorkingIcon from '@mui/icons-material/EditCalendarOutlined'
 const Chip = dynamic(() => import('@mui/material/Chip'))
 
