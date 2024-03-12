@@ -13,7 +13,7 @@ const MAX_NAME = 50
 const NAME_LENGTH_WARNING = LENGTH_WARNING(MIN_NAME, MAX_NAME)
 
 const MIN_PWD = 6
-const MAX_PWD = 20
+const MAX_PWD = 50
 const PWD_LENGTH_WARNING = LENGTH_WARNING(MIN_PWD, MAX_PWD)
 
 const getRules = (getValues) => ({
