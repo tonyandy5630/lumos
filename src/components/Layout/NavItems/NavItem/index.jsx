@@ -16,7 +16,7 @@ const primaryTypographyProps = {
 
 export default function NavItem(props) {
     const [open, setOpen] = React.useState(false)
-    const { children, href, icon, active, sub_menu } = props
+    const { children, href, icon, active, sub_menu, disabled } = props
 
     const handleClick = () => {
         setOpen(!open)
@@ -32,6 +32,7 @@ export default function NavItem(props) {
                 href={href}
             >
                 <ListItemButton
+                    disabled={disabled}
                     sx={{
                         bgcolor: `${active ? '#FFE5E5' : ''}`,
                     }}
