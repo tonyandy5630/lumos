@@ -53,7 +53,7 @@ export default function LoginForm() {
                 onSuccess: (data) => {
                     setUser(data)
                     reset()
-                    const userRole = data.data.data.userdetails.role
+                    const userRole = data.data.data.userdetails.role ?? 3
                     const token = data.data.data.token
                     setCookie(userRole_c, userRole, c_optns)
                     storage.setTokenToLS(token)
@@ -62,10 +62,12 @@ export default function LoginForm() {
                         return
                     }
 
-                    if (userRole === ROLES.partner) {
+                    if (userRole === ROLES.partner || userRole === null) {
                         router.push(NURSE_URL.BOOKING)
                     }
-                    if (userRole === ROLES.customer) setOpenDialog(true)
+                    if (userRole === ROLES.customer) {
+                        setOpenDialog(true)
+                    }
                 },
             })
         } catch (error) {
@@ -89,7 +91,7 @@ export default function LoginForm() {
                     color: '#fff',
                     zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
-                open={loginMutation.isPending || loginMutation.isSuccess}
+                open={loginMutation.isPending}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>

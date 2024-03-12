@@ -18,7 +18,8 @@ export default function BookingTable() {
     const rows = useMemo(() => {
         if (isSuccess) {
             const res = data?.data?.data
-            return res.map((row) => toBookingTableData(row))
+            if (res) return res.map((row) => toBookingTableData(row))
+            return []
         }
         return []
     }, [isSuccess])
