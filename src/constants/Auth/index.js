@@ -7,3 +7,6 @@ export const LENGTH_WARNING = (min, max) =>
 export const EMPTY_WARNING = 'Required'
 
 export const PHONE_LENGTH_WARNING = 'Phone number is from 10 - 13 number'
+
+export const GOOGLE_CONSENT =
+    'https://api.domain.com/identity/v1/account/external-login?provider=Google&returnUrl=/home'

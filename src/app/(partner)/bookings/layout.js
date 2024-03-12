@@ -10,7 +10,7 @@ export default async function BookingLayout({
     return (
         <>
             {children}
-            <Segment segments={['detail', 'working', 'pending']}>
+            <Segment segments={['detail', 'working', 'pending', 'completed']}>
                 {stat}
                 {chart}
                 {bookinglist}

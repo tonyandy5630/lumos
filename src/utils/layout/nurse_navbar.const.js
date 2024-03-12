@@ -11,6 +11,7 @@ import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import ServicesIcon from '@mui/icons-material/MedicalServicesOutlined'
 import NURSE_URL from '@/constants/URL/partner'
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined'
+import CompletedBookingIcon from '@mui/icons-material/EventAvailable'
 
 const NurseNavItems = [
     {
@@ -44,6 +45,11 @@ const NurseNavItems = [
                 title: 'Working Bookings',
                 href: NURSE_URL.WORKING_BOOKING,
                 icon: <WorkingIcon {...options} />,
+            },
+            {
+                title: 'Completed Bookings',
+                href: NURSE_URL.COMPLETED_BOOKING,
+                icon: <CompletedBookingIcon {...options} />,
             },
         ],
     },

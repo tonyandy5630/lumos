@@ -10,7 +10,7 @@ export const toBookingTableData = (data) => {
         status,
         date: `${date}`,
         bookingTime: convertBookingTime(bookingTime),
-        customerName: customer.fullname,
+        customerName: customer?.fullname,
         status,
     }
 }
