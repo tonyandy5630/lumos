@@ -11,7 +11,11 @@ const LoginSchema = object({
         .max(rules.email.maxLength.value, rules.email.maxLength.message)
         .email('Not an email')
         .required(EMPTY_WARNING),
-    password: string().trim().min(1).max(20).required(EMPTY_WARNING),
+    password: string()
+        .trim()
+        .min(rules.pwd.minLength.value, rules.pwd.minLength.message)
+        .max(rules.pwd.maxLength.value, rules.pwd.maxLength.message)
+        .required(EMPTY_WARNING),
 })
 
 export default LoginSchema
