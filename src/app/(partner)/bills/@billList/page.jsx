@@ -8,6 +8,7 @@ import DetailIcon from '@mui/icons-material/ArrowForwardIos'
 import Link from 'next/link'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerBillsAPI } from '@/api/partner.api'
+import { toBillData } from './_formatData'
 export default function PartnerBillsList() {
     const { data, isLoading, isSuccess, isError } = useQuery({
         queryKey: ['get/partner/bills'],
@@ -20,7 +21,7 @@ export default function PartnerBillsList() {
         if (isSuccess) {
             const res = data?.data?.data
             if (res) {
-                return res
+                return res.map((i) => toBillData(i))
             }
         }
         return []

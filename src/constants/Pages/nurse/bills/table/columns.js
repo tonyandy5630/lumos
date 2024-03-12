@@ -4,19 +4,12 @@ import Chip from '@mui/material/Chip'
 
 const BillListCols = [
     {
-        accessorKey: 'id',
-        header: 'ID',
+        accessorKey: 'bookingCode',
+        header: 'Code',
         size: 90,
     },
     {
-        accessorKey: 'customerName',
-        header: 'Customer Name',
-        sortable: false,
-        size: 200,
-        headerClassName: 'bg-svecondary',
-    },
-    {
-        accessorKey: 'date',
+        accessorKey: 'createDate',
         header: 'Date',
         size: 200,
         headerClassName: 'bg-secondary',
@@ -48,7 +41,7 @@ const BillListCols = [
     //     },
     // },
     {
-        accessorKey: 'total',
+        accessorKey: 'totalPrice',
         header: 'Grand Total',
         size: 280,
         headerClassName: 'bg-secondary',

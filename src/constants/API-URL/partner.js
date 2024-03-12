@@ -19,3 +19,6 @@ export const partnerGetAllBookingsAPI_URL = (page) =>
 export const addScheduleAPI_URL = `${basePartner}/schedule`
 
 export const getPartnerBillsAPI_URL = `${baseBookings}/bill`
+
+export const getPartnerRevenueChartAPI_URL = (month, year) =>
+    `${basePartner}/revenue/${month}?year=${year}`

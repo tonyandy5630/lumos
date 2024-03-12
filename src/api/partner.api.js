@@ -5,8 +5,8 @@ import {
     getPartnerServicesAPI_URL,
     getStatPartnerServiceAPI_URL,
     partnerGetAllBookingsAPI_URL,
-    addScheduleAPI_URL,
     getPartnerBillsAPI_URL,
+    getPartnerRevenueChartAPI_URL,
 } from '@/constants/API-URL/partner'
 import http from '@/utils/http'
 
@@ -27,3 +27,6 @@ export const getPartnerBookingsAPI = (page) =>
     http.get(partnerGetAllBookingsAPI_URL(page))
 
 export const getPartnerBillsAPI = () => http.get(getPartnerBillsAPI_URL)
+
+export const getPartnerRevenueChartAPI = (year, month) =>
+    http.get(getPartnerRevenueChartAPI_URL(year, month))

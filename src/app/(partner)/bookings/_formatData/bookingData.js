@@ -1,14 +1,9 @@
-const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-}
+import toLocaleDate from '@/utils/date'
+
 export const toBookingTableData = (data) => {
     const { bookingId, address, status, bookingDate, customer, bookingTime } =
         data
-    const formatDate = new Date(bookingDate)
-    const date = formatDate.toLocaleDateString('vi-VN', options)
+    const date = toLocaleDate(bookingDate)
     return {
         bookingId,
         address,
