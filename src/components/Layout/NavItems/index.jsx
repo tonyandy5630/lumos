@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
-import NURSE_URL from '@/constants/URL/partner'
+import disabledItem from '@/utils/disabled'
 const Skeleton = dynamic(() => import('@mui/material/Skeleton'))
 const NavItem = dynamic(() => import('./NavItem'), {
     loading: () => (
@@ -10,13 +10,6 @@ const NavItem = dynamic(() => import('./NavItem'), {
     ),
     ssr: false,
 })
-
-const disabledItem = [
-    NURSE_URL.HELP,
-    NURSE_URL.HOMEPAGE,
-    NURSE_URL.PROFILE,
-    NURSE_URL.BILL,
-]
 
 export default function NavItems({ items, roles }) {
     const pathname = usePathname()

@@ -63,7 +63,7 @@ export default function LoginForm() {
                     }
 
                     if (userRole === ROLES.partner) {
-                        router.push(NURSE_URL.HOMEPAGE)
+                        router.push(NURSE_URL.BOOKING)
                     }
                     if (userRole === ROLES.customer) setOpenDialog(true)
                 },
