@@ -1,8 +1,5 @@
 'use client'
-import dynamic from 'next/dynamic'
-const Table = dynamic(() => import('@/components/Table'), {
-    loading: () => <Loading className="w-full min-h-80" />,
-})
+import Table from '@/components/Table'
 import React from 'react'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined'
@@ -12,7 +9,6 @@ import ServiceCols from './_utils/columns'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerServicesAPI } from '@/api/partner.api'
 import { formatData } from './_utils'
-import Loading from '@/components/Loading'
 
 export default function ListPage() {
     const [rows, setRows] = React.useState([])
@@ -25,7 +21,8 @@ export default function ListPage() {
     })
 
     const getData = () => {
-        const allData = data.data.data
+        const allData = data?.data?.data
+        if (!allData) return []
         return allData.map((i) => formatData(i))
     }
 
@@ -33,46 +30,39 @@ export default function ListPage() {
         if (isSuccess) {
             setRows((prev) => getData())
         }
+        return []
     }, [isSuccess])
 
     React.useEffect(() => {
         getRows()
     }, [isSuccess])
 
-    if (isLoading) {
-        return <Loading className="w-full min-h-80" />
-    }
-
-    if (isError) {
-        return <div>Something went wrong</div>
-    }
-
-    if (isSuccess) {
-        return (
-            <Table
-                title="List Services"
-                rows={rows}
-                columns={ServiceCols}
-                height={600}
-            >
-                <div className="flex items-start justify-center my-1 space-x-7">
-                    <Button
-                        className="h-8 !rounded-xl !text-white !font-bold"
-                        LinkComponent={Link}
-                        href={NURSE_URL.ADD_SERVICE}
-                        sx={{
-                            bgcolor: 'secondary.dark',
-                            minWidth: '92px',
-                            '&:hover': {
-                                bgcolor: 'secondary.main',
-                            },
-                        }}
-                        variant="contained"
-                    >
-                        <AddIcon sx={{ mr: '5px', fontSize: '20px' }} /> Add
-                    </Button>
-                </div>
-            </Table>
-        )
-    }
+    return (
+        <Table
+            title="List Services"
+            rows={rows}
+            columns={ServiceCols}
+            height={600}
+            isLoading={isLoading}
+            isError={isError}
+        >
+            <div className="flex items-start justify-center my-1 space-x-7">
+                <Button
+                    className="h-8 !rounded-xl !text-white !font-bold"
+                    LinkComponent={Link}
+                    href={NURSE_URL.ADD_SERVICE}
+                    sx={{
+                        bgcolor: 'secondary.dark',
+                        minWidth: '92px',
+                        '&:hover': {
+                            bgcolor: 'secondary.main',
+                        },
+                    }}
+                    variant="contained"
+                >
+                    <AddIcon sx={{ mr: '5px', fontSize: '20px' }} /> Add
+                </Button>
+            </div>
+        </Table>
+    )
 }

@@ -53,7 +53,7 @@ export default function ServicesAnalytics() {
                     data={[
                         {
                             data: monthLabels.map(() =>
-                                faker.number.int({ min: 0, max: 1000 })
+                                faker.number.int({ min: 0, max: 0 })
                             ),
                         },
                     ]}

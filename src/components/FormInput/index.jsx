@@ -29,6 +29,7 @@ export default function FormInput(props) {
         children,
         autoFocus,
         multiline,
+        endAdornment,
     } = props
     const [showPwd, setShowPwd] = React.useState(false)
     const [isError, setIsError] = React.useState(helperTextIsError)
@@ -89,8 +90,12 @@ export default function FormInput(props) {
                                 {showPwd ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
                         </InputAdornment>
+                    ) : endAdornment ? (
+                        <InputAdornment position="end" className="mr-3">
+                            {endAdornment}
+                        </InputAdornment>
                     ) : (
-                        ''
+                        <></>
                     )
                 }
             />

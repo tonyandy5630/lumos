@@ -200,6 +200,7 @@ export default function ServiceForm() {
                         isRequired={true}
                         register={register}
                         helperText={errors.price?.message}
+                        endAdornment="VND"
                         helperTextIsError={errors.price !== undefined}
                     />
                 </InputWrapper>
@@ -210,6 +211,7 @@ export default function ServiceForm() {
                         autocomplete="on"
                         label="Duration"
                         isRequired={true}
+                        endAdornment="Minutes"
                         register={register}
                         placeholder="Enter Service Duration"
                         helperText={errors.duration?.message}
