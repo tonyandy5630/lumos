@@ -36,7 +36,8 @@ class Http {
                 if (
                     error.response?.status !==
                         HttpStatusCode.UnprocessableEntity &&
-                    error.response?.status !== HttpStatusCode.Conflict
+                    error.response?.status !== HttpStatusCode.Conflict &&
+                    error.response?.status !== HttpStatusCode.BadRequest
                 ) {
                     const data = error.response?.data
                     const message = data?.message || error.message
