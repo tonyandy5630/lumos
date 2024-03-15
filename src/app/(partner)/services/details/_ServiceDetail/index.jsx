@@ -48,6 +48,7 @@ export default function ServiceDetailSection() {
                     {isLoading ? (
                         DETAIL_TITLES.map((i) => (
                             <Skeleton
+                                key={i}
                                 variant="text"
                                 sx={{ fontSize: '1rem' }}
                             />
