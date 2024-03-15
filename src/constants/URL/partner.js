@@ -3,6 +3,7 @@ const HOMEPAGE = '/homepage'
 // Service
 const SERVICE = '/services'
 const ADD_SERVICE = SERVICE + '/add'
+const DETAIL_SERVICE = (id) => SERVICE + '/details/' + id
 
 // Booking
 const BOOKING = '/bookings'
@@ -31,6 +32,7 @@ const NURSE_URL = {
     BOOKING_DETAIL,
     BOOKING_PENDING_DETAIL,
     BOOKING_WORKING_DETAIL,
+    DETAIL_SERVICE,
 }
 
 export default NURSE_URL

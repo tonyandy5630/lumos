@@ -1,6 +1,5 @@
 import { partner, service, stat, booking } from '.'
 import root from '.'
-import BookingStatus from '@/constants/booking-status.const'
 import { baseBookings } from './bookings'
 export const basePartner = `${root}/${partner}`
 export const basePartnerService = `${root}/${service}`

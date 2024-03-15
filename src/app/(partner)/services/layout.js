@@ -5,7 +5,7 @@ export default async function ServicesLayout({ analytics, list, children }) {
     return (
         <>
             {children}
-            <Segment segments={['add']}>
+            <Segment segments={['add', 'details']}>
                 {analytics}
                 {list}
             </Segment>

@@ -9,6 +9,7 @@ import ServiceCols from './_utils/columns'
 import { useQuery } from '@tanstack/react-query'
 import { getPartnerServicesAPI } from '@/api/partner.api'
 import { formatData } from './_utils'
+import DetailButton from '@/components/DetailButton'
 
 export default function ListPage() {
     const [rows, setRows] = React.useState([])
@@ -45,6 +46,13 @@ export default function ListPage() {
             height={600}
             isLoading={isLoading}
             isError={isError}
+            hasActionRow={true}
+            renderRowActions={({ row }) => {
+                const { serviceId } = row.original
+                return (
+                    <DetailButton href={NURSE_URL.DETAIL_SERVICE(serviceId)} />
+                )
+            }}
         >
             <div className="flex items-start justify-center my-1 space-x-7">
                 <Button
