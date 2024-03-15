@@ -51,12 +51,13 @@ export default function LoginForm() {
         try {
             await loginMutation.mutateAsync(data, {
                 onSuccess: (data) => {
-                    setUser(data)
-                    reset()
-                    const userRole = data.data.data.userdetails.role ?? 3
+                    const user = data.data.data.userDetails
+                    setUser(user)
+                    const userRole = user.role
                     const token = data.data.data.token
                     setCookie(userRole_c, userRole, c_optns)
                     storage.setTokenToLS(token)
+                    reset()
                     if (userRole === ROLES.admin) {
                         router.push(ADMIN_URL.HOMEPAGE)
                         return
@@ -65,6 +66,7 @@ export default function LoginForm() {
                     if (userRole === ROLES.partner || userRole === null) {
                         router.push(NURSE_URL.BOOKING)
                     }
+
                     if (userRole === ROLES.customer) {
                         setOpenDialog(true)
                     }
