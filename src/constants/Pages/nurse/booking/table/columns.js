@@ -100,13 +100,6 @@ const getStatusStyle = (status) => {
             text: 'CANCELLED',
         }
     }
-    // } else if (status === BOOKING_STATUS_ENUM.Canceled) {
-    //     return {
-    //         color: '#E62E2E',
-    //         icon: <CancelIcon sx={iconSx} />,
-    //         text: 'CANCELLED',
-    //     }
-    // }
 }
 
 export default BookingColumns
