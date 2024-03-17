@@ -91,33 +91,45 @@ export default function LandingPage() {
                     className="absolute bottom-0 right-20 w-full max-w-[40rem] h-auto"
                 />
             </div>
-            <div className="flex flex-col items-start justify-center w-9/12 px-24 py-3 my-20 min-h-40 bg-mosh">
-                <Typography
-                    variant="h4"
-                    fontWeight="bold"
-                    className="text-white"
-                >
-                    Download now
-                </Typography>
-                <div className="flex items-center justify-start ml-5">
-                    <Image
-                        src="/google-play-badge.png"
-                        width="200"
-                        height="77"
-                        priority={true}
-                        alt="download on playstore"
-                        className="w-full h-auto max-w-52"
-                    />
-                    <Image
-                        src="/IOS-badge.svg"
-                        width="0"
-                        height="0"
-                        priority={true}
-                        alt="download on playstore"
-                        style={{ width: '166px', height: 'auto' }}
-                    />
+            <div className="flex items-start justify-between min-w-full pr-10 my-5">
+                <div className="flex flex-col items-start justify-center w-7/12 px-24 py-3 my-20 300 min-h-40 bg-mosh">
+                    <Typography
+                        variant="h4"
+                        fontWeight="bold"
+                        className="text-white"
+                    >
+                        Download now
+                    </Typography>
+                    <div className="flex items-center justify-start ml-5">
+                        <Image
+                            src="/google-play-badge.png"
+                            width="200"
+                            height="77"
+                            priority={true}
+                            alt="download on playstore"
+                            className="w-full h-auto max-w-52"
+                        />
+                        <Image
+                            src="/IOS-badge.svg"
+                            width="0"
+                            height="0"
+                            priority={true}
+                            alt="download on playstore"
+                            style={{ width: '166px', height: 'auto' }}
+                        />
+                    </div>
                 </div>
+                <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/GexZbEaL_kI?si=wPYE-rbJHs7d1W59"
+                    title="Lumos Demonstration"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
             </div>
+
             <div className="flex justify-start min-w-full py-10 pl-40 my-3 min-h-96">
                 <div className="flex justify-start w-10/12 space-x-24">
                     <Image

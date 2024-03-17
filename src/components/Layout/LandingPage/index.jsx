@@ -3,12 +3,13 @@ import Header from './Header'
 import Box from '@mui/material/Box'
 import Footer from './Footer'
 import Toolbar from '@mui/material/Toolbar'
+import FloatingButton from '@/components/Button/FloatingButton'
 
 export default function LandingPageLayout({ children }) {
     return (
-        <div className="flex flex-col min-h-[95vh] min-w-screen">
+        <div className="flex flex-col min-h-[95vh] min-w-screen relative">
             <Header />
-            <Toolbar className=" py-4 px-9" />
+            <Toolbar className="py-4 px-9" />
             <Box sx={{ display: 'flex' }}>
                 <Box
                     component="main"
@@ -23,6 +24,7 @@ export default function LandingPageLayout({ children }) {
                     {children}
                 </Box>
             </Box>
+            <FloatingButton />
             <Footer />
         </div>
     )
