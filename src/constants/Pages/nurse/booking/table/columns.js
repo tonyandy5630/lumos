@@ -85,7 +85,13 @@ const getStatusStyle = (status) => {
         return {
             color: '#FF9E9E',
             icon: <WorkingIcon sx={iconSx} />,
-            text: 'On-going',
+            text: 'ON-GOING',
+        }
+    } else if (status === BOOKING_STATUS_ENUM.Finished) {
+        return {
+            color: '#05B2DC',
+            icon: <SuccessIcon sx={iconSx} />,
+            text: 'FINISHED',
         }
     } else {
         return {
