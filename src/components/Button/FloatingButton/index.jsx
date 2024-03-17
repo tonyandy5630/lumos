@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useMemo, useState } from 'react'
+import { useState } from 'react'
 import Fab from '@mui/material/Fab'
 import ScrollToTop from '@mui/icons-material/VerticalAlignTop'
 
@@ -9,6 +9,7 @@ export default function FloatingButton() {
         document.body.scrollTop = 0
         document.documentElement.scrollTop = 0
     }
+
     window.onscroll = () => {
         const scrolled =
             document.body.scrollTop > 20 ||
