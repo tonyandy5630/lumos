@@ -5,6 +5,7 @@ import { EMPTY_WARNING } from '@/constants/Auth'
 const rules = getRules()
 
 const ServiceSchema = object({
+    serviceId: number().required(),
     duration: number()
         .min(rules.duration.min.limit, rules.duration.min.message)
         .max(rules.duration.max.limit, rules.duration.max.message)
@@ -17,7 +18,7 @@ const ServiceSchema = object({
             rules.serviceName.maxLength.message
         )
         .required(EMPTY_WARNING),
-    price: number()
+    price: number('Must be a round number')
         .integer('Must be a round number')
         .max(rules.price.max.limit, rules.price.max.limit.message)
         .min(rules.price.min.limit, rules.price.min.limit.message)
@@ -35,4 +36,6 @@ const ServiceSchema = object({
     categories: array(number()).required(EMPTY_WARNING),
 })
 
-export default ServiceSchema
+export const UpdateServiceSchema = ServiceSchema.omit(['categories'])
+
+export default ServiceSchema.omit(['serviceId'])

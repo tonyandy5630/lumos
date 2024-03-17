@@ -30,9 +30,11 @@ export default function FormInput(props) {
         autoFocus,
         multiline,
         endAdornment,
+        initialValue,
     } = props
     const [showPwd, setShowPwd] = React.useState(false)
     const [isError, setIsError] = React.useState(helperTextIsError)
+    const [value, setValue] = React.useState(initialValue)
     const isMd = useMediaQuery('(min-width:784px)')
     const handleClickShowPassword = () => setShowPwd((show) => !show)
 
@@ -42,6 +44,11 @@ export default function FormInput(props) {
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault()
+    }
+
+    const handleChangeValue = (event) => {
+        const newVal = event.target.value
+        setValue(newVal)
     }
 
     return (
@@ -67,10 +74,12 @@ export default function FormInput(props) {
                 error={isError}
                 inputProps={inputProps}
                 label={label}
+                value={value}
                 color="info"
                 autoFocus={autoFocus}
+                onChange={handleChangeValue}
                 multiline={multiline}
-                minRows={multiline ? 2 : ''}
+                minRows={multiline ? 1 : ''}
                 maxRows={multiline ? 4 : ''}
                 sx={{
                     fontSize: 14,

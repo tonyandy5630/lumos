@@ -6,3 +6,4 @@ export const getPartnerServiceDetailAPI = (id) =>
     http.get(getServiceDetailAPI_URL(id))
 
 export const deletePartnerServiceAPI = (id) => http.delete(service + `/${id}`)
+export const updatePartnerServiceAPI = (body) => http.put(service, body)

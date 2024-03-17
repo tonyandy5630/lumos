@@ -7,7 +7,7 @@ export default function MyButton(props) {
         disable,
         handleClick,
         className,
-        type,
+        type = 'button',
         variant = 'contained',
         loading = false,
     } = props
@@ -29,7 +29,7 @@ export default function MyButton(props) {
             loading={loading}
             onClick={handleClick}
             loadingIndicator="loading"
-            type={type ?? 'button'}
+            type={type}
         >
             {/* for handle error when translating in ChromeDev tool*/}
             {loading ? '' : <span className="flex">{text}</span>}

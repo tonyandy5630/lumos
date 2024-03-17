@@ -8,9 +8,13 @@ import DetailItem from './DetailItem'
 import {
     deletePartnerServiceAPI,
     getPartnerServiceDetailAPI,
+    updatePartnerServiceAPI,
 } from '@/api/service.api'
 import Skeleton from '@mui/material/Skeleton'
 import MyButton from '@/components/Button'
+import { useForm } from 'react-hook-form'
+import _ from 'lodash'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { handleErrorMutation } from '@/utils/handleErrors'
 const EditIcon = dynamic(() => import('@mui/icons-material/EditOutlined'))
 const DeleteIcon = dynamic(() => import('@mui/icons-material/DeleteOutlined'))
@@ -19,12 +23,17 @@ const Backdrop = dynamic(() => import('@mui/material/Backdrop'))
 import { toast } from 'react-toastify'
 import NURSE_URL from '@/constants/URL/partner'
 import { HttpStatusCode } from 'axios'
+import { UpdateServiceSchema } from '@/utils/schema/service/serviceSchema'
+import priceFormat from '@/utils/priceFormat'
+const FormInput = dynamic(() => import('@/components/FormInput'))
 const NotFound = dynamic(() => import('@/components/error/NotFound'))
+const CancelIcon = dynamic(() => import('@mui/icons-material/CloseOutlined'))
+const Rating = dynamic(() => import('@mui/material/Rating'))
 
 const DETAIL_TITLES = [
     'Code',
-    'Duration',
     'Service name',
+    'Duration',
     'Price',
     'Rating',
     'Categories',
@@ -35,24 +44,70 @@ export default function ServiceDetailSection() {
     const params = useParams()
     const router = useRouter()
     const [openDialog, setOpenDialog] = useState(false)
-    const { data, isSuccess, isError, isLoading, error } = useQuery({
-        queryKey: ['/get/' + params.serviceId + 'service/detail'],
-        queryFn: () => getPartnerServiceDetailAPI(params.serviceId),
-        retry: 2,
-        refetchOnWindowFocus: false,
+    const [isUpdate, setIsUpdate] = useState(false)
+
+    const { data, isSuccess, isLoading, error, refetch, isRefetching } =
+        useQuery({
+            queryKey: ['/get/' + params.serviceId + 'service/detail'],
+            queryFn: () => getPartnerServiceDetailAPI(params.serviceId),
+            retry: 2,
+            refetchOnWindowFocus: false,
+        })
+
+    const {
+        register,
+        handleSubmit,
+        clearErrors,
+        setError,
+        setValue,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(UpdateServiceSchema),
     })
+
+    const setDetailsFormValues = (obj) => {
+        const newObj = _.omit(obj, [
+            'categories',
+            'status',
+            'rating',
+            'bookedQuantity',
+            'code',
+        ])
+        for (const [key, value] of Object.entries(newObj)) {
+            setValue(key, value)
+        }
+    }
     const details = useMemo(() => {
         if (isSuccess) {
             const res = data.data.data
-            if (res) return res
+            if (res) {
+                setDetailsFormValues(res)
+                return res
+            }
         }
         return undefined
-    }, [isSuccess])
+    }, [isSuccess, isRefetching])
 
     const deleteMutation = useMutation({
         mutationKey: ['delete/partner-service/' + details?.serviceId],
         mutationFn: () => deletePartnerServiceAPI(details?.serviceId),
     })
+
+    const updateMutation = useMutation({
+        mutationKey: ['update/partner-service/' + details?.serviceId],
+        mutationFn: updatePartnerServiceAPI,
+    })
+
+    const onUpdateClick = () => {
+        if (!isUpdate) setIsUpdate(true)
+        return
+    }
+
+    const onCancelUpdate = () => {
+        setDetailsFormValues(details)
+        clearErrors()
+        setIsUpdate(false)
+    }
 
     const onCancelDialog = () => {
         setOpenDialog(false)
@@ -60,6 +115,23 @@ export default function ServiceDetailSection() {
 
     const onOpenDeleteDialog = () => {
         setOpenDialog(true)
+    }
+
+    const onSubmit = async (data) => {
+        try {
+            await updateMutation.mutateAsync(data, {
+                onSuccess: (data) => {
+                    toast.success('Update service successfully', {
+                        autoClose: 1000,
+                    })
+                    refetch()
+                },
+            })
+        } catch (error) {
+            handleErrorMutation(error)
+        } finally {
+            setIsUpdate(false)
+        }
     }
 
     const handleDelete = async () => {
@@ -83,7 +155,7 @@ export default function ServiceDetailSection() {
     }
 
     return (
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <>
                 {openDialog ? (
                     <Backdrop
@@ -112,42 +184,110 @@ export default function ServiceDetailSection() {
                 <NotFound />
             ) : (
                 <>
-                    <div className="flex items-center justify-start min-w-full py-10 shadow-lg px-14 rounded-2xl bg-primary h-80 min-h-80">
-                        <div className="flex items-center justify-between w-6/12 h-full space-x-5 ">
+                    <div className="flex items-center justify-start min-w-full py-10 shadow-lg px-14 rounded-2xl bg-primary h-96 min-h-80">
+                        <div className="flex items-center justify-between w-8/12 h-full space-x-5 ">
                             <DetailRow>
-                                {DETAIL_TITLES.map((i) => (
-                                    <DetailItem
-                                        rightAlign={true}
-                                        key={i}
-                                        isTitle={true}
-                                    >
-                                        {i}
-                                    </DetailItem>
-                                ))}
-                            </DetailRow>
-                            <DetailRow isContents={true}>
-                                {isLoading ? (
+                                {isLoading || isRefetching ? (
                                     DETAIL_TITLES.map((i) => (
-                                        <Skeleton
-                                            key={i}
-                                            variant="text"
-                                            sx={{ fontSize: '1rem' }}
-                                        />
+                                        <DetailItem key={i} title={i}>
+                                            <Skeleton
+                                                variant="text"
+                                                sx={{
+                                                    fontSize: '1rem',
+                                                    minWidth: '20rem',
+                                                }}
+                                            />
+                                        </DetailItem>
                                     ))
                                 ) : (
                                     <>
-                                        <DetailItem>{details?.code}</DetailItem>
-                                        <DetailItem>
-                                            {details?.duration}
+                                        <DetailItem title="Code">
+                                            {details?.code}
                                         </DetailItem>
-                                        <DetailItem>{details?.name}</DetailItem>
-                                        <DetailItem>
-                                            {details?.price}
+                                        <DetailItem title="Service name">
+                                            {!isUpdate ? (
+                                                details?.name
+                                            ) : (
+                                                <FormInput
+                                                    name="name"
+                                                    id="name"
+                                                    autocomplete="on"
+                                                    label="Service Name"
+                                                    register={register}
+                                                    className="!min-w-[40rem]"
+                                                    placeholder="Enter service Name"
+                                                    autoFocus={true}
+                                                    initialValue={details?.name}
+                                                    helperText={
+                                                        errors.name?.message
+                                                    }
+                                                    helperTextIsError={
+                                                        errors.name !==
+                                                        undefined
+                                                    }
+                                                />
+                                            )}
                                         </DetailItem>
-                                        <DetailItem>
-                                            {details?.rating}
+                                        <DetailItem title="Duration">
+                                            {!isUpdate ? (
+                                                details?.duration
+                                            ) : (
+                                                <FormInput
+                                                    name="duration"
+                                                    id="duration"
+                                                    label="Duration"
+                                                    register={register}
+                                                    placeholder="Duration"
+                                                    initialValue={
+                                                        details?.duration
+                                                    }
+                                                    endAdornment="Minutes"
+                                                    helperText={
+                                                        errors.duration?.message
+                                                    }
+                                                    helperTextIsError={
+                                                        errors.duration !==
+                                                        undefined
+                                                    }
+                                                />
+                                            )}
                                         </DetailItem>
-                                        <DetailItem>
+                                        <DetailItem title="Price">
+                                            {!isUpdate ? (
+                                                priceFormat(
+                                                    'Vi-vi',
+                                                    'VND',
+                                                    details?.price
+                                                )
+                                            ) : (
+                                                <FormInput
+                                                    name="price"
+                                                    id="price"
+                                                    label="Price"
+                                                    register={register}
+                                                    placeholder="Price"
+                                                    initialValue={
+                                                        details?.price
+                                                    }
+                                                    endAdornment="VND"
+                                                    helperText={
+                                                        errors.price?.message
+                                                    }
+                                                    helperTextIsError={
+                                                        errors.price !==
+                                                        undefined
+                                                    }
+                                                />
+                                            )}
+                                        </DetailItem>
+                                        <DetailItem title="Rating">
+                                            <Rating
+                                                precision={0.5}
+                                                readOnly
+                                                value={details?.rating}
+                                            />
+                                        </DetailItem>
+                                        <DetailItem title="Category">
                                             {details?.categories?.reduce(
                                                 (acc, cur) => {
                                                     if (acc === cur.category) {
@@ -160,8 +300,31 @@ export default function ServiceDetailSection() {
                                                 details?.categories[0]?.category
                                             )}
                                         </DetailItem>
-                                        <DetailItem>
-                                            {details?.description}
+                                        <DetailItem title="Description">
+                                            {!isUpdate ? (
+                                                details?.description
+                                            ) : (
+                                                <FormInput
+                                                    name="description"
+                                                    id="description"
+                                                    label="Description"
+                                                    multiline={true}
+                                                    className="!min-w-[50rem]"
+                                                    register={register}
+                                                    placeholder="Description"
+                                                    initialValue={
+                                                        details?.description
+                                                    }
+                                                    helperText={
+                                                        errors.description
+                                                            ?.message
+                                                    }
+                                                    helperTextIsError={
+                                                        errors.description !==
+                                                        undefined
+                                                    }
+                                                />
+                                            )}
                                         </DetailItem>
                                     </>
                                 )}
@@ -170,25 +333,54 @@ export default function ServiceDetailSection() {
                     </div>
                     <div className="flex items-center my-4 space-x-5 justify-normal min-w-16">
                         <div className="w-28">
-                            <MyButton loading={isLoading}>
-                                <EditIcon />
-                                Update
-                            </MyButton>
+                            {isUpdate ? (
+                                <MyButton
+                                    type="submit"
+                                    key="submit"
+                                    isLoading={isRefetching}
+                                >
+                                    <EditIcon />
+                                    Save
+                                </MyButton>
+                            ) : (
+                                <MyButton
+                                    key="button"
+                                    loading={isLoading || isRefetching}
+                                    handleClick={onUpdateClick}
+                                >
+                                    <EditIcon />
+                                    Update
+                                </MyButton>
+                            )}
                         </div>
                         <div className="w-28">
-                            <MyButton
-                                loading={isLoading}
-                                variant="outlined"
-                                className="!text-error !border-error hover:!bg-red-600 hover:!text-white"
-                                handleClick={onOpenDeleteDialog}
-                            >
-                                <DeleteIcon />
-                                Delete
-                            </MyButton>
+                            {!isUpdate ? (
+                                <MyButton
+                                    loading={isLoading}
+                                    variant="outlined"
+                                    className="!text-error !border-error hover:!bg-red-600 hover:!text-white"
+                                    handleClick={onOpenDeleteDialog}
+                                >
+                                    <DeleteIcon />
+                                    Delete
+                                </MyButton>
+                            ) : (
+                                <div className="w-28">
+                                    <MyButton
+                                        loading={isRefetching}
+                                        variant="outlined"
+                                        className="!text-warning !border-warning hover:!bg-warning hover:!text-white"
+                                        handleClick={onCancelUpdate}
+                                    >
+                                        <CancelIcon />
+                                        Cancel
+                                    </MyButton>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </>
             )}
-        </div>
+        </form>
     )
 }

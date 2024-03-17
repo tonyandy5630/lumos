@@ -2,16 +2,15 @@ import React from 'react'
 import Typography from '@mui/material/Typography'
 
 export default function DetailItem(props) {
-    const { children, isTitle, rightAlign = false } = props
+    const { children, title } = props
     return (
-        <Typography
-            fontSize={17}
-            fontWeight={isTitle ? 'bold' : 'regular'}
-            className={`flex items-center ${
-                rightAlign ? 'justify-end' : 'justify-start'
-            } w-fit min-w-32 min-h-7`}
-        >
-            {children}
-        </Typography>
+        <div className="flex items-center justify-start min-w-full space-x-5 min-h-12">
+            <div className="flex items-center justify-end min-w-32">
+                <Typography fontSize={17} fontWeight="bold">
+                    {title}
+                </Typography>
+            </div>
+            <div className="flex items-center justify-start">{children}</div>
+        </div>
     )
 }
