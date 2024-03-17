@@ -14,12 +14,14 @@ import DetailButton from '@/components/DetailButton'
 export default function ListPage() {
     const [rows, setRows] = React.useState([])
 
-    const { data, error, isLoading, isSuccess, isError } = useQuery({
+    const { data, error, isLoading, isSuccess, isError, status } = useQuery({
         queryKey: ['get/partner-all-service'],
         queryFn: getPartnerServicesAPI,
         retry: 2,
         refetchOnWindowFocus: false,
+        refetchOnMount: true,
     })
+    console.log('loading in list is:' + status)
 
     const getData = () => {
         const allData = data?.data?.data

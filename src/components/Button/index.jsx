@@ -32,7 +32,7 @@ export default function MyButton(props) {
             type={type ?? 'button'}
         >
             {/* for handle error when translating in ChromeDev tool*/}
-            {loading ? '' : <span>{text}</span>}
+            {loading ? '' : <span className="flex">{text}</span>}
         </LoadingButton>
     )
 }
