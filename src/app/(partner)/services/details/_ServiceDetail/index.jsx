@@ -128,8 +128,18 @@ export default function ServiceDetailSection() {
                 },
             })
         } catch (error) {
+            if (error?.response.status === HttpStatusCode.UnprocessableEntity) {
+                const validateErrors = error.response.data.errors
+
+                for (const [key, value] of Object.entries(validateErrors)) {
+                    setError(key.toLowerCase(), {
+                        type: 'custom',
+                        message: value[0],
+                    })
+                }
+                return
+            }
             handleErrorMutation(error)
-        } finally {
             setIsUpdate(false)
         }
     }

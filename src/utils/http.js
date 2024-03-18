@@ -39,10 +39,11 @@ class Http {
                     error.response?.status !== HttpStatusCode.Conflict &&
                     error.response?.status !== HttpStatusCode.BadRequest
                 ) {
-                    const data = error.response?.data
-                    const message = data?.message || error.message
+                    const data = error?.response?.data
+                    const message = data?.message || error?.message
+                    console.log(data)
                     toast.error(message, {
-                        toastId: data.message ? data.message : error.message,
+                        toastId: data?.message ? data?.message : error?.message,
                     })
                 }
                 return Promise.reject(error)
