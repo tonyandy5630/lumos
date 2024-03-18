@@ -125,6 +125,7 @@ export default function ServiceDetailSection() {
                         autoClose: 1000,
                     })
                     refetch()
+                    setIsUpdate(false)
                 },
             })
         } catch (error) {
