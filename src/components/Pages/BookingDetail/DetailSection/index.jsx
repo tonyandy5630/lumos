@@ -10,12 +10,14 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import {
     progressToNextBookingStatusAPI,
     getBookingDetailAPI,
+    declineBookingAPI,
 } from '@/api/bookings.api'
 import { useRouter } from 'next/navigation'
 import NURSE_URL from '@/constants/URL/partner'
 import { toast } from 'react-toastify'
 import { useParams } from 'next/navigation'
 import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
+import { handleErrorMutation } from '@/utils/handleErrors'
 const Typography = dynamic(() => import('@mui/material/Typography'))
 
 export default function BookingDetail() {
@@ -30,7 +32,13 @@ export default function BookingDetail() {
         mutationKey: '/accept/bookings' + params.id.toString(),
         mutationFn: progressToNextBookingStatusAPI,
     })
-    const { data, isLoading, isSuccess, isError } = useQuery({
+
+    const declineMutation = useMutation({
+        mutationKey: ['/decline/booking' + params.id.toString()],
+        mutationFn: () => declineBookingAPI(params.id),
+    })
+
+    const { data, isLoading, isSuccess, isError, refetch } = useQuery({
         queryKey: ['/booking/details' + params.id],
         queryFn: () => getBookingDetailAPI(params.id),
         retry: 0,
@@ -68,7 +76,25 @@ export default function BookingDetail() {
         }
     }, [isSuccess])
 
-    const handleAccept = async () => {
+    const onDecline = async () => {
+        try {
+            await declineMutation.mutateAsync(undefined, {
+                onSuccess: (data) => {
+                    toast.success('Declined booking successfully', {
+                        autoClose: 1000,
+                    })
+                    toast.onChange((payload) => {
+                        if (payload.status === 'removed')
+                            router.push(NURSE_URL.PENDING_BOOKING)
+                    })
+                },
+            })
+        } catch (error) {
+            handleErrorMutation(error)
+        }
+    }
+
+    const onAccept = async () => {
         try {
             const data = { bookingId: booking?.bookingDetail?.bookingId }
             await acceptMutation.mutateAsync(data, {
@@ -104,7 +130,7 @@ export default function BookingDetail() {
             console.log(error)
         }
     }
-
+    console.log(booking?.bookingDetail?.status)
     return (
         <>
             <BookingDetailSection bookingDetail={booking.bookingDetail} />
@@ -120,15 +146,17 @@ export default function BookingDetail() {
             ))}
             <div className="flex items-center justify-end min-w-full my-3 space-x-6">
                 <div className="min-w-32">
-                    {booking?.bookingDetail?.status !==
-                        BOOKING_STATUS_ENUM.Canceled ?? (
+                    {booking?.bookingDetail?.status ===
+                        BOOKING_STATUS_ENUM.Pending ||
+                    booking?.bookingDetail?.status ===
+                        BOOKING_STATUS_ENUM.Doing ? (
                         <MyButton
                             type="button"
                             className="hover:bg-mosh hover:text-white "
-                            handleClick={handleAccept}
+                            handleClick={onAccept}
                             loading={
                                 acceptMutation.isPending ||
-                                acceptMutation.isPending
+                                declineMutation.isPending
                             }
                         >
                             {booking?.bookingDetail?.status ===
@@ -139,6 +167,8 @@ export default function BookingDetail() {
                                   ? 'Finish'
                                   : 'Accept'}
                         </MyButton>
+                    ) : (
+                        <></>
                     )}
                 </div>
                 {booking?.bookingDetail?.status ===
@@ -147,9 +177,10 @@ export default function BookingDetail() {
                         <MyButton
                             variant="outlined"
                             type="button"
+                            handleClick={onDecline}
                             loading={
                                 acceptMutation.isPending ||
-                                acceptMutation.isPending
+                                declineMutation.isPending
                             }
                             className="!text-red-600 hover:bg-mosh hover:text-white"
                         >
