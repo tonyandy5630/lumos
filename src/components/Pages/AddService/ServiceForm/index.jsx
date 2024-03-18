@@ -152,11 +152,13 @@ export default function ServiceForm() {
                 },
             })
         } catch (error) {
-            const res = error?.response?.data?.data
+            let res =
+                error?.response?.data?.data ?? error?.response?.data?.errors
             if (res) {
                 for (const [key, value] of Object.entries(res)) {
-                    resetField(key)
-                    setError(key, {
+                    const errorKey = key.toLowerCase()
+                    resetField('description')
+                    setError(errorKey, {
                         type: 'custom',
                         message: value,
                     })

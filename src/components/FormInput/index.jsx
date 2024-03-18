@@ -30,7 +30,7 @@ export default function FormInput(props) {
         autoFocus,
         multiline,
         endAdornment,
-        initialValue,
+        initialValue = '',
     } = props
     const [showPwd, setShowPwd] = React.useState(false)
     const [isError, setIsError] = React.useState(helperTextIsError)
