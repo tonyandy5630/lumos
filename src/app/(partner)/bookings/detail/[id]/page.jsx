@@ -1,5 +1,5 @@
 import PageTitle from '@/components/PageTitle'
-import BookingSteps from '@/components/Stepper'
+import BookingDetail from '@/components/Pages/BookingDetail/DetailSection'
 import React from 'react'
 
 export const metadata = {
@@ -10,8 +10,7 @@ export default async function BookingDetailPage() {
     return (
         <>
             <PageTitle>Booking Detail</PageTitle>
-            {/* <BookingDetailSection bookingDetail={bookingDetail} /> */}
-            <BookingSteps currentStep={1} />
+            <BookingDetail />
         </>
     )
 }

@@ -120,22 +120,26 @@ export default function BookingDetail() {
             ))}
             <div className="flex items-center justify-end min-w-full my-3 space-x-6">
                 <div className="min-w-32">
-                    <MyButton
-                        type="button"
-                        className="hover:bg-mosh hover:text-white "
-                        handleClick={handleAccept}
-                        loading={
-                            acceptMutation.isPending || acceptMutation.isPending
-                        }
-                    >
-                        {booking?.bookingDetail?.status ===
-                        BOOKING_STATUS_ENUM.Pending
-                            ? 'Doing'
-                            : booking?.bookingDetail?.status ===
-                                BOOKING_STATUS_ENUM.Doing
-                              ? 'Finish'
-                              : 'Accept'}
-                    </MyButton>
+                    {booking?.bookingDetail?.status !==
+                        BOOKING_STATUS_ENUM.Canceled ?? (
+                        <MyButton
+                            type="button"
+                            className="hover:bg-mosh hover:text-white "
+                            handleClick={handleAccept}
+                            loading={
+                                acceptMutation.isPending ||
+                                acceptMutation.isPending
+                            }
+                        >
+                            {booking?.bookingDetail?.status ===
+                            BOOKING_STATUS_ENUM.Pending
+                                ? 'Doing'
+                                : booking?.bookingDetail?.status ===
+                                    BOOKING_STATUS_ENUM.Doing
+                                  ? 'Finish'
+                                  : 'Accept'}
+                        </MyButton>
+                    )}
                 </div>
                 {booking?.bookingDetail?.status ===
                 BOOKING_STATUS_ENUM.Pending ? (

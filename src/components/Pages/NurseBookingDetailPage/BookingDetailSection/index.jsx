@@ -6,6 +6,7 @@ import PrimaryName from '@/components/PrimaryName'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import BookingInfo from '../../BillDetailPage/BookingInfo'
 import DetailContainer from './DetailContainer'
+import StatusChip from '@/components/StatusChip'
 
 const avatar_size = 90
 
@@ -22,9 +23,12 @@ export default function BookingDetailSection(props) {
                 alt="partner's avatar"
                 className="self-start border border-black rounded-xl"
             />
-            <div className="flex flex-col items-start justify-between min-h-full space-y-1">
-                <div>
-                    <PrimaryName>{bookingDetail?.partner}</PrimaryName>
+            <div className="flex flex-col items-start justify-between w-full min-h-full space-y-1">
+                <div className="w-full">
+                    <div className="flex justify-between min-w-full">
+                        <PrimaryName>{bookingDetail?.partner}</PrimaryName>
+                        <StatusChip status={bookingDetail?.status} />
+                    </div>
                     <Typography
                         variant="subtitle1"
                         fontWeight="bold"

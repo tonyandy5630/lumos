@@ -1,18 +1,6 @@
 'use client'
 import React from 'react'
-import dynamic from 'next/dynamic'
-import SuccessIcon from '@mui/icons-material/CheckCircleOutlineOutlined'
-import PendingIcon from '@mui/icons-material/QueryBuilderOutlined'
-import CancelIcon from '@mui/icons-material/CancelOutlined'
-import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
-import WorkingIcon from '@mui/icons-material/EditCalendarOutlined'
-const Chip = dynamic(() => import('@mui/material/Chip'))
-
-const ICON_SIZE = 10
-const iconSx = {
-    fontSize: `${ICON_SIZE}px`,
-    color: 'white !important',
-}
+import StatusChip from '@/components/StatusChip'
 
 const BookingColumns = [
     {
@@ -45,61 +33,9 @@ const BookingColumns = [
         size: 150,
         headerClassName: 'bg-primary',
         Cell: ({ cell }) => {
-            const { color, icon, text } = getStatusStyle(cell.getValue())
-            return (
-                <div className={`flex items-start`}>
-                    <Chip
-                        size="small"
-                        label={text}
-                        sx={{
-                            minWidth: '116px',
-                            fontWeight: 'bold',
-                            fontSize: '13px',
-                            bgcolor: color,
-                            color: 'white',
-                            display: 'flex',
-                            justifyContent: 'start',
-                        }}
-                        icon={icon}
-                    />
-                </div>
-            )
+            return <StatusChip status={cell.getValue()} />
         },
     },
 ]
-
-const getStatusStyle = (status) => {
-    if (status === BOOKING_STATUS_ENUM.Completed) {
-        return {
-            color: '#2EE656',
-            icon: <SuccessIcon sx={iconSx} />,
-            text: 'SUCCESS',
-        }
-    } else if (status === BOOKING_STATUS_ENUM.Pending) {
-        return {
-            color: '#E6BE2E',
-            icon: <PendingIcon sx={iconSx} />,
-            text: 'PENDING',
-        }
-    } else if (status === BOOKING_STATUS_ENUM.Doing) {
-        return {
-            color: '#FF9E9E',
-            icon: <WorkingIcon sx={iconSx} />,
-            text: 'ON-GOING',
-        }
-    } else if (status === BOOKING_STATUS_ENUM.Finished) {
-        return {
-            color: '#05B2DC',
-            icon: <SuccessIcon sx={iconSx} />,
-            text: 'FINISHED',
-        }
-    } else {
-        return {
-            color: '#E62E2E',
-            icon: <CancelIcon sx={iconSx} />,
-            text: 'CANCELLED',
-        }
-    }
-}
 
 export default BookingColumns
