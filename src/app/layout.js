@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { AuthContextProvider } from '@/context'
 import ThemeProviderComponent from '@/utils/themes'
 import TanstackQueryProviders from '@/utils/queryClient'
-
+import { SpeedInsights } from '@vercel/speed-insights/next'
 const montserrat = Montserrat({
     subsets: ['latin'],
     weight: ['500', '600', '700'],
@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
                                 <TanstackQueryProviders>
                                     <ToastContainer />
                                     {children}
+                                    <SpeedInsights />
                                 </TanstackQueryProviders>
                             </AuthContextProvider>
                         </ThemeProviderComponent>
