@@ -75,6 +75,7 @@ export default function Table(props) {
                 justifyContent: 'space-between',
                 alignItems: 'start',
                 flexDirection: 'column',
+                overflowX: 'scroll',
             }}
         >
             <Typography variant="h5" fontWeight="bold">

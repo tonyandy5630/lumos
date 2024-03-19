@@ -28,21 +28,22 @@ const RefundColumns = [
         headerClassName: 'bg-primary',
     },
     {
-        accessorKey: 'createAt',
+        accessorKey: 'createdAt',
         header: 'Create At',
+        size: 200,
+        headerClassName: 'bg-primary',
+    },
+
+    {
+        accessorKey: 'cancelationReason',
+        header: 'Reason',
         size: 200,
         headerClassName: 'bg-primary',
     },
     {
         accessorKey: 'totalPrice',
         header: 'Refund price',
-        size: 200,
-        headerClassName: 'bg-primary',
-    },
-    {
-        accessorKey: 'cancelationReason',
-        header: 'Reason',
-        size: 200,
+        size: 80,
         headerClassName: 'bg-primary',
     },
     {

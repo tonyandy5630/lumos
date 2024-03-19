@@ -7,6 +7,7 @@ const PROFILE = '/profile'
 const HELP = '/help'
 const PARTNER = '/admin/partners'
 const ADD_PARTNER = PARTNER + '/add'
+const REFUND = '/admin/refunds'
 
 const ADMIN_URL = {
     HOMEPAGE,
@@ -18,6 +19,7 @@ const ADMIN_URL = {
     HELP,
     PARTNER,
     ADD_PARTNER,
+    REFUND,
 }
 
 export default ADMIN_URL

@@ -9,7 +9,7 @@ export const metadata = {
 export default function RefundPage() {
     return (
         <>
-            <PageTitle>RefundPage</PageTitle>
+            <PageTitle>Refund Page</PageTitle>
             <RefundList />
         </>
     )

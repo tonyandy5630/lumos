@@ -6,6 +6,7 @@ import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import ADMIN_URL from '@/constants/URL/admin'
 import AddPartnerIcon from '@mui/icons-material/DomainAdd'
 import PartnerIcon from '@mui/icons-material/Business'
+import RefundIcon from '@mui/icons-material/CurrencyExchangeOutlined'
 
 export const options = {
     color: 'secondary',
@@ -38,6 +39,11 @@ const AdminNavItems = [
                 href: ADMIN_URL.ADD_PARTNER,
             },
         ],
+    },
+    {
+        title: 'Refunds',
+        icon: <RefundIcon {...options} />,
+        href: ADMIN_URL.REFUND,
     },
     {
         title: 'Help',
