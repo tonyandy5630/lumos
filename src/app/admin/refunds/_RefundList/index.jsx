@@ -8,7 +8,7 @@ import RefundColumns, { formatRefundData } from './column'
 export default function RefundList() {
     const { data, isLoading, isSuccess, isError, error } = useQuery({
         queryKey: ['/refund-list'],
-        queryFn: () => getRefundListAPI,
+        queryFn: getRefundListAPI,
     })
 
     const rows = useMemo(() => {

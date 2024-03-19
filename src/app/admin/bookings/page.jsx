@@ -1,4 +1,5 @@
 import AdminBookingTableSection from '@/components/Pages/AdminBookingPage/TableSection'
+import PageTitle from '@/components/PageTitle'
 import React from 'react'
 
 export const metadata = {
@@ -6,5 +7,10 @@ export const metadata = {
 }
 
 export default function AdminBookingsPage() {
-    return <AdminBookingTableSection />
+    return (
+        <>
+            <PageTitle>Apps' Bookings</PageTitle>
+            <AdminBookingTableSection />
+        </>
+    )
 }

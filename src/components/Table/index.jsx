@@ -25,27 +25,36 @@ export default function Table(props) {
         title,
         children,
         exportData = false,
+        rowCount,
+        pagination,
+        isRefetching,
     } = props
-    const [paginationModel, setPaginationModel] = React.useState({
-        page: 0,
-        pageSize: 5,
-    })
 
     const handleExportData = () => {
         const csv = generateCsv(csvConfig)(rows)
         download(csvConfig)(csv)
     }
 
+    const [paginationModal, setPaginationModal] = React.useState({
+        pageIndex: 1,
+        pageSize: 5,
+    })
+
     const table = useMaterialReactTable({
         columns: columns,
         data: rows,
         state: {
             isLoading: isLoading,
+            pagination: pagination?.pagination ?? paginationModal,
+            showProgressBars: isRefetching ?? false,
         },
+        onPaginationChange: pagination?.setPagination ?? setPaginationModal,
+        manualPagination: true,
         enableBottomToolbar: true,
         enableStickyHeader: true,
         enableFullScreenToggle: false,
         enableDensityToggle: false,
+        rowCount: rowCount ?? rows.length,
         muiTablePaperProps: {
             elevation: 0,
             sx: {
@@ -72,6 +81,11 @@ export default function Table(props) {
                     justifyContent: 'space-between',
                 },
             },
+        },
+        muiPaginationProps: {
+            rowsPerPageOptions: [6, 10],
+            showFirstButton: false,
+            showLastButton: false,
         },
         enableRowActions: hasActionRow ?? false,
         positionActionsColumn: 'last',
@@ -123,7 +137,6 @@ export default function Table(props) {
                 justifyContent: 'space-between',
                 alignItems: 'start',
                 flexDirection: 'column',
-                // overflowX: 'scroll',
             }}
         >
             <Typography variant="h5" fontWeight="bold">

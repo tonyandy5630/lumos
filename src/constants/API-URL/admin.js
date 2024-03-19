@@ -18,3 +18,6 @@ export const getTopServiceBookedAPI_URL = (top) =>
     `${baseBookings}/service/${top}`
 
 export const getRefundListAPI_URL = `${baseAdmin}/refundlist`
+
+export const getAppBookingsAPI_URL = (page, pageSize) =>
+    `${baseAdmin}/bookings?page=${page}&PageSize=${pageSize}`
