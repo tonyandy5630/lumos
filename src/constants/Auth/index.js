@@ -1,6 +1,6 @@
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const PHONE_REGEX = /^(?:\+?\d{10,15}|\d{10})$/
-export const BUSINESS_LICENSE_REGEX = /^\d{10}$/
+export const BUSINESS_LICENSE_REGEX = /^(?=.*[A-Za-z])[\w\d]{10}$/
 
 export const LENGTH_WARNING = (min, max) =>
     `At least ${min} - ${max} characters`
