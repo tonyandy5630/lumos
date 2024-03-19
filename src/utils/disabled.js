@@ -6,7 +6,6 @@ const disabledItem = [
     NURSE_URL.HOMEPAGE,
     NURSE_URL.PROFILE,
     NURSE_URL.BILL,
-    ADMIN_URL.BOOKING,
     ADMIN_URL.MEMBER,
 ]
 
