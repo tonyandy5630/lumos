@@ -9,6 +9,7 @@ import { AuthContextProvider } from '@/context'
 import ThemeProviderComponent from '@/utils/themes'
 import TanstackQueryProviders from '@/utils/queryClient'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+
 const montserrat = Montserrat({
     subsets: ['latin'],
     weight: ['500', '600', '700'],

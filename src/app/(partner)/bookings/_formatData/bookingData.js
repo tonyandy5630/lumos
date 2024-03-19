@@ -18,11 +18,11 @@ export const toBookingTableData = (data) => {
 const convertBookingTime = (time) => {
     switch (time) {
         case 1:
-            return '6:00am - 11:30am'
+            return '6:00am - 12:00am'
         case 2:
-            return '12:30pm - 17:00pm'
+            return '12:00pm - 18:00pm'
         case 3:
-            return '17:00pm - 22:00pm'
+            return '18:00pm - 22:00pm'
         default:
             return 'Unknown'
     }
