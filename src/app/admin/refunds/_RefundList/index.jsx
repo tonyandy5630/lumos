@@ -22,13 +22,12 @@ export default function RefundList() {
     }, [isSuccess])
 
     return (
-        <div className="min-w-full">
-            <Table
-                rows={rows}
-                columns={RefundColumns}
-                isLoading={isLoading}
-                isError={isError}
-            />
-        </div>
+        <Table
+            rows={rows}
+            columns={RefundColumns}
+            isLoading={isLoading}
+            isError={isError}
+            exportData={true}
+        />
     )
 }
