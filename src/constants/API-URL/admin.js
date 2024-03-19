@@ -16,3 +16,5 @@ export const getTopPartnerRatingAPI_URL = (top) =>
     `${baseAdmin}/${top}/${partner}`
 export const getTopServiceBookedAPI_URL = (top) =>
     `${baseBookings}/service/${top}`
+
+export const getRefundListAPI_URL = `${baseAdmin}/refundlist`
