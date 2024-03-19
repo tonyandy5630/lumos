@@ -25,10 +25,12 @@ export default function NavItem(props) {
     return (
         <div>
             <ListItem
-                key={children}
+                key={href}
                 disablePadding
                 component={Link}
-                className="w-full h-fit"
+                className={`w-full h-fit ${
+                    !disabled ? 'pointer-events-auto' : 'pointer-events-none'
+                }`}
                 href={href}
             >
                 <ListItemButton
