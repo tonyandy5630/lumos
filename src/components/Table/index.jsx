@@ -10,7 +10,6 @@ const Button = dynamic(() => import('@mui/material/Button'))
 const FileDownloadIcon = dynamic(
     () => import('@mui/icons-material/FileDownload')
 )
-//* Use Pagination on api
 
 export default function Table(props) {
     const {

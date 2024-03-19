@@ -8,21 +8,23 @@ import { useQuery } from '@tanstack/react-query'
 import { getPartnerBookingsAPI } from '@/api/partner.api'
 import { toBookingTableData } from '../_formatData/bookingData'
 import BOOKING_STATUS_ENUM from '@/constants/booking-status.const'
+import usePagination from '@/hooks/usePagination'
 
 export default function BookingTable() {
+    const { pageIndex, pageSize, pagination, setPagination } = usePagination()
     const { data, isLoading, isSuccess, isError } = useQuery({
-        queryKey: ['/partner/bookings/all'],
-        queryFn: () => getPartnerBookingsAPI(1),
+        queryKey: ['/partner/bookings/all', pageIndex, pageSize],
+        queryFn: () => getPartnerBookingsAPI(pageIndex),
+        retry: 2,
     })
 
     const rows = useMemo(() => {
         if (isSuccess) {
             const res = data?.data?.data
             if (res) return res.map((row) => toBookingTableData(row))
-            return []
         }
         return []
-    }, [isSuccess])
+    }, [isSuccess, pageIndex, pageSize])
 
     return (
         <Table
@@ -31,6 +33,8 @@ export default function BookingTable() {
             columns={BookingColumns}
             isLoading={isLoading}
             isError={isError}
+            pagination={{ pagination, setPagination }}
+            rowCount={rows.length * 2}
             hasActionRow={true}
             renderRowActions={({ row }) => {
                 const { bookingId, status } = row.original

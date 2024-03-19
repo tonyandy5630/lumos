@@ -8,16 +8,13 @@ import Button from '@mui/material/Button'
 import ADMIN_URL from '@/constants/URL/admin'
 import Link from 'next/link'
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined'
+import usePagination from '@/hooks/usePagination'
 
 export default function PartnerList() {
-    const [pagination, setPagination] = useState({
-        pageIndex: 0,
-        pageSize: 6,
-    })
+    const { pageIndex, pageSize, pagination, setPagination } = usePagination()
     const { data, isLoading, isError, isSuccess } = useQuery({
-        queryKey: ['/all-partners', pagination.pageIndex, pagination.pageSize],
-        queryFn: () =>
-            getAllPartnersAPI(pagination.pageIndex, pagination.pageSize),
+        queryKey: ['/all-partners', pageIndex, pageSize],
+        queryFn: () => getAllPartnersAPI(pageIndex, pageSize),
         retry: 2,
     })
 
@@ -36,7 +33,7 @@ export default function PartnerList() {
             rows: [],
             total: 0,
         }
-    }, [isSuccess, pagination.pageIndex, pagination.pageSize])
+    }, [isSuccess, pageIndex, pageSize])
     return (
         <Table
             rows={rows.rows}

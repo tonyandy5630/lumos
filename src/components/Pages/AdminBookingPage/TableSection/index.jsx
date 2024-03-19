@@ -1,23 +1,20 @@
 'use client'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Table from '@/components/Table'
 import { getAppBookingsAPI } from '@/api/admin.api'
 import AppBookingColumns, { formatData } from './column'
+import usePagination from '@/hooks/usePagination'
 
 export default function AdminBookingTableSection() {
-    const [pagination, setPagination] = useState({
-        pageIndex: 0,
-        pageSize: 6,
-    })
+    const { pageIndex, pageSize, pagination, setPagination } = usePagination()
     const { data, isLoading, isSuccess, isError, error } = useQuery({
         queryKey: [
             '/get-app-bookings',
             pagination.pageIndex,
             pagination.pageSize,
         ],
-        queryFn: () =>
-            getAppBookingsAPI(pagination.pageIndex + 1, pagination.pageSize),
+        queryFn: () => getAppBookingsAPI(pageIndex + 1, pageSize),
         retry: 2,
     })
 
@@ -40,7 +37,7 @@ export default function AdminBookingTableSection() {
         } catch (e) {
             console.log(error)
         }
-    }, [isSuccess, pagination.pageIndex, pagination.pageSize])
+    }, [isSuccess, pageIndex, pageSize])
 
     return (
         <Table

@@ -13,7 +13,7 @@ export const getPartnerStatusBookingAPI_URL = (status) =>
     `${basePartner}/${booking}s/status/${status}`
 
 export const partnerGetAllBookingsAPI_URL = (page) =>
-    basePartner + `/${booking}s` + `/${page}`
+    basePartner + `/${booking}s` + `/${page + 1}`
 
 export const addScheduleAPI_URL = `${basePartner}/schedule`
 

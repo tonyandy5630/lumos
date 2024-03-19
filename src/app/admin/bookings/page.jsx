@@ -9,7 +9,7 @@ export const metadata = {
 export default function AdminBookingsPage() {
     return (
         <>
-            <PageTitle>Apps' Bookings</PageTitle>
+            <PageTitle>Apps&apos; Bookings</PageTitle>
             <AdminBookingTableSection />
         </>
     )
