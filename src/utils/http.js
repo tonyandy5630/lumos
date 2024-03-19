@@ -41,7 +41,6 @@ class Http {
                 ) {
                     const data = error?.response?.data
                     const message = data?.message || error?.message
-                    console.log(data)
                     toast.error(message, {
                         toastId: data?.message ? data?.message : error?.message,
                     })

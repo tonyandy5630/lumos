@@ -15,7 +15,7 @@ export const toBookingTableData = (data) => {
     }
 }
 
-const convertBookingTime = (time) => {
+export const convertBookingTime = (time) => {
     switch (time) {
         case 1:
             return '6:00am - 12:00am'
