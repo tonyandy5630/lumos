@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Table from '@/components/Table'
 import { getRefundListAPI } from '@/api/admin.api'
-import RefundColumns from './column'
+import RefundColumns, { formatRefundData } from './column'
 
 export default function RefundList() {
     const { data, isLoading, isSuccess, isError, error } = useQuery({
@@ -14,8 +14,7 @@ export default function RefundList() {
     const rows = useMemo(() => {
         if (isSuccess) {
             const res = data?.data
-            console.table(res)
-            if (res) return res
+            if (res) return res.map((i) => formatRefundData(i))
             return []
         }
         return []

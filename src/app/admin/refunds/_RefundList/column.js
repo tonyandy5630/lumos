@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 import StatusChip from '@/components/StatusChip'
+import toLocaleDate from '@/utils/date'
+import priceFormat from '@/utils/priceFormat'
 
 const RefundColumns = [
     {
@@ -56,5 +58,28 @@ const RefundColumns = [
         },
     },
 ]
+
+export const formatRefundData = (data) => {
+    const {
+        bookingId,
+        customerName,
+        email,
+        phone,
+        createdAt,
+        cancelationReason,
+        totalPrice,
+        status,
+    } = data
+    return {
+        bookingId,
+        customerName,
+        email,
+        phone,
+        createdAt: toLocaleDate(createdAt),
+        cancelationReason,
+        totalPrice: priceFormat('Vi-vi', 'VND', totalPrice),
+        status,
+    }
+}
 
 export default RefundColumns
