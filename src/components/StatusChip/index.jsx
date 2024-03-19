@@ -26,7 +26,7 @@ export default function StatusChip(props) {
             return {
                 color: '#2EE656',
                 icon: <SuccessIcon sx={iconSx} />,
-                text: 'SUCCESS',
+                text: 'COMPLETED',
             }
         } else if (status === BOOKING_STATUS_ENUM.Pending) {
             return {
