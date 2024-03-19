@@ -8,6 +8,7 @@ import BankIcon from '@mui/icons-material/AccountBalanceOutlined'
 import iconStatTabSx from '@/utils/icon'
 import { useQuery } from '@tanstack/react-query'
 import { getStatPartnerServiceAPI } from '@/api/partner.api'
+import priceFormat from '@/utils/priceFormat'
 
 export default function ServicesAnalytics() {
     const {
@@ -43,7 +44,11 @@ export default function ServicesAnalytics() {
                             ? 'Loading'
                             : isStatError
                               ? 'Error'
-                              : data.data.data.revenue}
+                              : priceFormat(
+                                    'Vi-vi',
+                                    'VND',
+                                    data.data.data.revenue
+                                )}
                     </StatTab>
                 </div>
                 <LineChart
