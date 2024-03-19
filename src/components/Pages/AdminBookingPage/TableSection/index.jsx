@@ -10,20 +10,16 @@ export default function AdminBookingTableSection() {
         pageIndex: 0,
         pageSize: 6,
     })
-    const { data, isLoading, isSuccess, isError, error, isRefetching } =
-        useQuery({
-            queryKey: [
-                '/get-app-bookings',
-                pagination.pageIndex,
-                pagination.pageSize,
-            ],
-            queryFn: () =>
-                getAppBookingsAPI(
-                    pagination.pageIndex + 1,
-                    pagination.pageSize
-                ),
-            retry: 2,
-        })
+    const { data, isLoading, isSuccess, isError, error } = useQuery({
+        queryKey: [
+            '/get-app-bookings',
+            pagination.pageIndex,
+            pagination.pageSize,
+        ],
+        queryFn: () =>
+            getAppBookingsAPI(pagination.pageIndex + 1, pagination.pageSize),
+        retry: 2,
+    })
 
     const rows = useMemo(() => {
         try {

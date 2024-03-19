@@ -1,5 +1,6 @@
 import {
     getAdminDashBoardStatAPI_URL,
+    getAllPartnersAPI_URL,
     getAppBookingsAPI_URL,
     getAppMonthlyRevenueAPI_URL,
     getAppNewMonthlyUserAPI_URL,
@@ -28,3 +29,6 @@ export const getRefundListAPI = () => http.get(getRefundListAPI_URL)
 
 export const getAppBookingsAPI = (page, pageSize) =>
     http.get(getAppBookingsAPI_URL(page, pageSize))
+
+export const getAllPartnersAPI = (page, pageSize) =>
+    http.get(getAllPartnersAPI_URL(page, pageSize))

@@ -22,6 +22,19 @@ export default function StatusChip(props) {
     const { status } = props
 
     const style = useMemo(() => {
+        if (typeof status === 'boolean') {
+            if (!status) {
+                return {
+                    color: '#2EE656',
+                    text: 'Available',
+                }
+            }
+            return {
+                color: '#E62E2E',
+                text: 'Not Available',
+            }
+        }
+
         if (status === BOOKING_STATUS_ENUM.Completed) {
             return {
                 color: '#2EE656',
@@ -59,7 +72,7 @@ export default function StatusChip(props) {
         <div className={`flex items-start`}>
             <Chip
                 size="small"
-                label={style.text}
+                label={style.text.toUpperCase()}
                 sx={{
                     minWidth: '116px',
                     fontWeight: 'bold',
@@ -67,7 +80,8 @@ export default function StatusChip(props) {
                     bgcolor: style.color,
                     color: 'white',
                     display: 'flex',
-                    justifyContent: 'start',
+                    justifyContent:
+                        typeof status === 'boolean' ? 'center' : 'start',
                 }}
                 icon={style.icon}
             />

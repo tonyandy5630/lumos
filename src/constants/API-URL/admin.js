@@ -21,3 +21,6 @@ export const getRefundListAPI_URL = `${baseAdmin}/refundlist`
 
 export const getAppBookingsAPI_URL = (page, pageSize) =>
     `${baseAdmin}/bookings?page=${page}&PageSize=${pageSize}`
+
+export const getAllPartnersAPI_URL = (page, pageSize) =>
+    `${baseAdmin}/partners?page=${page + 1}&pageSize=${pageSize}`
